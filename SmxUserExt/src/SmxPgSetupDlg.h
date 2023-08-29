@@ -45,10 +45,10 @@ public:
 	EShowCtrl m_eFooter;
   EShowCtrl m_eHeader;
 	EShowCtrl m_eColumns;
-  bool      m_bFooter;
-  bool      m_bHeader;
-  bool      m_bInch;
-  bool      m_bLandscape;
+	bool      m_bFooter{};
+	bool      m_bHeader{};
+  bool      m_bInch{};
+  bool      m_bLandscape{};
   CString   m_strRegKey;
 
   //{{AFX_DATA(CSmxPgSetupDlg)

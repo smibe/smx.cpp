@@ -26,8 +26,8 @@
 class CSongTedView : public CSmxPrnFormView
 {
 public:
-	DECLARE_DYNCREATE(CSongTedView, CSmxPrnFormView)
-	DECLARE_MESSAGE_MAP(CSongTedView, CSmxPrnFormView)
+	DECLARE_DYNCREATE(CSongTedView)
+	DECLARE_MESSAGE_MAP()
 
 
 	CSongTedView();
@@ -62,6 +62,8 @@ public:
 	BOOL CSongTedView::OnEraseBkgnd(CDC* pDC);
 	void CSongTedView::OnPreview();
 	void CSongTedView::OnViewOptions();
+	
+	LPCTSTR GetPageSetupSection() override { return "SongTedPageSetup"; }
 
 protected:
 	CSongTedCtrl m_SongTed;

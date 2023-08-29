@@ -62,7 +62,7 @@ CSongTedView::CSongTedView()
   m_pXMLDoc = NULL;
   m_pMasterStave = NULL;
 
-  m_nNofColumns  = 3;
+  m_nNofColumns  = 1;
   m_nBetweenCols = 4000;
   m_nStartY      = 0;
   m_nFirstCol    = 1;
@@ -149,7 +149,7 @@ void CSongTedView::OnSize(UINT nType, int cx, int cy)
 
 void CSongTedView::OnInitialUpdate() 
 {
-	CFormView::OnInitialUpdate();
+    CSmxPrnFormView::OnInitialUpdate();
 	
 	if (!m_SongTed.GetSafeHwnd())
   {

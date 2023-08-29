@@ -352,8 +352,8 @@ public:
   CRect    m_rcBounds;                           //@cmember Rectangle were the text will be printed.
   LOGFONT *m_pLogFont;                           //@cmember Font which should be used for printing.
   CString  m_strText;                            //@cmember The text which will be printed.
-  LONG     m_tmDescent;                          //@cmember Remember the descent (textmetrics) for this text tag.
-  DWORD    m_dwFormatFlags;                      //@cmember  The format flags for this text tag
+  LONG     m_tmDescent{};                          //@cmember Remember the descent (textmetrics) for this text tag.
+  DWORD    m_dwFormatFlags{};                      //@cmember  The format flags for this text tag
 };
 
 

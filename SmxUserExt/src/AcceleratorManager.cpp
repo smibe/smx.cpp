@@ -884,8 +884,8 @@ LPACCEL CAcceleratorManager::GetResourceShortcut(UINT nCmdID, LPACCEL pAccelTab,
 
 CCmdAccelOb *CAcceleratorManager::GetAffected(LPACCEL pAccel)
 {
-  return GetAffected(pAccel->key, pAccel->fVirt & FCONTROL != 0, 
-                     pAccel->fVirt & FALT != 0, pAccel->fVirt & FSHIFT != 0);
+  return GetAffected(pAccel->key, (pAccel->fVirt & FCONTROL) != 0, 
+                     (pAccel->fVirt & FALT) != 0, (pAccel->fVirt & FSHIFT) != 0);
 }
 
 
