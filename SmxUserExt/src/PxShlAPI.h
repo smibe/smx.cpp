@@ -54,7 +54,7 @@ LPBYTE GetItemIDPos(LPCITEMIDLIST pidl, int nPos);
 int CompareItemID(LPCITEMIDLIST pidl1,LPCITEMIDLIST pidl2);
 int CompareItemID(LPCITEMIDLIST pidl1,int nSpecialFolder);
 int CompareItemID(int nSpecialFolder,LPCITEMIDLIST pidl2);
-HRESULT SHBindToParent(LPCITEMIDLIST pidl, REFIID riid, VOID **ppv, LPCITEMIDLIST *ppidlLast);
+//HRESULT SHBindToParent(LPCITEMIDLIST pidl, REFIID riid, VOID **ppv, LPCITEMIDLIST *ppidlLast);
 BOOL TrackItemIDContextMenu(LPCITEMIDLIST pidlShellItem,
 	UINT nFlags, LPPOINT ptPoint, HWND hWnd);
 BOOL TrackItemIDContextMenu(LPCTSTR pszShellItemPath,

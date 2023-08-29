@@ -624,7 +624,7 @@ void CFormEdit::InsertGrpSy(CString& strInt)
 
 
   ASSERT(nIntLen + nGrp > 0);
-  USHORT *buf = (USHORT *) calloc(nIntLen + nGrp + 3, sizeof(USHORT));
+  WCHAR *buf = (WCHAR*) calloc(nIntLen + nGrp + 3, sizeof(WCHAR));
 
   //insert the grouping symbol
   int i=strInt.GetLength()-1;         //index in strLen

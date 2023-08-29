@@ -439,7 +439,7 @@ BOOL COXPathSpec::DoCopy(COXPathSpec destinationPath) const
 			TRACE(_T("COXPathSpec::DoCopy : Destination file %s already exists, truncating ...\n"), sDestPath);
 #endif	
 
-	const nBufferLength = 2048;
+	const int nBufferLength = 2048;
 	BYTE pBuffer[nBufferLength + 1];
 	int nLengthRead;
 	CFile source;

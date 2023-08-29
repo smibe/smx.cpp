@@ -262,7 +262,7 @@ void InsertGrpSymbols(CString& str)
 
 
   ASSERT(nIntLen + nGrp > 0);
-  USHORT *buf = new USHORT[nIntLen + nGrp + 3];
+  WCHAR *buf = new WCHAR[nIntLen + nGrp + 3];
 
   //insert the grouping symbol
   int i=strInt.GetLength()-1;         //index in strLen

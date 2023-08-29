@@ -24,7 +24,11 @@
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 #include "stdafx.h"
+#include "shobjidl_core.h"
 #include "PxShlAPI.h"
+_COM_SMARTPTR_TYPEDEF(IContextMenu, __uuidof(IContextMenu));
+_COM_SMARTPTR_TYPEDEF(IContextMenu2, __uuidof(IContextMenu2));
+
 
 #ifdef _UNICODE
 	#define IShellLinkPtr	IShellLinkWPtr	
@@ -182,6 +186,7 @@ LPITEMIDLIST MergeItemID(LPCITEMIDLIST pidl,...)
 	return pidlNew; 
 }
 
+/****
 HRESULT
 SHBindToParent(LPCITEMIDLIST pidl, REFIID riid, VOID **ppv, LPCITEMIDLIST *ppidlLast)
 {
@@ -222,6 +227,7 @@ SHBindToParent(LPCITEMIDLIST pidl, REFIID riid, VOID **ppv, LPCITEMIDLIST *ppidl
 		return e.Error();
 	}
 }
+***/
 
 HRESULT
 SHGetBaseFolder(LPCITEMIDLIST pidl, REFIID riid, VOID **ppv)

@@ -402,7 +402,7 @@ protected:
 	virtual void On_ThreadInitialize(){}//All file change notifications has taken place in the context of a worker thread...do any thread initialization here..
 	virtual void On_ThreadExit(){}//do thread cleanup here
 	
-private:
+public:
 	friend class CDirectoryChangeHandler;
 	BOOL UnwatchDirectory(CDirectoryChangeHandler * pChangeHandler);//called in CDirectoryChangeHandler::~CDirectoryChangeHandler()
 

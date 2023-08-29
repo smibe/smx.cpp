@@ -57,7 +57,7 @@ COXPathIterator::COXPathIterator()
 	{
 	}
 	
-COXPathIterator::IsItValid()
+BOOL COXPathIterator::IsItValid()
 	{
 	return m_bValid;
 	}               

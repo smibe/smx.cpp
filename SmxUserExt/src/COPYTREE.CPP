@@ -87,7 +87,7 @@ COXCopyTree::COXCopyTree()
 BOOL COXCopyTree::DoCopyTree(COXDirSpec SourceDir, COXDirSpec DestDir, BOOL bOnlyContents /* = TRUE */,
 	BOOL bCleanUp /* = FALSE */, COXCopyStatusDialog* pCpyStatDlg /* = NULL */)
 	{
-	static bBusyCopying = FALSE;
+	static BOOL bBusyCopying = FALSE;
 	CWnd* pMainWnd = NULL;
 
 	if (bBusyCopying)

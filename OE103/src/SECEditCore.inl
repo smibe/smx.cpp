@@ -3295,7 +3295,7 @@ BOOL  SECEditCore<BC>::ReplaceSelection( LPCTSTR lpNewSel, BOOL bColumnar, BOOL 
 	char	search[4] = { 0x0D, 0x0A, 0, 0 };
 
 	// is there more than one line?
-	LPSTR lpTemp = strpbrk( T2CA(lpNewSel), search );
+	LPCSTR lpTemp = strpbrk( T2CA(lpNewSel), search );
 	if ( !lpTemp )
 		bRet = ( InsertString( (LPTSTR) lpNewSel, FALSE, bSaveUndoRecord ) == 0 );
 	else

@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <ProjectGuid>{668780FC-E452-4701-961E-4CF90EB3F732}</ProjectGuid>
+    <Keyword>MFCProj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>17.0.33927.210</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>.\..\..\lib\Release\</OutDir>
+    <IntDir>.\Release\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>.\..\..\lib\Debug\</OutDir>
+    <IntDir>.\Debug\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>..\SmxUserExt\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <ForceConformanceInForLoopScope>false</ForceConformanceInForLoopScope>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>.\Release/SmxUserExt.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Release/</AssemblerListingLocation>
+      <ObjectFileName>.\Release/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Release/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0407</Culture>
+    </ResourceCompile>
+    <Lib>
+      <OutputFile>..\lib\Release\SmxUserExt.lib</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Lib>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\..\..\lib\Release/SmxUserExt.bsc</OutputFile>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\SmxUserExt\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <ForceConformanceInForLoopScope>false</ForceConformanceInForLoopScope>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>.\Debug/SmxUserExt.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Debug/</AssemblerListingLocation>
+      <ObjectFileName>.\Debug/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Debug/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0407</Culture>
+    </ResourceCompile>
+    <Lib>
+      <OutputFile>..\lib\Debug\SmxUserExt.lib</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Lib>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\..\..\lib\Debug/SmxUserExt.bsc</OutputFile>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\AccelDlgHelper.cpp" />
+    <ClCompile Include="src\AcceleratorManager.cpp" />
+    <ClCompile Include="src\AccelListBox.cpp" />
+    <ClCompile Include="src\AccelMapDlg.cpp" />
+    <ClCompile Include="src\AccelMgrReg.cpp" />
+    <ClCompile Include="src\CJFlatHeaderCtrl.cpp" />
+    <ClCompile Include="src\CJSortClass.cpp" />
+    <ClCompile Include="src\CmdAccelOb.cpp" />
+    <ClCompile Include="src\COPYTREE.CPP" />
+    <ClCompile Include="src\CPYSTDLG.CPP" />
+    <ClCompile Include="src\Crypt.cpp" />
+    <ClCompile Include="src\CShellFileOp.cpp" />
+    <ClCompile Include="src\DelayedDirectoryChangeHandler.cpp" />
+    <ClCompile Include="src\Dir.cpp" />
+    <ClCompile Include="src\DirChangeHdl.cpp" />
+    <ClCompile Include="src\DirectoryChanges.cpp" />
+    <ClCompile Include="src\DIRLIST.CPP" />
+    <ClCompile Include="src\DlgDataEx.cpp" />
+    <ClCompile Include="src\File.cpp" />
+    <ClCompile Include="src\FileDropTarget.cpp" />
+    <ClCompile Include="src\FILELIST.CPP" />
+    <ClCompile Include="src\FilePathCtrl.cpp" />
+    <ClCompile Include="src\FormEdit.cpp" />
+    <ClCompile Include="src\KeyboardEdit.cpp" />
+    <ClCompile Include="src\OXDirDlg.cpp" />
+    <ClCompile Include="src\OXGridEdit.cpp" />
+    <ClCompile Include="src\OXGridList.cpp" />
+    <ClCompile Include="src\OXRectTracker.cpp" />
+    <ClCompile Include="src\ParseFile.cpp" />
+    <ClCompile Include="src\PATH.CPP" />
+    <ClCompile Include="src\PATHITER.CPP" />
+    <ClCompile Include="src\POPUP.CPP" />
+    <ClCompile Include="src\PxShlAPI.cpp" />
+    <ClCompile Include="src\regex.cpp" />
+    <ClCompile Include="src\Registry.cpp" />
+    <ClCompile Include="src\SelectVarDlg.cpp" />
+    <ClCompile Include="src\ShellToolBar.cpp" />
+    <ClCompile Include="src\ShExecCtrl.cpp" />
+    <ClCompile Include="src\SingleViewTemplate.cpp" />
+    <ClCompile Include="src\SInstance.cpp" />
+    <ClCompile Include="src\SMXComboBox.cpp" />
+    <ClCompile Include="src\SMXComboEdit.cpp" />
+    <ClCompile Include="src\SmxDialog.cpp" />
+    <ClCompile Include="src\SmxFileList.cpp" />
+    <ClCompile Include="src\SmxListCtrl.cpp" />
+    <ClCompile Include="src\SmxPgSetupDlg.cpp" />
+    <ClCompile Include="src\SmxPrnFormView.cpp" />
+    <ClCompile Include="src\SmxPrnTable.cpp" />
+    <ClCompile Include="src\SmxPrnView.cpp" />
+    <ClCompile Include="src\SMXPropertyPg.cpp" />
+    <ClCompile Include="src\SMXSheet.cpp" />
+    <ClCompile Include="src\SmxShell.cpp" />
+    <ClCompile Include="src\SmxShellList.cpp" />
+    <ClCompile Include="src\SmxShellTree.cpp" />
+    <ClCompile Include="src\SmxTreeCtrl.cpp" />
+    <ClCompile Include="src\StdAfx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="src\TitleTip.cpp" />
+    <ClCompile Include="src\ToolbarEx.cpp" />
+    <ClCompile Include="src\UserToolMgr.cpp" />
+    <ClCompile Include="src\UserToolsDlg.cpp" />
+    <ClCompile Include="src\Util.cpp" />
+    <ClCompile Include="src\VarMgr.cpp" />
+    <ClCompile Include="src\WaitDlg.cpp" />
+    <ClCompile Include="src\XMLDoc.cpp" />
+    <ClCompile Include="src\XmlExport.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\AccelDlgHelper.h" />
+    <ClInclude Include="src\AcceleratorManager.h" />
+    <ClInclude Include="src\AccelListBox.h" />
+    <ClInclude Include="src\AccelMapDlg.h" />
+    <ClInclude Include="src\CJFlatHeaderCtrl.h" />
+    <ClInclude Include="src\CJSortClass.h" />
+    <ClInclude Include="src\CmdAccelOb.h" />
+    <ClInclude Include="src\COPYTREE.h" />
+    <ClInclude Include="src\CPYSTDLG.h" />
+    <ClInclude Include="src\Crypt.h" />
+    <ClInclude Include="src\CShellFileOp.h" />
+    <ClInclude Include="src\DelayedDirectoryChangeHandler.h" />
+    <ClInclude Include="src\DIR.h" />
+    <ClInclude Include="src\DirChangeHdl.h" />
+    <ClInclude Include="src\DirectoryChanges.h" />
+    <ClInclude Include="src\DIRLIST.h" />
+    <ClInclude Include="src\DlgDataEx.h" />
+    <ClInclude Include="src\FILE.h" />
+    <ClInclude Include="src\FileDropTarget.h" />
+    <ClInclude Include="src\FILELIST.h" />
+    <ClInclude Include="src\FILELMT.h" />
+    <ClInclude Include="src\FilePathCtrl.h" />
+    <ClInclude Include="src\FormEdit.h" />
+    <ClInclude Include="src\KeyboardEdit.h" />
+    <ClInclude Include="src\OXDirDlg.h" />
+    <ClInclude Include="src\OXDirRes.h" />
+    <ClInclude Include="src\OXDockCtrlBarRes.h" />
+    <ClInclude Include="src\OXGridEdit.h" />
+    <ClInclude Include="src\OXGridList.h" />
+    <ClInclude Include="src\OXGridListRes.h" />
+    <ClInclude Include="src\OXRectTracker.h" />
+    <ClInclude Include="src\ParseFile.h" />
+    <ClInclude Include="src\PATH.h" />
+    <ClInclude Include="src\PATHITER.h" />
+    <ClInclude Include="src\POPUP.H" />
+    <ClInclude Include="src\PxShlAPI.h" />
+    <ClInclude Include="src\regex.h" />
+    <ClInclude Include="src\Registry.h" />
+    <ClInclude Include="src\RETURNS.h" />
+    <ClInclude Include="src\SelectVarDlg.h" />
+    <ClInclude Include="src\ShellToolBar.h" />
+    <ClInclude Include="src\ShExecCtrl.h" />
+    <ClInclude Include="src\SingleViewTemplate.h" />
+    <ClInclude Include="src\SInstance.h" />
+    <ClInclude Include="src\SMXComboBox.h" />
+    <ClInclude Include="src\SMXComboEdit.h" />
+    <ClInclude Include="src\SmxDialog.h" />
+    <ClInclude Include="src\SmxFileList.h" />
+    <ClInclude Include="src\SMXListCtrl.h" />
+    <ClInclude Include="src\SmxObjWrap.h" />
+    <ClInclude Include="src\SmxPgSetupDlg.h" />
+    <ClInclude Include="src\SmxPrnFormView.h" />
+    <ClInclude Include="src\SmxPrnTable.h" />
+    <ClInclude Include="src\SmxPrnview.h" />
+    <ClInclude Include="src\SMXPropertyPg.h" />
+    <ClInclude Include="src\SMXRes.h" />
+    <ClInclude Include="src\SMXSheet.h" />
+    <ClInclude Include="src\SmxShell.h" />
+    <ClInclude Include="src\SmxShellList.h" />
+    <ClInclude Include="src\SmxShellTree.h" />
+    <ClInclude Include="src\SmxTreeCtrl.h" />
+    <ClInclude Include="src\SMXUtil.h" />
+    <ClInclude Include="src\StdAfx.h" />
+    <ClInclude Include="src\TitleTip.h" />
+    <ClInclude Include="src\ToolbarEx.h" />
+    <ClInclude Include="src\UserToolMgr.h" />
+    <ClInclude Include="src\UserToolsDlg.h" />
+    <ClInclude Include="src\Util.h" />
+    <ClInclude Include="src\VarMgr.h" />
+    <ClInclude Include="src\WaitDlg.h" />
+    <ClInclude Include="src\XMLDoc.h" />
+    <ClInclude Include="src\XmlExport.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="src\res\combo_bt.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="src\OXDirDlg.rc">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <ResourceCompile Include="src\OXDockCtrlBars.RC">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <ResourceCompile Include="src\OXGridList.rc">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <ResourceCompile Include="src\SMXRes.rc">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
