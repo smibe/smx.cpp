@@ -1,0 +1,85 @@
+<html>
+
+<head>
+<title>Frequently asked Questions</title>
+<meta name="GENERATOR" content="Microsoft FrontPage 3.0">
+<script LANGUAGE="JavaScript">
+function gotoFCUHome(link)
+{
+	if (parent.length == 0)
+		window.location = "http://fcu.smibe.com"
+	else
+	{
+		if (document.title != "FCU Main")
+			window.location = "FcuMain.htm"
+	}	   
+}
+</script>
+
+<style>
+<!--
+.mouseBeOnImage {
+CURSOR: hand;
+}
+//-->
+</style>
+</head>
+
+<body>
+
+<h1><small>FCU Frequently asked Questions</small></h1>
+
+<hr SIZE="6" NOSHADE>
+
+<p><strong>1. When I try to start FCU a popup message is displayed: &quot;Unable to locate
+DLL&quot;. Is there anything wrong with my installation?</strong></p>
+
+<p>FCU was compiled with Visual C++ 6.0 and uses MFC. You need to install the MSVCRT.DLL
+and MFC42.DLL on your computer. Make sure you get the latest versions! I did not ship
+these DLL's with the FCU delivery to reduce the size of the download files. The DLL's are
+not part of the Windows 95/98/NT operating system. You can download the latest versions
+from <a href="http://www.simtel.net">www.simtel.net</a>. </p>
+
+<p><strong>2. The file compare works well but when I try to compare directories an empty
+list view is displayed.</strong></p>
+
+<p>In the View/Options dialog box there are check boxes for displaying the different
+files, left only, right only respective the identical files. Make sure you check all of
+them and try the compare file directory again. If the list view is still empty check if
+you have entered the right file mask in the compare directory dialog.</p>
+
+<p><strong>3. Is it possible to change the default hotkeys (Ctrl+R, Ctrl+L, etc.)?</strong></p>
+
+<p>Yes, most key bindings are customizable. Click on the
+&quot;Tools/Customize/keyboard&quot; menu. Unfortunately, the keys in the 'Command mode'
+are not customizable.</p>
+
+<p><strong>4. I'm using WinCvs. Is it possible to use FCU as the external diff program.</strong></p>
+
+<p>Yes it is! FCU can be started with command line parameters. In addition there is a
+handy option which makes it possible to use the same program instance for all file
+comparisons.</p>
+
+<p><strong>5. I use an other version control system whithout the possibility to use an
+external diff program. Can I still use FCU?</strong></p>
+
+<p>You could check out all your files in a separate directory and do a directory compare
+with your working directory. If your version control system can be used from a command
+line prompt you can even define user tools for checking files in or doing othe file
+operations.</p>
+
+<p><strong>6. I like the look and feel of FCU. Anyhow were can I send suggestions and how
+is it possible to get informed about new releases?</strong></p>
+
+<p>You can send your suggestions vie E-mail to <a href="mailto:fcu@smibe.com">fcu@smibe.com</a>.
+I'll put you automatically on the FCU mailing list.Pleas check first the <a
+href="file:///F:/Projects/FCU/HomePage/fcutodo.html">FCU To-Do</a> list before sending
+suggestions.</p>
+
+<hr>
+
+<p align="center"><img src="images/FCUIcon.GIF" alt="FCU" align="middle"
+onmouseover="this.className='mouseBeOnImage'" onClick="gotoFCUHome()" WIDTH="39"
+HEIGHT="35">© Gerhard Herbert, 2003</p>
+</body>
+</html>

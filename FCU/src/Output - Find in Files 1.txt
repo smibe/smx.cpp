@@ -1,0 +1,76 @@
+Searching for 'free'...
+D:\PROJECTS\OE103\src\EditChroma.cpp(1144):   // free the old guy
+D:\PROJECTS\OE103\src\EditChroma.cpp(1147):      free(lpNames);
+D:\PROJECTS\OE103\src\EditChroma.cpp(1151):   // free the ini file
+D:\PROJECTS\OE103\src\EditChroma.cpp(1154):      free(glpMyIniFileBuffer);
+D:\PROJECTS\OE103\src\EditChroma.cpp(1209):			free(lpTemp);
+D:\PROJECTS\OE103\src\EditChroma.cpp(1220):      free(lpTemp);
+D:\PROJECTS\OE103\src\EditChroma.cpp(1227):   free(lpTemp);
+D:\PROJECTS\OE103\src\EditChroma.cpp(1240):		free(glpMyIniFileBuffer);
+D:\PROJECTS\OE103\src\EditChroma.cpp(1245):		free(lpNames);
+D:\PROJECTS\OE103\src\EditChroma.cpp(1250):		free(lpScanBuffer);
+D:\PROJECTS\OE103\src\EditCopy.cpp(224):      free(lpTemp);
+D:\PROJECTS\OE103\src\EditCore.cpp(100):	free(m_pUndoBuffer);
+D:\PROJECTS\OE103\src\EditCut.cpp(148):		   free(lpText);
+D:\PROJECTS\OE103\src\EditCut.cpp(218):		free(lpText);
+D:\PROJECTS\OE103\src\EditCut.cpp(265):      free(pStart->pText);
+D:\PROJECTS\OE103\src\EditCut.cpp(268):    free(pStart);
+D:\PROJECTS\OE103\src\EditDelete.cpp(131):      free(lpString);
+D:\PROJECTS\OE103\src\EditFile.cpp(294):    free (lpBuffer);
+D:\PROJECTS\OE103\src\EditFile.cpp(311):    free (lpBuffer);
+D:\PROJECTS\OE103\src\EditFile.cpp(330):  free (lpBuffer);
+D:\PROJECTS\OE103\src\EditLine.cpp(59):      free(pLine->pText);
+D:\PROJECTS\OE103\src\EditLine.cpp(60):   free(pLine);
+D:\PROJECTS\OE103\src\EditLine.cpp(330):   free(pLine->pText);
+D:\PROJECTS\OE103\src\EditLine.cpp(729):   free(lpStart);
+D:\PROJECTS\OE103\src\EditLine.cpp(768):    free(pBuffer);
+D:\PROJECTS\OE103\src\EditPaste.cpp(91):			free(lpNewText);
+D:\PROJECTS\OE103\src\EditPaste.cpp(124):			free(lpNewText);
+D:\PROJECTS\OE103\src\EditPaste.cpp(137):				free(lpNewText);
+D:\PROJECTS\OE103\src\EditPaste.cpp(153):		free(lpNewText);
+D:\PROJECTS\OE103\src\EditPaste.cpp(258):	free(lpString);
+D:\PROJECTS\OE103\src\EditPaste.cpp(260):		free(lpNewText);
+D:\PROJECTS\OE103\src\EditUndo.cpp(52):            free(lpUndoBuffer->lpBuffer);
+D:\PROJECTS\OE103\src\EditUndo.cpp(87):	         free(lpUndoBuffer->lpBuffer);
+D:\PROJECTS\OE103\src\EditUndo.cpp(137):      free(lpUndoBuffer->lpBuffer);
+D:\PROJECTS\OE103\src\EditUndo.cpp(164):				free(lpUndoBuffer->lpBuffer);
+D:\PROJECTS\OE103\src\EditUndo.cpp(201):   /* if we're throwing away some undo records, free
+D:\PROJECTS\OE103\src\EditUndo.cpp(220):					free(lpUndoBuffer->lpBuffer);
+D:\PROJECTS\OE103\src\SECEditCore.inl(728):	free(lpSource);
+D:\PROJECTS\OE103\src\SECEditCore.inl(2024):			free(lpSaveFoundText);
+D:\PROJECTS\OE103\src\SECEditCore.inl(2191):			free(lpSaveFoundText);
+D:\PROJECTS\OE103\src\SECEditCore.inl(2224):			free(lpSelected);
+D:\PROJECTS\OE103\src\SECEditCore.inl(2227):		free(lpSelected);
+D:\PROJECTS\OE103\src\ViewCopy.inl(71):   free(lpCopyText);
+D:\PROJECTS\OE103\src\ViewCopy.inl(124):   free(lpCopyText);
+D:\PROJECTS\OE103\src\ViewPaste.inl(69):		free(lpText);
+D:\PROJECTS\OE103\src\ViewPaste.inl(128):	free(lpText);
+D:\PROJECTS\OE103\src\ViewPaste.inl(200):      free(lpText);
+D:\PROJECTS\OE103\src\ViewPaste.inl(210):   free(lpText);
+D:\PROJECTS\OE103\src\CVS\Base\EditChroma.cpp(1144):   // free the old guy
+D:\PROJECTS\OE103\src\CVS\Base\EditChroma.cpp(1147):      free(lpNames);
+D:\PROJECTS\OE103\src\CVS\Base\EditChroma.cpp(1151):   // free the ini file
+D:\PROJECTS\OE103\src\CVS\Base\EditChroma.cpp(1154):      free(glpMyIniFileBuffer);
+D:\PROJECTS\OE103\src\CVS\Base\EditChroma.cpp(1209):			free(lpTemp);
+D:\PROJECTS\OE103\src\CVS\Base\EditChroma.cpp(1220):      free(lpTemp);
+D:\PROJECTS\OE103\src\CVS\Base\EditChroma.cpp(1227):   free(lpTemp);
+D:\PROJECTS\OE103\src\CVS\Base\EditChroma.cpp(1240):		free(glpMyIniFileBuffer);
+D:\PROJECTS\OE103\src\CVS\Base\EditChroma.cpp(1245):		free(lpNames);
+D:\PROJECTS\OE103\src\CVS\Base\EditChroma.cpp(1250):		free(lpScanBuffer);
+D:\PROJECTS\OE103\src\CVS\Base\EditCopy.cpp(224):      free(lpTemp);
+D:\PROJECTS\OE103\src\CVS\Base\EditCore.cpp(100):	free(m_pUndoBuffer);
+D:\PROJECTS\OE103\src\CVS\Base\EditCut.cpp(148):		   free(lpText);
+D:\PROJECTS\OE103\src\CVS\Base\EditCut.cpp(218):		free(lpText);
+D:\PROJECTS\OE103\src\CVS\Base\EditCut.cpp(251):      free(pStart->pText);
+D:\PROJECTS\OE103\src\CVS\Base\EditCut.cpp(254):    free(pStart);
+D:\PROJECTS\OE103\src\CVS\Base\EditLine.cpp(59):      free(pLine->pText);
+D:\PROJECTS\OE103\src\CVS\Base\EditLine.cpp(60):   free(pLine);
+D:\PROJECTS\OE103\src\CVS\Base\EditLine.cpp(330):   free(pLine->pText);
+D:\PROJECTS\OE103\src\CVS\Base\EditLine.cpp(729):   free(lpStart);
+D:\PROJECTS\OE103\src\CVS\Base\EditLine.cpp(768):    free(pBuffer);
+D:\PROJECTS\OE103\src\CVS\Base\SECEditCore.inl(727):	free(lpSource);
+D:\PROJECTS\OE103\src\CVS\Base\SECEditCore.inl(2023):			free(lpSaveFoundText);
+D:\PROJECTS\OE103\src\CVS\Base\SECEditCore.inl(2190):			free(lpSaveFoundText);
+D:\PROJECTS\OE103\src\CVS\Base\SECEditCore.inl(2223):			free(lpSelected);
+D:\PROJECTS\OE103\src\CVS\Base\SECEditCore.inl(2226):		free(lpSelected);
+74 occurrence(s) have been found.

@@ -1,0 +1,6 @@
+; FcuKGen.def : Declares the module parameters for the DLL.
+
+LIBRARY      "FcuKGen"
+DESCRIPTION  'FcuKGen Windows Dynamic Link Library'
+
+EXPORTS

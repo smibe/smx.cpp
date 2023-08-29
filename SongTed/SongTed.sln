@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OE103", "..\OE103\OE103.vcproj", "{07DF436E-AE2F-4A00-947A-239DBC80D0E4}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SmxUserExt", "..\SmxUserExt\SmxUserExt.vcproj", "{668780FC-E452-4701-961E-4CF90EB3F732}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SongTed", "SongTed.vcproj", "{F82F77E2-B5BE-4E88-85FE-DFF67B2CF0A2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{668780FC-E452-4701-961E-4CF90EB3F732} = {668780FC-E452-4701-961E-4CF90EB3F732}
+		{07DF436E-AE2F-4A00-947A-239DBC80D0E4} = {07DF436E-AE2F-4A00-947A-239DBC80D0E4}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release MFC Static|Win32 = Release MFC Static|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{07DF436E-AE2F-4A00-947A-239DBC80D0E4}.Debug|Win32.ActiveCfg = Debug|Win32
+		{07DF436E-AE2F-4A00-947A-239DBC80D0E4}.Debug|Win32.Build.0 = Debug|Win32
+		{07DF436E-AE2F-4A00-947A-239DBC80D0E4}.Release MFC Static|Win32.ActiveCfg = Release MFC Static|Win32
+		{07DF436E-AE2F-4A00-947A-239DBC80D0E4}.Release MFC Static|Win32.Build.0 = Release MFC Static|Win32
+		{07DF436E-AE2F-4A00-947A-239DBC80D0E4}.Release|Win32.ActiveCfg = Release|Win32
+		{07DF436E-AE2F-4A00-947A-239DBC80D0E4}.Release|Win32.Build.0 = Release|Win32
+		{668780FC-E452-4701-961E-4CF90EB3F732}.Debug|Win32.ActiveCfg = Debug|Win32
+		{668780FC-E452-4701-961E-4CF90EB3F732}.Debug|Win32.Build.0 = Debug|Win32
+		{668780FC-E452-4701-961E-4CF90EB3F732}.Release MFC Static|Win32.ActiveCfg = Release|Win32
+		{668780FC-E452-4701-961E-4CF90EB3F732}.Release MFC Static|Win32.Build.0 = Release|Win32
+		{668780FC-E452-4701-961E-4CF90EB3F732}.Release|Win32.ActiveCfg = Release|Win32
+		{668780FC-E452-4701-961E-4CF90EB3F732}.Release|Win32.Build.0 = Release|Win32
+		{F82F77E2-B5BE-4E88-85FE-DFF67B2CF0A2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F82F77E2-B5BE-4E88-85FE-DFF67B2CF0A2}.Debug|Win32.Build.0 = Debug|Win32
+		{F82F77E2-B5BE-4E88-85FE-DFF67B2CF0A2}.Release MFC Static|Win32.ActiveCfg = Release|Win32
+		{F82F77E2-B5BE-4E88-85FE-DFF67B2CF0A2}.Release MFC Static|Win32.Build.0 = Release|Win32
+		{F82F77E2-B5BE-4E88-85FE-DFF67B2CF0A2}.Release|Win32.ActiveCfg = Release|Win32
+		{F82F77E2-B5BE-4E88-85FE-DFF67B2CF0A2}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="Windows-1252" ?>
+<XML_DIZ_INFO>
+<MASTER_PAD_VERSION_INFO>
+    <MASTER_PAD_VERSION>1.15</MASTER_PAD_VERSION>
+    <MASTER_PAD_INFO>Portable Application Description, or PAD for short, is a data set that is used by shareware authors to disseminate information to anyone interested in their software products. To find out more go to http://www.asp-shareware.org/pad</MASTER_PAD_INFO>
+</MASTER_PAD_VERSION_INFO>
+<Company_Info>
+        <Company_Name>Gerhard Herbert</Company_Name>
+        <Address_1>Gleiwitzerstr. 16</Address_1>
+        <Address_2 />
+        <City_Town>Leonberg</City_Town>
+        <State_Province />
+        <Zip_Postal_Code>71229</Zip_Postal_Code>
+        <Country>Germany</Country>
+        <Company_WebSite_URL>http://www.smibe.com</Company_WebSite_URL>
+<Contact_Info>
+        <Author_First_Name>Gerhard</Author_First_Name>
+        <Author_Last_Name>Herbert</Author_Last_Name>
+        <Author_Email>gerhard@geherbert.de</Author_Email>
+        <Contact_First_Name>Gerhard</Contact_First_Name>
+        <Contact_Last_Name>Herbert</Contact_Last_Name>
+        <Contact_Email>fcu@smibe.com</Contact_Email>
+    </Contact_Info>
+<Support_Info>
+        <Sales_Email>fcu@smibe.com</Sales_Email>
+        <Support_Email>fcu@smibe.com</Support_Email>
+        <General_Email>fcu@smibe.com</General_Email>
+        <Sales_Phone />
+        <Support_Phone />
+        <General_Phone />
+        <Fax_Phone />
+    </Support_Info>
+</Company_Info>
+<Program_Info>
+        <Program_Name>FCU</Program_Name>
+        <Program_Version>1.4.0</Program_Version>
+        <Program_Release_Month>04</Program_Release_Month>
+        <Program_Release_Day>26</Program_Release_Day>
+        <Program_Release_Year>2003</Program_Release_Year>
+        <Program_Cost_Dollars>17.5</Program_Cost_Dollars>
+        <Program_Cost_Other_Code>EUR</Program_Cost_Other_Code>
+        <Program_Cost_Other>17.5</Program_Cost_Other>
+        <Program_Type>Shareware</Program_Type>
+        <Program_Release_Status>Major Update</Program_Release_Status>
+        <Program_Install_Support>Install and Uninstall</Program_Install_Support>
+        <Program_OS_Support>Win98,WinME,WinNT 4.x,WinXP,Windows2000</Program_OS_Support>
+        <Program_Language>English</Program_Language>
+<File_Info>
+        <Filename_Versioned>FCU14.exe</Filename_Versioned>
+        <Filename_Previous />
+        <Filename_Generic />
+        <Filename_Long />
+        <File_Size_Bytes>288850</File_Size_Bytes>
+        <File_Size_K>282.1</File_Size_K>
+        <File_Size_MB>0.28</File_Size_MB>
+    </File_Info>
+<Expire_Info>
+        <Has_Expire_Info>Y</Has_Expire_Info>
+        <Expire_Count>30</Expire_Count>
+        <Expire_Based_On>Days</Expire_Based_On>
+        <Expire_Other_Info />
+        <Expire_Month />
+        <Expire_Day />
+        <Expire_Year />
+    </Expire_Info>
+        <Program_Change_Info />
+        <Program_Specific_Category>Utilities</Program_Specific_Category>
+        <Program_Categories>Programming</Program_Categories>
+        <Program_System_Requirements />
+        <Includes_JAVA_VM>N</Includes_JAVA_VM>
+        <Includes_VB_Runtime>N</Includes_VB_Runtime>
+        <Includes_DirectX>N</Includes_DirectX>
+</Program_Info>
+<Program_Descriptions>
+<English>
+        <Keywords>file compare directory windiff diff comparison vdiff visual</Keywords>
+        <Char_Desc_45>FCU - File and directory comparison utility</Char_Desc_45>
+        <Char_Desc_80>FCU - File Comparison Utility: Utility for comparing files and directories.</Char_Desc_80>
+        <Char_Desc_250>FCU is an utility for comparing files and directories. The compared fieles are shown in two windows side by side. In a third window the composed (merged) file is shown. An easy user interface is provided for inserting or removing different sections.</Char_Desc_250>
+        <Char_Desc_450>FCU is an utility for comparing files and directories. The compared fieles are shown in two windows side by side. In a third window the composed (merged) file is shown. An easy user interface is provided for inserting or removing different sections from the left or right file. Directory and subdirectory comparision is possible as well. Customizable accelerator keys, toolbars and user tools are a great help for adjusting the user interface.</Char_Desc_450>
+        <Char_Desc_2000>FCU is an utility for comparing files and directories. The compared fieles are shown in two windows side by side. In a third window the composed (merged) file is shown. An easy user interface is provided for inserting or removing different sections from the left or right file. Directory and subdirectory comparision is possible as well. Customizable accelerator keys, toolbars and user tools are a great help for adjusting the user interface for yor needs.</Char_Desc_2000>
+</English>
+</Program_Descriptions>
+<Web_Info>
+<Application_URLs>
+        <Application_Info_URL>http://fcu.smibe.com</Application_Info_URL>
+        <Application_Order_URL>http://fcu.smibe.com</Application_Order_URL>
+        <Application_Screenshot_URL>http://fcu.smibe.com/images/Screen.gif</Application_Screenshot_URL>
+        <Application_Icon_URL />
+        <Application_XML_File_URL />
+    </Application_URLs>
+<Download_URLs>
+        <Primary_Download_URL>http://fcu.smibe.com/Downloads/FCU14.exe</Primary_Download_URL>
+        <Secondary_Download_URL />
+        <Additional_Download_URL_1 />
+        <Additional_Download_URL_2 />
+    </Download_URLs>
+</Web_Info>
+<Permissions>
+        <Distribution_Permissions>The original FCU archive inclusive any evaluation password may be distributed freely. 
+The distribution should not include a registration password. In particular, you may not 
+distribute a registered version of FCU.</Distribution_Permissions>
+        <EULA>1 Unregistered use
+You may evaluate the evaluation copy of FCU for maximum of 30 days, after which you 
+must register the software or remove it from your computer.
+
+2 Usage restrictions
+You may not use or distribute FCU for any unlawful purpose.
+
+3 Limitations of responsibility
+The author of FCU is not responsible for any damages whatsoever, including loss of 
+information, interruption of business, personal injury and/or any damage or consequential 
+damage without limitation, incurred before, during or after the use of FCU. 
+The authors liability, without exception, is limited to the customers&apos; reimbursement 
+of the purchase price of the software (maximum being the retail price as listed on the 
+FCU homepage) in exchange for the return of the product.
+
+4 Licensed software restrictions
+Each registered version of FCU may be used only by one user.  Use of the software means 
+that you have installed the program loaded and run it on your computer. Anyhow, the 
+registered user may use the software on as many computers he wants. 
+Only one registration fee is required.</EULA>
+</Permissions>
+<Simtel>
+    <Simtel_Email>fcu@smibe.com</Simtel_Email>
+    <Simtel_FORM>Y</Simtel_FORM>
+    <Simtel_DOS_Category>Select - MS-DOS Platform</Simtel_DOS_Category>
+    <Simtel_Win31_Category>Select - Win3 Platform</Simtel_Win31_Category>
+    <Simtel_WinXX_Category>Utilities/Drivers/Systems Files - fileutl File Utilities</Simtel_WinXX_Category>
+    <Simtel_Category>Select - New Categories</Simtel_Category>
+    <SIMTEL_FORM_VER>1.03 04/09/2001</SIMTEL_FORM_VER>
+</Simtel>
+</XML_DIZ_INFO>

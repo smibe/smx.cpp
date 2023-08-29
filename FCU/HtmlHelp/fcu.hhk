@@ -1,0 +1,68 @@
+<HTML>
+<!-- Sitemap 1.0 -->
+<OBJECT type="text/site properties">
+</OBJECT>
+<UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="Acknowledgments">
+		<param name="Name" value="Acknowledgments">
+		<param name="Local" value="html/Acknowldg.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="Commands for directory comparison">
+		<param name="Name" value="Commands for directory comparison">
+		<param name="Local" value="html/CmdDirSht.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="Compare directories">
+		<param name="Name" value="Compare directories">
+		<param name="Local" value="html/CmpDir.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="Compare File View">
+		<param name="Name" value="Compare File View">
+		<param name="Local" value="html/CmpFil.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="Copy Files">
+		<param name="Name" value="Copy Files">
+		<param name="Local" value="html/CopyFiles.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="Internal Variables">
+		<param name="Name" value="Internal Variables">
+		<param name="Local" value="html/IntVar.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="Licencing details">
+		<param name="Name" value="Licensing details">
+		<param name="Local" value="html/Lic.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="Options">
+		<param name="Name" value="CmdLineOptions">
+		<param name="Local" value="html/CmdLine.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="Overview">
+		<param name="Name" value="Overview">
+		<param name="Local" value="html/Overview.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="Registration">
+		<param name="Name" value="Registration">
+		<param name="Local" value="html/Registration.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="Shortcut">
+		<param name="Name" value="Compare File View - normal mode">
+		<param name="Local" value="html/CmpFilShtNm.htm">
+		<param name="Name" value="Compare File View- command mode">
+		<param name="Local" value="html/CmpFilShtCm.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="User tools">
+		<param name="Name" value="User tools">
+		<param name="Local" value="html/UserTools.htm">
+		</OBJECT>
+</UL></HTML>

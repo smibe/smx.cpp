@@ -1,0 +1,75 @@
+<html>
+
+<head>
+<title>download</title>
+<script LANGUAGE="JavaScript">
+function gotoRegister()
+{
+	window.location = "Register.htm"
+}
+
+function gotoFCUHome(link)
+{
+	if (parent.length == 0)
+		window.location = "http://www.geherbert.de/smibe/fcu"
+	else
+	{
+		if (document.title != "FCU Main")
+			window.location = "FcuMain.htm"
+	}	   
+}
+</script>
+
+<style>
+<!--
+.mouseBeOnImage {
+CURSOR: hand;
+}
+//-->
+</style>
+</head>
+
+<body TEXT="#000000" LINK="#0000FF" VLINK="#800080" ALINK="#FF0000">
+
+<h2>FCU Download</h2>
+
+<hr SIZE="6" NOSHADE>
+
+<table border="1" cellpadding="0" cellspacing="0" width="490" bordercolor="#C0C0C0"
+height="85">
+  <tr>
+    <td width="100%" bgcolor="#C0C0C0" height="19"><strong>Currently available downloads:</strong></td>
+  </tr>
+  <tr>
+    <td width="100%" height="28"><a href="http://www.geherbert.de/smibe/fcu/Downloads/FCU12.exe">FCU:
+    version 1.2</a> (freeware, 145 KB)</td>
+  </tr>
+  <tr>
+    <td width="100%" height="32"><a href="http://www.geherbert.de/smibe/fcu/Downloads/FCU14.exe">FCU:
+    version 1.4</a> (30 day evaluation version, 282 KB)</td>
+  </tr>
+</table>
+
+<table border="0" cellpadding="0" cellspacing="0" width="490">
+  <tr>
+    <td width="100%"><p align="left"><br>
+    After the evaluation version expires, you need to register FCU. Please check the FCU help
+    file for details on registration and licensing. If, after the evaluation period, you are
+    still not sure that you want to register, the evaluation version can be extended <a
+    href="http://www.geherbert.de/smibe/fcu/ExtendEval.htm">here</a>.<br>
+    </td>
+  </tr>
+  <tr>
+    <td width="100%"><p align="center">For registration orders please press:</p>
+    <p align="center"><input TYPE="button" NAME="Register" VALUE="Register"
+    onClick="gotoRegister()"></td>
+  </tr>
+</table>
+
+<hr>
+
+<p align="center"><img src="images/FCUIcon.GIF" alt="FCU" align="middle"
+onmouseover="this.className='mouseBeOnImage'" onClick="gotoFCUHome()" WIDTH="39"
+HEIGHT="35">© Gerhard Herbert, 2003</p>
+</body>
+</html>

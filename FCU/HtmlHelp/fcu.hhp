@@ -1,0 +1,41 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=fcu.chm
+Contents file=fcu.hhc
+Default topic=html\Overview.htm
+Display compile progress=No
+Full-text search=Yes
+Index file=fcu.hhk
+Language=0x409 Englisch (USA)
+
+
+[FILES]
+html\Overview.htm
+html\CmdLine.htm
+html\CmpDir.htm
+html\CmdDirSht.htm
+html\CmpFil.htm
+html\CmpFilShtNm.htm
+html\CmpFilShtCm.htm
+html\UserTools.htm
+html\IntVar.htm
+html\CopyFiles.htm
+html\Registration.htm
+html\Lic.htm
+html\Acknowldg.htm
+html\Options.htm
+
+[ALIAS]
+HIDD_SMX_SHEET=html\Options.htm
+HIDR_DIFF_DIR=html\CmpDir.htm
+HIDR_DIFF_FIL=html\CmpFil.htm
+
+[MAP]
+#include FCU.hh
+
+[TEXT POPUPS]
+FCU.hh
+Options.txt
+
+[INFOTYPES]
+

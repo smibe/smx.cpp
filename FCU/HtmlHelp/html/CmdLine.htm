@@ -1,0 +1,182 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+<title>CmdLineOptions</title>
+<link LINK REL="stylesheet" HREF="FcuHlp.css" TYPE="text/css">
+</head>
+
+<body link="#000099" vlink="#990099" alink="#000099">
+
+<p>
+<object type="application/x-oleobject"
+classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e">
+  <param name="Keyword" value="Options">
+</object>
+</p>
+
+<h1><sup><a name="cmdlineoptions"></a></sup>Command line options</h1>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+  <tr>
+    <td ><hr class="HeadLine" noshade="noshade">
+    </td>
+    <td width="68" valign="top"><a href="Overview.htm"><img src="Back.gif" width="31" height="20"
+    alt="previous page" align="left" border="0"></a><a href="Options.htm"><img src="Next.GIF"
+    width="31" height="20" alt="next page" border="0" align="right"></a></td>
+  </tr>
+</table>
+
+<p>fcu [options] &lt;FileOrDir1&gt; &lt;FileOrDir2&gt;</p>
+
+<p><strong>Options</strong>:</p>
+
+<table border="0" width="773" cellpadding="0">
+  <tr>
+    <td width="20"></td>
+    <td width="104"><font size="3">-[no]w</font></td>
+    <td width="643"><font size="3">ignore white spaces(blanks, tabs, empty lines)</font></td>
+  </tr>
+  <tr>
+    <td width="20"></td>
+    <td width="104"><font size="3">-[no]i</font></td>
+    <td width="643"><font size="3">ignore case</font></td>
+  </tr>
+  <tr>
+    <td width="20"></td>
+    <td width="104"><font size="3">-[no]B</font></td>
+    <td width="643"><font size="3">ignore end of line characters</font></td>
+  </tr>
+  <tr>
+    <td width="20"></td>
+    <td width="104"><font size="3">-[no]r</font></td>
+    <td width="643"><font size="3">compare recursive (including subdirectories)</font></td>
+  </tr>
+  <tr>
+    <td width="20"></td>
+    <td width="104"><font size="3">-[no]l</font></td>
+    <td width="643"><font size="3">show the open file/directory dialog before comparing</font></td>
+  </tr>
+  <tr>
+    <td width="20"></td>
+    <td width="104"><font size="3">-[no]Sl</font></td>
+    <td width="643"><font size="3">show left file window in the compare file view</font></td>
+  </tr>
+  <tr>
+    <td width="20"></td>
+    <td width="104"><font size="3">-[no]Sr</font></td>
+    <td width="643"><font size="3">show right file window in the compare file view</font></td>
+  </tr>
+  <tr>
+    <td width="20"></td>
+    <td width="104"><font size="3">-[no]Sc</font></td>
+    <td width="643"><font size="3">show the composed file window in the compare file view</font></td>
+  </tr>
+  <tr>
+    <td width="20"></td>
+    <td width="104"><font size="3">-[no]SD</font></td>
+    <td width="643"><font size="3">show different files in the compare directory view</font></td>
+  </tr>
+  <tr>
+    <td width="20"></td>
+    <td width="104"><font size="3">-[no]SI</font></td>
+    <td width="643"><font size="3">show identical files in the compare directory view (upper
+    letter 'i')</font></td>
+  </tr>
+  <tr>
+    <td width="20"></td>
+    <td width="104"><font size="3">-[no]SL</font></td>
+    <td width="643"><font size="3">show left only files in the compare directory view</font></td>
+  </tr>
+  <tr>
+    <td width="20"></td>
+    <td width="104"><font size="3">-[no]SR</font></td>
+    <td width="643"><font size="3">show right only files in the compare directory view</font></td>
+  </tr>
+  <tr>
+    <td width="20"></td>
+    <td width="104"><font size="3">-m FileMask</font></td>
+    <td width="643"><font size="3">compare only the files matching the specifief file mask</font></td>
+  </tr>
+  <tr>
+    <td width="20"></td>
+    <td width="104"><font size="3">-x FileMask</font></td>
+    <td width="643"><font size="3">exclude files matching the specified file mask</font></td>
+  </tr>
+  <tr>
+    <td width="20"></td>
+    <td width="104" valign="top"><font size="3">-no&lt;OPT&gt;</font></td>
+    <td width="643"><font size="3">if the word 'no' is specified before an option the option
+    will be negated (cleared). If, for example, you do not want the composed file window to be
+    displayed, you can specify 'noSc'.</font></td>
+  </tr>
+</table>
+<font size="3">
+
+<p><strong>EXAMPLES</strong>:</p>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="100%" colspan="2">fcu -noSc file1.cpp file2.cpp</td>
+  </tr>
+  <tr>
+    <td width="15%"></td>
+    <td width="85%">compare the file &lt;file1.cpp&gt; with the file &lt;file2.cpp&gt;, do not
+    show the composed file window.</td>
+  </tr>
+  <tr>
+    <td width="15%"><hr>
+    </td>
+    <td width="85%"></td>
+  </tr>
+</table>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="100%" colspan="2">fcu test.cpp ..</td>
+  </tr>
+  <tr>
+    <td width="15%"></td>
+    <td width="85%">compare the file &lt;test.cpp&gt; with the file &lt;..\test.cpp&gt;</td>
+  </tr>
+  <tr>
+    <td width="15%"><hr>
+    </td>
+    <td width="85%"></td>
+  </tr>
+</table>
+
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="100%" colspan="2">fcu -m *.cpp;*.h -x CVS\* dir1 dir2</td>
+  </tr>
+  <tr>
+    <td width="15%"></td>
+    <td width="85%">compare the files matching '*.cpp;*.h' excluding files matching 'CVS\*'
+    from the directories &lt;dir1&gt; and &lt;dir2&gt;</td>
+  </tr>
+  <tr>
+    <td width="15%"></td>
+    <td width="85%"></td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+</font>
+
+<hr style="width: 100%; height: 2px;" noshade="noshade">
+
+<table cellpadding="2" cellspacing="2" border="0" style="text-align: left; width: 100%;">
+<tbody>
+  <tr>
+    <td width="20%">&nbsp;</td>
+    <td valign="middle"><p align="center"><a href="http://fcu.smibe.com"><img
+    src="FCUIcon.GIF" width="39" height="35" alt="FCU Home Page" align="middle" border="0"></a>©
+    Gerhard Herbert, 2003</td>
+    <td text-align: right;" width="20%"><p align="right"></td>
+  </tr>
+</tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,4 @@
+// Microsoft Developer Studio generated Help ID include file.
+// Used by FCU.rc
+//
+#define HIDC_ckLeftRightOnly            0x427    // IDD_COPY_FILES
