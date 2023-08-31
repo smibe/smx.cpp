@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="CmpDirDlg.cpp" />
+    <ClCompile Include="CmpFilDlg.cpp" />
+    <ClCompile Include="ColorPg.cpp" />
+    <ClCompile Include="ComparePg.cpp" />
+    <ClCompile Include="CopyFilesDlg.cpp" />
+    <ClCompile Include="DiffDirDoc.cpp" />
+    <ClCompile Include="DiffDirView.cpp" />
+    <ClCompile Include="DiffEditCtrl.cpp" />
+    <ClCompile Include="DiffSectElt.cpp" />
+    <ClCompile Include="DisplayPg.cpp" />
+    <ClCompile Include="FCU.cpp" />
+    <ClCompile Include="FcuCmdLineInfo.cpp" />
+    <ClCompile Include="FcuOptions.cpp" />
+    <ClCompile Include="FilDiffDoc.cpp" />
+    <ClCompile Include="FilDiffFrm.cpp" />
+    <ClCompile Include="FilDiffParam.cpp" />
+    <ClCompile Include="FilDiffView.cpp" />
+    <ClCompile Include="FilDiffXmlTags.cpp" />
+    <ClCompile Include="LINE.CXX" />
+    <ClCompile Include="LIST.cxx" />
+    <ClCompile Include="MainFrm.cpp" />
+    <ClCompile Include="MDIChildWndEx.cpp" />
+    <ClCompile Include="OptionSheet.cpp" />
+    <ClCompile Include="PasswdDlg.cpp" />
+    <ClCompile Include="SaveCompDlg.cpp" />
+    <ClCompile Include="SECTION.cxx" />
+    <ClCompile Include="SelectFilesDlg.cpp" />
+    <ClCompile Include="StdAfx.cpp" />
+    <ClCompile Include="TREE.cxx" />
+    <ClCompile Include="UsageDlg.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CmpDirDlg.h" />
+    <ClInclude Include="CmpFilDlg.h" />
+    <ClInclude Include="ColorPg.h" />
+    <ClInclude Include="ComparePg.h" />
+    <ClInclude Include="CopyFilesDlg.h" />
+    <ClInclude Include="DiffDirDoc.h" />
+    <ClInclude Include="DiffDirView.h" />
+    <ClInclude Include="DiffEditCtrl.h" />
+    <ClInclude Include="DiffSectElt.h" />
+    <ClInclude Include="DisplayPg.h" />
+    <ClInclude Include="FCU.h" />
+    <ClInclude Include="FcuCmdLineInfo.h" />
+    <ClInclude Include="FCUOptions.h" />
+    <ClInclude Include="FilDiff_res.h" />
+    <ClInclude Include="FilDiffDoc.h" />
+    <ClInclude Include="FilDiffFrm.h" />
+    <ClInclude Include="FilDiffParam.h" />
+    <ClInclude Include="FilDiffview.h" />
+    <ClInclude Include="FilDiffXmlTags.h" />
+    <ClInclude Include="LINE.H" />
+    <ClInclude Include="LIST.H" />
+    <ClInclude Include="MainFrm.h" />
+    <ClInclude Include="MDIChildWndEx.h" />
+    <ClInclude Include="optionsheet.h" />
+    <ClInclude Include="PasswdDlg.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="SaveCompDlg.h" />
+    <ClInclude Include="SECTION.H" />
+    <ClInclude Include="SelectFilesDlg.h" />
+    <ClInclude Include="STATE.H" />
+    <ClInclude Include="StdAfx.h" />
+    <ClInclude Include="TREE.H" />
+    <ClInclude Include="UsageDlg.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="FCU.rc" />
+    <ResourceCompile Include="FilDiff.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Output - Find in Files 1.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resource.hm" />
+  </ItemGroup>
+</Project>
