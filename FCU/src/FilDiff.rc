@@ -1,4 +1,4 @@
-//Microsoft Developer Studio generated resource script.
+// Microsoft Visual C++ generated resource script.
 //
 #include "FilDiff_res.h"
 
@@ -16,10 +16,8 @@
 // German (Germany) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
-#ifdef _WIN32
 LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
 #pragma code_page(1252)
-#endif //_WIN32
 
 #ifdef APSTUDIO_INVOKED
 /////////////////////////////////////////////////////////////////////////////
@@ -27,18 +25,18 @@ LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
 // TEXTINCLUDE
 //
 
-1 TEXTINCLUDE DISCARDABLE 
+1 TEXTINCLUDE 
 BEGIN
     "FilDiff_res.h\0"
 END
 
-2 TEXTINCLUDE DISCARDABLE 
+2 TEXTINCLUDE 
 BEGIN
     "#include ""afxres.h""\r\n"
     "\0"
 END
 
-3 TEXTINCLUDE DISCARDABLE 
+3 TEXTINCLUDE 
 BEGIN
     "\r\n"
     "\0"
@@ -52,107 +50,8 @@ END
 // String Table
 //
 
-STRINGTABLE DISCARDABLE 
-BEGIN
-    IDS_ComposedFileWasChanged 
-                            "The composed file was modified.\nYou want to save the changes?"
-    IDS_FileReadonly        "The file is readonly!"
-    IDS_UnknownErrorWhileReadingFile "Unknown error while reading file!"
-    IDS_ErrorReadingLeftFile "Error reading left file: %1"
-    IDS_ErrorReadingRightFile "Error reading right file: %1"
-    IDS_ComparingFiles      "Comparing files, pleas wait..."
-    IDS_FileCmpBreakReceived "Break received! Abort file compare?"
-    IDS_YouWantToCreateDir  "The directory %1 does not exist. You want to create it?"
-    IDS_Diffxx              "Diff %d/%d"
-    IDS_NoFilenameSpecified "Please specify a file name!"
-    IDS_SelectDirectory     "Select directory"
-END
 
 #endif    // German (Germany) resources
-/////////////////////////////////////////////////////////////////////////////
-
-
-/////////////////////////////////////////////////////////////////////////////
-// English (U.S.) resources
-
-#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
-#ifdef _WIN32
-LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
-#pragma code_page(1252)
-#endif //_WIN32
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// Dialog
-//
-
-IDD_CMP_FIL DIALOG DISCARDABLE  0, 0, 262, 143
-STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Compare files"
-FONT 8, "MS Sans Serif"
-BEGIN
-    DEFPUSHBUTTON   "&OK",IDOK,18,122,50,14
-    PUSHBUTTON      "&Cancel",IDCANCEL,197,122,50,14
-    LTEXT           "&First File",-1,13,21,72,10
-    COMBOBOX        IDC_CB_FIL1,13,34,204,54,CBS_DROPDOWN | CBS_AUTOHSCROLL | 
-                    WS_VSCROLL | WS_TABSTOP
-    PUSHBUTTON      "...",IDC_BT_FIL1,225,34,22,12
-    LTEXT           "&Second File",-1,13,54,58,8
-    COMBOBOX        IDC_CB_FIL2,13,67,204,57,CBS_DROPDOWN | CBS_AUTOHSCROLL | 
-                    WS_VSCROLL | WS_TABSTOP
-    PUSHBUTTON      "...",IDC_BT_FIL2,225,67,22,12
-    GROUPBOX        "Select files",-1,7,7,248,86
-    CONTROL         "Ignore blanks",IDC_CK_IGN_BLANKS,"Button",
-                    BS_AUTOCHECKBOX | WS_TABSTOP,12,96,76,15
-    COMBOBOX        IDC_CB_MASK,130,16,48,30,CBS_DROPDOWN | CBS_SORT | NOT 
-                    WS_VISIBLE | WS_VSCROLL | WS_TABSTOP
-END
-
-IDD_FILDIFFVIEW DIALOG DISCARDABLE  0, 0, 210, 162
-STYLE WS_CHILD | WS_CLIPCHILDREN
-FONT 8, "MS Sans Serif"
-BEGIN
-    EDITTEXT        IDC_ED_FMERGE,18,96,165,49,ES_MULTILINE | ES_AUTOVSCROLL | 
-                    ES_AUTOHSCROLL | ES_WANTRETURN
-    EDITTEXT        IDC_ED_FLEFT,17,13,67,76,ES_MULTILINE | ES_AUTOVSCROLL | 
-                    ES_AUTOHSCROLL | ES_WANTRETURN
-    EDITTEXT        IDC_ED_FRIGHT,90,15,89,75,ES_MULTILINE | ES_AUTOVSCROLL | 
-                    ES_AUTOHSCROLL | ES_WANTRETURN
-    LTEXT           "Left file",IDC_stLeftFile,17,3,67,10,SS_SUNKEN
-    LTEXT           "Right file",IDC_stRightFile,91,4,87,10,SS_SUNKEN
-END
-
-IDD_SAVE_COMP DIALOG DISCARDABLE  0, 0, 228, 173
-STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Save composed file"
-FONT 8, "MS Sans Serif"
-BEGIN
-    DEFPUSHBUTTON   "OK",IDOK,7,152,50,14
-    PUSHBUTTON      "Cancel",IDCANCEL,171,152,50,14
-    GROUPBOX        "Select",IDC_STATIC,7,7,214,50
-    CONTROL         "overwrite &right file",IDC_R_RIGHT,"Button",
-                    BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,10,17,81,10
-    CONTROL         "overwrite &left file",IDC_R_LEFT,"Button",
-                    BS_AUTORADIOBUTTON,10,29,81,10
-    CONTROL         "in selected &directory",IDC_R_MERGE,"Button",
-                    BS_AUTORADIOBUTTON,10,41,81,10
-    CONTROL         "&save as...",IDC_R_SAVE_AS,"Button",BS_AUTORADIOBUTTON,
-                    124,19,80,10
-    PUSHBUTTON      "Save &As ...",IDC_B_SAVE_AS,124,37,75,14,WS_GROUP | NOT 
-                    WS_TABSTOP
-    GROUPBOX        "Directory se&ttings",IDC_GR_DIR,7,60,214,48
-    COMBOBOX        IDC_CB_DIR,10,73,183,42,CBS_DROPDOWN | WS_VSCROLL | 
-                    WS_TABSTOP
-    PUSHBUTTON      "...",IDC_B_SEL,198,73,16,12
-    CONTROL         "including relative s&ubdirectories",IDC_CK_SUBDIR,
-                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,90,149,12
-    LTEXT           "Press OK to save the composed file:",IDC_STATIC,7,116,
-                    164,8
-    EDITTEXT        IDC_ED_COMPFILENAME,7,128,214,12,ES_AUTOHSCROLL | 
-                    ES_READONLY
-END
-
-#endif    // English (U.S.) resources
 /////////////////////////////////////////////////////////////////////////////
 
 

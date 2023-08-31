@@ -47,7 +47,7 @@
 #include "FilDiffParam.h"
 #include "DisplayPg.h"
 #include "AccelMapDlg.h"
-#include "UserToolsDlg.h"
+#include "SmxUserToolsDlg.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -243,14 +243,14 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 
   UpdateToolMenu();
 
-  GetUserToolMgr().SetCallbackFct(this, (EXPAND_VAR_FKT) ExpandVar, (CAN_EXPAND_VAR_FKT) CanExpandVar);
+  GetUserToolMgr().SetCallbackFct(this, (EXPAND_VAR_FKT)&CMainFrame::ExpandVar, (CAN_EXPAND_VAR_FKT)&CMainFrame::CanExpandVar);
 
 	//Initialize the drag and drop
   m_pFileDropTarget = new CFileDropTarget();
-  m_pFileDropTarget->m_pDragEnter = (DragEnterFP) DragEnter;
-  m_pFileDropTarget->m_pDragLeave = (DragLeaveFP) DragLeave;
-  m_pFileDropTarget->m_pDragOver  = (DragOverFP)  DragOver;
-  m_pFileDropTarget->m_pDrop      = (DropFP)      Drop;
+  m_pFileDropTarget->m_pDragEnter = (DragEnterFP) &CMainFrame::DragEnter;
+  m_pFileDropTarget->m_pDragLeave = (DragLeaveFP) &CMainFrame::DragLeave;
+  m_pFileDropTarget->m_pDragOver  = (DragOverFP)  &CMainFrame::DragOver;
+  m_pFileDropTarget->m_pDrop      = (DropFP)      &CMainFrame::Drop;
   m_pFileDropTarget->m_pObject    = this;
   m_pFileDropTarget->Register(this);
 
@@ -351,7 +351,7 @@ void CMainFrame::OnViewOptions()
   CSMXSheet dlg;
   GetOptions().ResetChanges();
   dlg.SetTreeDescription(TreeDescription);
-  dlg.SetCreateFunction(this, (SMXPropertyPageFkt) CreatePropertyPage);
+  dlg.SetCreateFunction(this, (SMXPropertyPageFkt) &CMainFrame::CreatePropertyPage);
   dlg.SetSheetSize(194, 155, true);
   dlg.m_nDlgID = m_nShownOptionDlgID;
 
@@ -443,7 +443,7 @@ void CMainFrame::OnCustomizeToolBar()
 
 void CMainFrame::OnCustomizeUserTools()
 {
-  CUserToolsDlg dlg;
+  CSmxUserToolsDlg dlg;
   dlg.SetUserToolMgr(&GetUserToolMgr());
   dlg.DoModal();
   
@@ -612,7 +612,7 @@ void CMainFrame::GetMessageString(UINT nID, CString& rMessage) const
 {
   if (nID >= ID_USER_TOOLS_FIRST && nID <= ID_USER_TOOLS_LAST)
   {
-    CUserTool *pUserTool = GetUserToolMgr().GetUserTool(nID);
+    CSmxUserTool *pUserTool = GetUserToolMgr().GetUserTool(nID);
 
     if (pUserTool && !pUserTool->m_strDescription.IsEmpty())
     {
@@ -674,7 +674,7 @@ void CMainFrame::OnSmxOptions()
 {
   CSMXSheet dlg;
   dlg.SetTreeDescription(TreeDescription);
-  dlg.SetCreateFunction(this, (SMXPropertyPageFkt) CreatePropertyPage);
+  dlg.SetCreateFunction(this, (SMXPropertyPageFkt) &CMainFrame::CreatePropertyPage);
   dlg.DoModal();
 }
 

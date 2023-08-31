@@ -880,7 +880,7 @@ void
 section_takesection(LIST compo, SECTION left, SECTION right, int state)
 {
         SECTION newsec;
-        SECTION sec;
+        SECTION sec{};
 
         /* select which section is being output, and change the state
          * to indicate it has been output

@@ -22,7 +22,7 @@
     <ClCompile Include="LINE.CXX" />
     <ClCompile Include="LIST.cxx" />
     <ClCompile Include="MainFrm.cpp" />
-    <ClCompile Include="MDIChildWndEx.cpp" />
+    <ClCompile Include="FchMDIChildWndEx.cpp" />
     <ClCompile Include="OptionSheet.cpp" />
     <ClCompile Include="PasswdDlg.cpp" />
     <ClCompile Include="SaveCompDlg.cpp" />
@@ -55,7 +55,7 @@
     <ClInclude Include="LINE.H" />
     <ClInclude Include="LIST.H" />
     <ClInclude Include="MainFrm.h" />
-    <ClInclude Include="MDIChildWndEx.h" />
+    <ClInclude Include="FcuMDIChildWndEx.h" />
     <ClInclude Include="optionsheet.h" />
     <ClInclude Include="PasswdDlg.h" />
     <ClInclude Include="resource.h" />
@@ -76,5 +76,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="resource.hm" />
+    <None Include="res\vsize.cur" />
+    <None Include="res\hsize.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\question.bmp" />
+    <Image Include="res\bitmap1.bmp" />
+    <Image Include="res\diff_dir.bmp" />
+    <Image Include="res\diff_fil.bmp" />
+    <Image Include="res\mainfram.bmp" />
+    <Image Include="res\idr_main.ico" />
+    <Image Include="res\diff_dir.ico" />
+    <Image Include="res\Diff_Fil.ico" />
   </ItemGroup>
 </Project>

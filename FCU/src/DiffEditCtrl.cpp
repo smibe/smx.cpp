@@ -243,7 +243,7 @@ void CDiffEditCtrl::OnUpdatePopup(CMenu *pMenu)
 
 void CDiffEditCtrl::OnContextMenu(CWnd* pWnd, CPoint point)
 {
-	PopupMenu(IDR_DIFFEDIT_POPUP,TRUE).TrackMenu(this,point, (UpdateMenuFkt) OnUpdatePopup);
+	PopupMenu(IDR_DIFFEDIT_POPUP,TRUE).TrackMenu(this,point, (UpdateMenuFkt)&CDiffEditCtrl::OnUpdatePopup);
 }
 
 void CDiffEditCtrl::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags) 

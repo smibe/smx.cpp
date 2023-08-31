@@ -32,19 +32,19 @@ static char THIS_FILE[]=__FILE__;
 #endif
 
 BYTE CUserToolMgr::m_nVersion = 1;
-BYTE CUserTool::m_nVersion = 2;
+BYTE CSmxUserTool::m_nVersion = 2;
 
 LPCTSTR szIniFileFormat  = _T("FcuUsr.utl");
 LPCTSTR szIniFileFormat1 = _T("FcuUsr%d.utl");
 
 bool IsInternalCommand(CString& strCmd);
 
-CUserTool::CUserTool()
+CSmxUserTool::CSmxUserTool()
 {
   m_dwFlags        = 0;
 }
 
-CUserTool::CUserTool(LPCTSTR pszCommand, LPCTSTR pszParameter, LPCTSTR pszStartDir, LPCTSTR pszMenuString, LPCTSTR pszDescription)
+CSmxUserTool::CSmxUserTool(LPCTSTR pszCommand, LPCTSTR pszParameter, LPCTSTR pszStartDir, LPCTSTR pszMenuString, LPCTSTR pszDescription)
 {
   m_strCommand     = pszCommand;
   m_strStartDir    = pszStartDir;
@@ -54,11 +54,11 @@ CUserTool::CUserTool(LPCTSTR pszCommand, LPCTSTR pszParameter, LPCTSTR pszStartD
   m_dwFlags        = 0;
 }
 
-CUserTool::~CUserTool()
+CSmxUserTool::~CSmxUserTool()
 {
 }
 
-bool CUserTool::Load(CArchive& ar)
+bool CSmxUserTool::Load(CArchive& ar)
 {
   BYTE nVersion = 0;
   ar >>  nVersion;
@@ -79,7 +79,7 @@ bool CUserTool::Load(CArchive& ar)
   return true;
 }
 
-bool CUserTool::Store(CArchive& ar)
+bool CSmxUserTool::Store(CArchive& ar)
 {
   ar <<  m_nVersion;
   ar <<  m_strCommand;
@@ -114,7 +114,7 @@ CUserToolMgr::~CUserToolMgr()
 UINT CUserToolMgr::AddUserTool(LPCTSTR pszCommand, LPCTSTR pszParameter, LPCTSTR pszStartDir, LPCTSTR pszMenuString, LPCTSTR pszDescription)
 {
   UINT nNextTool = m_UserTools.GetUpperBound() + 1;
-  CUserTool *pUserTool = new CUserTool(pszCommand, pszParameter, pszStartDir, pszMenuString, pszDescription);
+  CSmxUserTool *pUserTool = new CSmxUserTool(pszCommand, pszParameter, pszStartDir, pszMenuString, pszDescription);
   m_UserTools.Add(pUserTool);
 
   return m_nFirstCmdID;
@@ -220,10 +220,10 @@ bool CUserToolMgr::Load(CArchive& ar)
   int nNofValues = 0;
   ar >> nNofValues;
   m_UserTools.SetSize(nNofValues);
-  CUserTool *pUserTool;
+  CSmxUserTool *pUserTool;
   for (int i = 0; i < nNofValues; i++)
   {
-     pUserTool = new CUserTool;
+     pUserTool = new CSmxUserTool;
      pUserTool->Load(ar);
      m_UserTools.SetAt(i, pUserTool);
   }
@@ -237,7 +237,7 @@ bool CUserToolMgr::Store(CArchive& ar)
   int nNofValues = m_UserTools.GetUpperBound() + 1;
   ar << nNofValues;
 
-  CUserTool *pUserTool;
+  CSmxUserTool *pUserTool;
   for (int i = 0; i < nNofValues; i++)
   {
     pUserTool =  m_UserTools[i];
@@ -354,7 +354,7 @@ bool CUserToolMgr::Execute(UINT nCmdID)
 {
   if (nCmdID >= m_nFirstCmdID && nCmdID <= m_nFirstCmdID + m_UserTools.GetUpperBound())
   {
-    CUserTool *pUserTool = m_UserTools[nCmdID - m_nFirstCmdID]; 
+    CSmxUserTool *pUserTool = m_UserTools[nCmdID - m_nFirstCmdID]; 
     CString strStartDir = pUserTool->m_strStartDir;
     CString strParameter = pUserTool->m_strParameter;
     CString strParam;
@@ -552,7 +552,7 @@ bool CUserToolMgr::CanExecute(UINT nCmdID)
 {
   if (nCmdID >= m_nFirstCmdID && nCmdID <= m_nFirstCmdID + m_UserTools.GetUpperBound())
   {
-    CUserTool *pUserTool = m_UserTools[nCmdID - m_nFirstCmdID]; 
+    CSmxUserTool *pUserTool = m_UserTools[nCmdID - m_nFirstCmdID]; 
     CString strStartDir = pUserTool->m_strStartDir;
     CString strParameter = pUserTool->m_strParameter;
     return   CanEval(strStartDir) && CanEval(strParameter);
@@ -816,7 +816,7 @@ void CUserToolMgr::GetUserToolsPath(CString& strFileName)
 }
 
 
-CUserTool *CUserToolMgr::GetUserTool(UINT nCmdID)
+CSmxUserTool *CUserToolMgr::GetUserTool(UINT nCmdID)
 {
   if (nCmdID - m_nFirstCmdID >= 0 && nCmdID <= m_UserTools.GetUpperBound() - m_nFirstCmdID)
     return m_UserTools[nCmdID - m_nFirstCmdID];

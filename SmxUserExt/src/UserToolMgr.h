@@ -34,12 +34,12 @@ class CAcceleratorManager;
 #define UT_BATCHNOEXECUTE   0x0002
 #define UT_MULTIPLEEXE      0x0004 
 
-class CUserTool
+class CSmxUserTool
 {
 public:
-  CUserTool();
-  CUserTool(LPCTSTR pszCommand, LPCTSTR pszParameter, LPCTSTR pszStartDir, LPCTSTR pszMenuString, LPCTSTR pszDescription);
-  ~CUserTool();
+  CSmxUserTool();
+  CSmxUserTool(LPCTSTR pszCommand, LPCTSTR pszParameter, LPCTSTR pszStartDir, LPCTSTR pszMenuString, LPCTSTR pszDescription);
+  ~CSmxUserTool();
 
   bool Store(CArchive& ar);
   bool Load(CArchive& ar);
@@ -89,10 +89,10 @@ public:
 
   void GetUserToolsPath(CString& strFileName);
 
-  CUserTool *GetUserTool(UINT nCmdID);
+  CSmxUserTool *GetUserTool(UINT nCmdID);
 
 public:
-  CArray<CUserTool *, CUserTool *> m_UserTools;
+  CArray<CSmxUserTool *, CSmxUserTool *> m_UserTools;
 
 protected:
   UINT                m_nFirstCmdID;

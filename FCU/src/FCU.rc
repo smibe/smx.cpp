@@ -1,4 +1,4 @@
-//Microsoft Developer Studio generated resource script.
+// Microsoft Visual C++ generated resource script.
 //
 #include "resource.h"
 
@@ -21,10 +21,8 @@
 // German (Germany) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DEU)
-#ifdef _WIN32
 LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
 #pragma code_page(1252)
-#endif //_WIN32
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -32,44 +30,35 @@ LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
 //
 
 IDD_UNINSTALL DIALOGEX 0, 0, 186, 135
-STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Uninstall"
 FONT 8, "MS Sans Serif", 0, 0, 0x1
 BEGIN
     DEFPUSHBUTTON   "Yes",IDYES,7,114,50,14
     PUSHBUTTON      "No",IDNO,129,114,50,14
-    LTEXT           "Running FCU with the uninstall option will only remove the registry entries created by FCU!!",
-                    IDC_STATIC,7,7,170,23
-    LTEXT           "To uninstall FCU completely you have to remove all installed files and created shortcuts manually.",
-                    IDC_STATIC,7,33,172,20
-    LTEXT           "Following files are shipped with FCU:",IDC_STATIC,7,57,
-                    172,9
+    LTEXT           "Running FCU with the uninstall option will only remove the registry entries created by FCU!!",IDC_STATIC,7,7,170,23
+    LTEXT           "To uninstall FCU completely you have to remove all installed files and created shortcuts manually.",IDC_STATIC,7,33,172,20
+    LTEXT           "Following files are shipped with FCU:",IDC_STATIC,7,57,172,9
     LTEXT           "- Executables: \tFCU.exe",IDC_STATIC,31,68,96,9
-    LTEXT           "- Help files: \tFCU.cnt, FCU.hlp",IDC_STATIC,31,76,113,
-                    9
-    LTEXT           "Are you sure you want to continue?",IDC_STATIC,36,93,
-                    121,11
-    CONTROL         152,IDC_STATIC,"Static",SS_BITMAP | SS_CENTERIMAGE,7,90,
-                    25,20,WS_EX_TRANSPARENT
+    LTEXT           "- Help files: \tFCU.cnt, FCU.hlp",IDC_STATIC,31,76,113,9
+    LTEXT           "Are you sure you want to continue?",IDC_STATIC,36,93,121,11
+    CONTROL         IDB_Question,IDC_STATIC,"Static",SS_BITMAP | SS_CENTERIMAGE,7,90,25,20,WS_EX_TRANSPARENT
 END
 
-IDD_USAGE DIALOG DISCARDABLE  0, 0, 363, 237
-STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+IDD_USAGE DIALOG 0, 0, 363, 237
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Usage"
 FONT 8, "MS Sans Serif"
 BEGIN
-    CONTROL         152,IDB_Question,"Static",SS_BITMAP,7,7,27,23
-    LTEXT           "Sorry, could not parse the command line parameters!!",
-                    IDC_stError,39,12,168,8
+    CONTROL         IDB_Question,IDB_Question,"Static",SS_BITMAP,7,7,27,23
+    LTEXT           "Sorry, could not parse the command line parameters!!",IDC_stError,39,12,168,8
     DEFPUSHBUTTON   "OK",IDOK,306,7,50,14
     PUSHBUTTON      "Help",ID_HELP,306,22,50,14
-    CONTROL         "",IDC_reUsage,"RICHEDIT",ES_MULTILINE | ES_AUTOVSCROLL | 
-                    ES_AUTOHSCROLL | ES_READONLY | WS_BORDER | WS_VSCROLL | 
-                    WS_TABSTOP,7,41,349,189
+    CONTROL         "",IDC_reUsage,"RICHEDIT",TCS_HOTTRACK | TCS_VERTICAL | TCS_RAGGEDRIGHT | TCS_MULTISELECT | WS_BORDER | WS_VSCROLL | WS_TABSTOP,7,41,349,189
 END
 
 IDD_COPY_FILES DIALOGEX 0, 0, 290, 274
-STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Copy Files"
 FONT 8, "MS Sans Serif", 0, 0, 0x1
 BEGIN
@@ -78,78 +67,53 @@ BEGIN
     GROUPBOX        "From",IDC_STATIC,7,7,151,53
     GROUPBOX        "To",IDC_STATIC,7,64,151,82
     GROUPBOX        "Files",IDC_STATIC,166,42,117,73
-    CONTROL         "Left directory",IDC_rdFromLeftDir,"Button",
-                    BS_AUTORADIOBUTTON,13,16,89,10
-    CONTROL         "Right directory",IDC_rdFromRightDir,"Button",
-                    BS_AUTORADIOBUTTON,13,28,89,10
-    LTEXT           "Static",IDC_stFromDir,13,44,140,11,SS_CENTERIMAGE | 
-                    SS_SUNKEN
-    CONTROL         "Left directory",IDC_rdToLeftDir,"Button",
-                    BS_AUTORADIOBUTTON,13,73,89,10
-    CONTROL         "Right directory",IDC_rdToRightDir,"Button",
-                    BS_AUTORADIOBUTTON,13,84,89,10
-    CONTROL         "Selected directory",IDC_rdToSelectedDir,"Button",
-                    BS_AUTORADIOBUTTON,13,96,89,10
-    LTEXT           "Static",IDC_stToDir,13,128,137,11,SS_CENTERIMAGE | 
-                    SS_SUNKEN
+    CONTROL         "Left directory",IDC_rdFromLeftDir,"Button",BS_AUTORADIOBUTTON,13,16,89,10
+    CONTROL         "Right directory",IDC_rdFromRightDir,"Button",BS_AUTORADIOBUTTON,13,28,89,10
+    LTEXT           "Static",IDC_stFromDir,13,44,140,11,SS_CENTERIMAGE | SS_SUNKEN
+    CONTROL         "Left directory",IDC_rdToLeftDir,"Button",BS_AUTORADIOBUTTON,13,73,89,10
+    CONTROL         "Right directory",IDC_rdToRightDir,"Button",BS_AUTORADIOBUTTON,13,84,89,10
+    CONTROL         "Selected directory",IDC_rdToSelectedDir,"Button",BS_AUTORADIOBUTTON,13,96,89,10
+    LTEXT           "Static",IDC_stToDir,13,128,137,11,SS_CENTERIMAGE | SS_SUNKEN
     PUSHBUTTON      "...",IDC_btToSelectedDir,134,110,15,14
-    CONTROL         "Left only",IDC_ckLeftRightOnly,"Button",BS_AUTOCHECKBOX | 
-                    WS_TABSTOP,172,54,91,10,0,HIDC_ckLeftRightOnly
-    CONTROL         "Identical Left",IDC_ckIndentical,"Button",
-                    BS_AUTOCHECKBOX | WS_TABSTOP,172,66,91,10
-    CONTROL         "Older",IDC_cbOlder,"Button",BS_AUTOCHECKBOX | 
-                    WS_TABSTOP,172,78,91,10
-    CONTROL         "Preserve subdirectories",IDC_ckPreserveSubdir,"Button",
-                    BS_AUTOCHECKBOX | WS_TABSTOP,172,120,93,10
-    CONTROL         "Newer",IDC_ckNewer,"Button",BS_AUTOCHECKBOX | 
-                    WS_TABSTOP,172,90,91,10
-    COMBOBOX        IDC_cbToSelectedDir,13,110,116,51,CBS_DROPDOWN | 
-                    WS_VSCROLL | WS_TABSTOP
-    CONTROL         "Marked Files",IDC_ckMarkedFiles,"Button",
-                    BS_AUTOCHECKBOX | WS_TABSTOP,172,102,91,10
+    CONTROL         "Left only",IDC_ckLeftRightOnly,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,172,54,91,10,0,HIDC_ckLeftRightOnly
+    CONTROL         "Identical Left",IDC_ckIndentical,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,172,66,91,10
+    CONTROL         "Older",IDC_cbOlder,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,172,78,91,10
+    CONTROL         "Preserve subdirectories",IDC_ckPreserveSubdir,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,172,120,93,10
+    CONTROL         "Newer",IDC_ckNewer,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,172,90,91,10
+    COMBOBOX        IDC_cbToSelectedDir,13,110,116,51,CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "Marked Files",IDC_ckMarkedFiles,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,172,102,91,10
     PUSHBUTTON      "Show file list    >>",IDC_btnShowFileList,172,132,71,14
-    CONTROL         "List1",IDC_lstFiles,"SysListView32",LVS_REPORT | 
-                    LVS_SINGLESEL | LVS_OWNERDRAWFIXED | WS_BORDER | 
-                    WS_TABSTOP,7,153,276,115
+    CONTROL         "List1",IDC_lstFiles,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_OWNERDRAWFIXED | WS_BORDER | WS_TABSTOP,7,153,276,115
 END
 
-IDD_SELECT_FILES DIALOG DISCARDABLE  0, 0, 209, 114
-STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+IDD_SELECT_FILES DIALOG 0, 0, 209, 114
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Select Files"
 FONT 8, "MS Sans Serif"
 BEGIN
     DEFPUSHBUTTON   "OK",IDOK,152,7,50,14
     PUSHBUTTON      "Cancel",IDCANCEL,152,24,50,14
-    CONTROL         "Left only",IDC_ckLeftOnly,"Button",BS_AUTOCHECKBOX | 
-                    WS_TABSTOP,9,12,43,10
-    CONTROL         "Right only",IDC_ckRightOnly,"Button",BS_AUTOCHECKBOX | 
-                    WS_TABSTOP,9,24,47,10
-    CONTROL         "Identical",IDC_ckIdentical,"Button",BS_AUTOCHECKBOX | 
-                    WS_TABSTOP,9,36,43,10
-    CONTROL         "Different",IDC_ckDifferent,"Button",BS_AUTOCHECKBOX | 
-                    WS_TABSTOP,9,48,43,10
+    CONTROL         "Left only",IDC_ckLeftOnly,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,9,12,43,10
+    CONTROL         "Right only",IDC_ckRightOnly,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,9,24,47,10
+    CONTROL         "Identical",IDC_ckIdentical,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,9,36,43,10
+    CONTROL         "Different",IDC_ckDifferent,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,9,48,43,10
     CONTROL         "The following files (wildcards allowed)",IDC_ckFiles,
                     "Button",BS_AUTOCHECKBOX | WS_TABSTOP,9,60,132,10
-    COMBOBOX        IDC_cbFileMask,9,74,129,30,CBS_DROPDOWN | CBS_SORT | 
-                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_cbFileMask,9,74,129,30,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
     GROUPBOX        "Files",IDC_STATIC,5,3,137,89
-    CONTROL         "Unselect previously selected files",IDC_CHECK1,"Button",
-                    BS_AUTOCHECKBOX | WS_TABSTOP,9,96,120,10
+    CONTROL         "Unselect previously selected files",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,9,96,120,10
 END
 
-IDD_PASSWD DIALOG DISCARDABLE  0, 0, 178, 127
-STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+IDD_PASSWD DIALOG 0, 0, 178, 127
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "FCU"
 FONT 8, "MS Sans Serif"
 BEGIN
     ICON            IDR_MAINFRAME,IDC_STATIC,7,7,20,20
     LTEXT           "Thanks for choosing FCU!",IDC_stThanks,36,13,106,8
-    CONTROL         "&http://fcu.smibe.com",IDC_btnWWW,"Button",BS_OWNERDRAW | 
-                    WS_TABSTOP,92,40,75,9
-    LTEXT           "To use FCU you need an evaluation or registration ",
-                    IDC_stLine1,7,32,164,8
-    LTEXT           "Please enter your registration key:",IDC_stPasswd,36,62,
-                    107,8
+    CONTROL         "&http://fcu.smibe.com",IDC_btnWWW,"Button",BS_OWNERDRAW | WS_TABSTOP,92,40,75,9
+    LTEXT           "To use FCU you need an evaluation or registration ",IDC_stLine1,7,32,164,8
+    LTEXT           "Please enter your registration key:",IDC_stPasswd,36,62,107,8
     EDITTEXT        IDC_ebUserName,47,72,121,12,ES_AUTOHSCROLL
     RTEXT           "Key:",IDC_stKey,7,87,36,8
     EDITTEXT        IDC_ebKey,47,86,121,12,ES_AUTOHSCROLL
@@ -167,7 +131,7 @@ END
 //
 
 #ifdef APSTUDIO_INVOKED
-GUIDELINES DESIGNINFO DISCARDABLE 
+GUIDELINES DESIGNINFO
 BEGIN
     IDD_UNINSTALL, DIALOG
     BEGIN
@@ -217,15 +181,17 @@ END
 // Bitmap
 //
 
-IDB_Question            BITMAP  DISCARDABLE     "res\\question.bmp"
-IDB_INS_MASK            BITMAP  DISCARDABLE     "res\\bitmap1.bmp"
+IDB_Question            BITMAP                  "res\\question.bmp"
+
+IDB_INS_MASK            BITMAP                  "res\\bitmap1.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
 // Accelerator
 //
 
-IDR_DIFF_EDIT ACCELERATORS DISCARDABLE 
+IDR_DIFF_EDIT ACCELERATORS
 BEGIN
     VK_BACK,        ID_EDIT_BACKSPACE,      VIRTKEY, NOINVERT
     VK_BACK,        ID_EDIT_BACKSPACE,      VIRTKEY, SHIFT, NOINVERT
@@ -234,19 +200,16 @@ BEGIN
     VK_END,         ID_EDIT_END,            VIRTKEY, NOINVERT
     VK_END,         ID_EDIT_BOTTOMFILE,     VIRTKEY, CONTROL, NOINVERT
     VK_END,         ID_EDIT_SELECT_END,     VIRTKEY, SHIFT, NOINVERT
-    VK_END,         ID_EDIT_SELECT_BOTTOMFILE, VIRTKEY, SHIFT, CONTROL, 
-                                                    NOINVERT
+    VK_END,         ID_EDIT_SELECT_BOTTOMFILE, VIRTKEY, SHIFT, CONTROL, NOINVERT
     VK_HOME,        ID_EDIT_HOME,           VIRTKEY, NOINVERT
     VK_HOME,        ID_EDIT_TOPFILE,        VIRTKEY, CONTROL, NOINVERT
     VK_HOME,        ID_EDIT_SELECT_HOME,    VIRTKEY, SHIFT, NOINVERT
-    VK_HOME,        ID_EDIT_SELECT_TOPFILE, VIRTKEY, SHIFT, CONTROL, 
-                                                    NOINVERT
+    VK_HOME,        ID_EDIT_SELECT_TOPFILE, VIRTKEY, SHIFT, CONTROL, NOINVERT
     VK_INSERT,      ID_INDICATOR_OVR,       VIRTKEY, NOINVERT
     VK_LEFT,        ID_EDIT_LEFT,           VIRTKEY, NOINVERT
     VK_LEFT,        ID_EDIT_WORDLEFT,       VIRTKEY, CONTROL, NOINVERT
     VK_LEFT,        ID_EDIT_SELECT_LEFT,    VIRTKEY, SHIFT, NOINVERT
-    VK_LEFT,        ID_EDIT_SELECT_WORDLEFT, VIRTKEY, SHIFT, CONTROL, 
-                                                    NOINVERT
+    VK_LEFT,        ID_EDIT_SELECT_WORDLEFT, VIRTKEY, SHIFT, CONTROL, NOINVERT
     VK_NEXT,        ID_EDIT_PGDN,           VIRTKEY, NOINVERT
     VK_NEXT,        ID_EDIT_SELECT_PGDN,    VIRTKEY, SHIFT, NOINVERT
     VK_PRIOR,       ID_EDIT_PGUP,           VIRTKEY, NOINVERT
@@ -254,15 +217,14 @@ BEGIN
     VK_RIGHT,       ID_EDIT_RIGHT,          VIRTKEY, NOINVERT
     VK_RIGHT,       ID_EDIT_WORDRIGHT,      VIRTKEY, CONTROL, NOINVERT
     VK_RIGHT,       ID_EDIT_SELECT_RIGHT,   VIRTKEY, SHIFT, NOINVERT
-    VK_RIGHT,       ID_EDIT_SELECT_WORDRIGHT, VIRTKEY, SHIFT, CONTROL, 
-                                                    NOINVERT
+    VK_RIGHT,       ID_EDIT_SELECT_WORDRIGHT, VIRTKEY, SHIFT, CONTROL, NOINVERT
     VK_TAB,         ID_EDIT_TAB,            VIRTKEY, NOINVERT
     VK_TAB,         ID_EDIT_BACKTAB,        VIRTKEY, SHIFT, NOINVERT
     VK_UP,          ID_EDIT_UP,             VIRTKEY, NOINVERT
     VK_UP,          ID_EDIT_SELECT_UP,      VIRTKEY, SHIFT, NOINVERT
 END
 
-IDR_ACCELERATOR1 ACCELERATORS DISCARDABLE 
+IDR_ACCELERATOR1 ACCELERATORS
 BEGIN
     VK_F2,          ID_EDIT_COMMENT,        VIRTKEY, NOINVERT
     VK_INSERT,      ID_EDIT_COMMENT,        VIRTKEY, NOINVERT
@@ -273,154 +235,120 @@ END
 
 
 /////////////////////////////////////////////////////////////////////////////
-// English (U.S.) resources
+// English (United States) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
-#ifdef _WIN32
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 #pragma code_page(1252)
-#endif //_WIN32
 
 /////////////////////////////////////////////////////////////////////////////
 //
 // Dialog
 //
 
-IDR_DIFF_DIR DIALOG DISCARDABLE  0, 0, 186, 130
-STYLE WS_CHILD
+IDR_DIFF_DIR DIALOG 0, 0, 186, 130
+STYLE DS_SETFONT | WS_CHILD
 FONT 8, "MS Sans Serif"
 BEGIN
-    CONTROL         "Generic1",IDC_DIFF_LIST,"SysListView32",LVS_REPORT | 
-                    LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_OWNERDRAWFIXED | 
-                    WS_BORDER | WS_TABSTOP,7,7,172,116
+    CONTROL         "Generic1",IDC_DIFF_LIST,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_OWNERDRAWFIXED | WS_BORDER | WS_TABSTOP,7,7,172,116
 END
 
-IDD_CMP_DIR DIALOG DISCARDABLE  0, 0, 294, 162
-STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+IDD_CMP_DIR DIALOG 0, 0, 294, 162
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Compare directories"
 FONT 8, "MS Sans Serif"
 BEGIN
     DEFPUSHBUTTON   "&OK",IDOK,237,19,50,14
     PUSHBUTTON      "&Cancel",IDCANCEL,237,47,50,14
     LTEXT           "&First Directory",IDC_STATIC,13,21,72,10
-    COMBOBOX        IDC_CB_DIR1,13,34,183,54,CBS_DROPDOWN | CBS_AUTOHSCROLL | 
-                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_CB_DIR1,13,34,183,54,CBS_DROPDOWN | CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
     PUSHBUTTON      "...",IDC_BT_DIR1,202,34,22,12
     LTEXT           "&Second Directory",IDC_STATIC,13,54,58,8
-    COMBOBOX        IDC_CB_DIR2,13,67,183,57,CBS_DROPDOWN | CBS_AUTOHSCROLL | 
-                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_CB_DIR2,13,67,183,57,CBS_DROPDOWN | CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
     PUSHBUTTON      "...",IDC_BT_DIR2,202,67,22,12
-    CONTROL         "Include &subdirectories",IDC_CK_SUBDIR1,"Button",
-                    BS_AUTOCHECKBOX | WS_TABSTOP,13,88,92,15
+    CONTROL         "Include &subdirectories",IDC_CK_SUBDIR1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,88,92,15
     LTEXT           "File &Mask:",IDC_STATIC,7,118,47,10
-    COMBOBOX        IDC_CB_FILE_MASK,56,117,147,44,CBS_DROPDOWN | 
-                    CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
-    CONTROL         "Ignore blanks",IDC_CK_IGN_BLANKS1,"Button",
-                    BS_AUTOCHECKBOX | WS_TABSTOP,218,116,67,15
+    COMBOBOX        IDC_CB_FILE_MASK,56,117,147,44,CBS_DROPDOWN | CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "Ignore blanks",IDC_CK_IGN_BLANKS1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,218,116,67,15
     LTEXT           "E&xclude Mask:",IDC_STATIC,7,137,47,10
-    COMBOBOX        IDC_CB_EXCLUDE_MASK,56,136,147,55,CBS_DROPDOWN | 
-                    CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_CB_EXCLUDE_MASK,56,136,147,55,CBS_DROPDOWN | CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
     GROUPBOX        "Select directories",IDC_STATIC,7,7,224,100
 END
 
 IDD_FILCMP_OPTIONS DIALOGEX 0, 0, 194, 153
-STYLE DS_MODALFRAME | WS_CHILD
+STYLE DS_SETFONT | DS_MODALFRAME | WS_CHILD
 FONT 8, "MS Sans Serif", 0, 0, 0x1
 BEGIN
-    CONTROL         "&left file",IDC_CB_LEFT_WND,"Button",BS_AUTOCHECKBOX | 
-                    WS_TABSTOP,17,14,36,10
-    CONTROL         "&right file",IDC_RIGHT_WND,"Button",BS_AUTOCHECKBOX | 
-                    WS_TABSTOP,70,14,40,10
-    CONTROL         "&composed file",IDC_CB_COMPOSED_WND,"Button",
-                    BS_AUTOCHECKBOX | WS_TABSTOP,127,14,59,10
-    GROUPBOX        "Show windows for",IDC_STATIC,7,4,180,24,0,
-                    WS_EX_TRANSPARENT
-    GROUPBOX        "Moving to the next/previous difference",IDC_STATIC,7,30,
-                    180,34,0,WS_EX_TRANSPARENT
-    CONTROL         "Allow wrapping",IDC_rdWrap,"Button",BS_AUTORADIOBUTTON | 
-                    WS_GROUP,17,40,63,10
+    CONTROL         "&left file",IDC_CB_LEFT_WND,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,17,14,36,10
+    CONTROL         "&right file",IDC_RIGHT_WND,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,70,14,40,10
+    CONTROL         "&composed file",IDC_CB_COMPOSED_WND,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,127,14,59,10
+    GROUPBOX        "Show windows for",IDC_STATIC,7,4,180,24,0,WS_EX_TRANSPARENT
+    GROUPBOX        "Moving to the next/previous difference",IDC_STATIC,7,30,180,34,0,WS_EX_TRANSPARENT
+    CONTROL         "Allow wrapping",IDC_rdWrap,"Button",BS_AUTORADIOBUTTON | WS_GROUP,17,40,63,10
     CONTROL         "Show message box when passing end of file",IDC_rdMsgBox,
                     "Button",BS_AUTORADIOBUTTON,17,50,155,10
-    GROUPBOX        "Composed file",IDC_STATIC,7,66,180,60,0,
-                    WS_EX_TRANSPARENT
-    CONTROL         "Insert identical sections from the left file",
-                    IDC_rdInsLeftIdentSect,"Button",BS_AUTORADIOBUTTON | 
-                    WS_GROUP,17,76,139,10
-    CONTROL         "Insert identical sections from the right file",
-                    IDC_rdInsRightIdentSect,"Button",BS_AUTORADIOBUTTON,17,
-                    86,143,10
-    CONTROL         "Fold identical lines",IDC_ckFoldLines,"Button",
-                    BS_AUTOCHECKBOX | WS_TABSTOP,17,98,73,10
-    LTEXT           "Number of not folded lines:",IDC_stNotFoldedLines,19,
-                    110,88,12,SS_CENTERIMAGE
+    GROUPBOX        "Composed file",IDC_STATIC,7,66,180,60,0,WS_EX_TRANSPARENT
+    CONTROL         "Insert identical sections from the left file",IDC_rdInsLeftIdentSect,
+                    "Button",BS_AUTORADIOBUTTON | WS_GROUP,17,76,139,10
+    CONTROL         "Insert identical sections from the right file",IDC_rdInsRightIdentSect,
+                    "Button",BS_AUTORADIOBUTTON,17,86,143,10
+    CONTROL         "Fold identical lines",IDC_ckFoldLines,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,17,98,73,10
+    LTEXT           "Number of not folded lines:",IDC_stNotFoldedLines,19,110,88,12,SS_CENTERIMAGE
     EDITTEXT        IDC_NOTFOLDED,108,110,27,12,ES_AUTOHSCROLL
-    CONTROL         "Syncronize scrolling",IDC_CB_SYNCSCROLLING,"Button",
-                    BS_AUTOCHECKBOX | WS_TABSTOP,17,128,85,10
-    CONTROL         "Show file names",IDC_ckShowFileNames,"Button",
-                    BS_AUTOCHECKBOX | WS_TABSTOP,17,139,85,10
+    CONTROL         "Syncronize scrolling",IDC_CB_SYNCSCROLLING,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,17,128,85,10
+    CONTROL         "Show file names",IDC_ckShowFileNames,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,17,139,85,10
 END
 
-IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 217, 78
-STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+IDD_ABOUTBOX DIALOG 0, 0, 217, 78
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "About FCU"
 FONT 8, "MS Sans Serif"
 BEGIN
     ICON            IDR_MAINFRAME,IDC_STATIC,9,5,20,20
     LTEXT           "FCU Version 1.4.0",IDC_STATIC,40,10,140,8,SS_NOPREFIX
-    LTEXT           "Copyright (C) 1998-2003, Gerhard Herbert",IDC_STATIC,40,
-                    46,133,10
+    LTEXT           "Copyright (C) 1998-2003, Gerhard Herbert",IDC_STATIC,40,46,133,10
     DEFPUSHBUTTON   "OK",IDOK,182,7,32,14,WS_GROUP
     LTEXT           "Evaluation Version",IDC_stEvalVersion,40,26,173,9
     LTEXT           "E-Mail:",IDC_STATIC,40,64,23,8
-    CONTROL         "&http://fcu.smibe.com",IDC_btnWWW,"Button",BS_OWNERDRAW,
-                    40,55,90,9
-    CONTROL         "fcu@smibe.com",IDC_btnMailTo,"Button",BS_OWNERDRAW,66,
-                    64,75,8
+    CONTROL         "&http://fcu.smibe.com",IDC_btnWWW,"Button",BS_OWNERDRAW,40,55,90,9
+    CONTROL         "fcu@smibe.com",IDC_btnMailTo,"Button",BS_OWNERDRAW,66,64,75,8
     PUSHBUTTON      "Register",IDC_btnRegister,164,58,50,14
     LTEXT           "",IDC_stUserName,55,34,162,9,NOT WS_VISIBLE
 END
 
-IDD_COLORS DIALOG DISCARDABLE  0, 0, 194, 145
-STYLE DS_MODALFRAME | WS_CHILD
+IDD_COLORS DIALOG 0, 0, 194, 145
+STYLE DS_SETFONT | DS_MODALFRAME | WS_CHILD
 FONT 8, "MS Sans Serif"
 BEGIN
     EDITTEXT        IDC_ED_LEFT,13,38,116,14,ES_AUTOHSCROLL | NOT WS_TABSTOP
     PUSHBUTTON      "Change ",IDC_BN_COLOR_LEFT,139,39,41,12
     GROUPBOX        "Left",IDC_STATIC,7,26,180,33
-    EDITTEXT        IDC_ED_RIGHT,13,75,116,14,ES_AUTOHSCROLL | NOT 
-                    WS_TABSTOP
+    EDITTEXT        IDC_ED_RIGHT,13,75,116,14,ES_AUTOHSCROLL | NOT WS_TABSTOP
     PUSHBUTTON      "Change",IDC_BN_COLOR_RIGHT,139,76,41,12
     GROUPBOX        "Right",IDC_STATIC,7,65,180,32
-    EDITTEXT        IDC_ED_FOLDED,13,112,116,14,ES_AUTOHSCROLL | NOT 
-                    WS_TABSTOP
+    EDITTEXT        IDC_ED_FOLDED,13,112,116,14,ES_AUTOHSCROLL | NOT WS_TABSTOP
     PUSHBUTTON      "Change",IDC_BN_COLOR_FOLDED,139,113,41,14
     GROUPBOX        "Hidden line marker",IDC_STATIC,7,102,180,33
-    LTEXT           "Press change to change the background color.",
-                    IDC_STATIC,8,9,168,10
+    LTEXT           "Press change to change the background color.",IDC_STATIC,8,9,168,10
 END
 
-IDD_COMPARE DIALOG DISCARDABLE  0, 0, 194, 145
-STYLE DS_MODALFRAME | WS_CHILD
+IDD_COMPARE DIALOG 0, 0, 194, 145
+STYLE DS_SETFONT | DS_MODALFRAME | WS_CHILD
 FONT 8, "MS Sans Serif"
 BEGIN
-    CONTROL         "ignore &blanks",IDC_CK_IGN_BLANKS1,"Button",
-                    BS_AUTOCHECKBOX | WS_TABSTOP,15,20,82,11
-    CONTROL         "ignore &EOL (<CR> and <LF>)",IDC_CK_IGN_EOL,"Button",
-                    BS_AUTOCHECKBOX | WS_TABSTOP,15,34,106,11
-    CONTROL         "ignore &case",IDC_CK_IGN_CASE,"Button",BS_AUTOCHECKBOX | 
-                    WS_TABSTOP,15,48,106,11
+    CONTROL         "ignore &blanks",IDC_CK_IGN_BLANKS1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,15,20,82,11
+    CONTROL         "ignore &EOL (<CR> and <LF>)",IDC_CK_IGN_EOL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,15,34,106,11
+    CONTROL         "ignore &case",IDC_CK_IGN_CASE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,15,48,106,11
     GROUPBOX        "Compare options",IDC_STATIC,7,8,180,56
-    CONTROL         "Treat files with equal size and date/time as equal (faster)",
-                    IDC_RD_CMP_SIZE_TIME,"Button",BS_AUTORADIOBUTTON | 
-                    BS_MULTILINE | WS_GROUP,17,84,144,16
-    CONTROL         "Compare using size and contents",
-                    IDC_RD_CMP_SIZE_CONTENTS,"Button",BS_AUTORADIOBUTTON,17,
-                    104,120,10
+    CONTROL         "Treat files with equal size and date/time as equal (faster)",IDC_RD_CMP_SIZE_TIME,
+                    "Button",BS_AUTORADIOBUTTON | BS_MULTILINE | WS_GROUP,17,84,144,16
+    CONTROL         "Compare using size and contents",IDC_RD_CMP_SIZE_CONTENTS,
+                    "Button",BS_AUTORADIOBUTTON,17,104,120,10
     GROUPBOX        "Directory compare options",IDC_STATIC,7,73,180,46
 END
 
-IDD_EDITOR_OPTIONS DIALOG DISCARDABLE  0, 0, 194, 145
-STYLE DS_MODALFRAME | WS_CHILD
+IDD_EDITOR_OPTIONS DIALOG 0, 0, 194, 145
+STYLE DS_SETFONT | DS_MODALFRAME | WS_CHILD
 FONT 8, "MS Sans Serif"
 BEGIN
     LTEXT           "Tab width:",-1,5,24,41,12,SS_CENTERIMAGE
@@ -428,103 +356,128 @@ BEGIN
     LTEXT           "Font:",-1,5,8,18,12,SS_CENTERIMAGE
     EDITTEXT        IDC_EB_FONT,50,8,68,13,ES_AUTOHSCROLL
     PUSHBUTTON      "Chan&ge",IDC_BTN_FONT_CHANGE,121,9,33,12
-    CONTROL         "Keep tabs",IDC_ckKeepTabs,"Button",BS_AUTOCHECKBOX | 
-                    WS_TABSTOP,5,41,48,10
-    CONTROL         "Show line numbers",IDC_ckShowLineNo,"Button",
-                    BS_AUTOCHECKBOX | WS_TABSTOP,5,63,75,10
-    CONTROL         "Show tabs",IDC_ckShowTabs,"Button",BS_AUTOCHECKBOX | 
-                    WS_TABSTOP,5,52,49,10
+    CONTROL         "Keep tabs",IDC_ckKeepTabs,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,5,41,48,10
+    CONTROL         "Show line numbers",IDC_ckShowLineNo,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,5,63,75,10
+    CONTROL         "Show tabs",IDC_ckShowTabs,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,5,52,49,10
 END
 
-IDD_CMDLINE_OPTIONS DIALOG DISCARDABLE  0, 0, 194, 132
-STYLE DS_MODALFRAME | WS_CHILD
+IDD_CMDLINE_OPTIONS DIALOG 0, 0, 194, 132
+STYLE DS_SETFONT | DS_MODALFRAME | WS_CHILD
 FONT 8, "MS Sans Serif"
 BEGIN
-    LTEXT           "When FCU is started with command line parameters:",-1,9,
-                    10,192,11
-    CONTROL         "Show CompareFile dialog",IDC_CK_FILECMP_DLG,"Button",
-                    BS_AUTOCHECKBOX | WS_TABSTOP,9,23,111,10
-    CONTROL         "Show CompareDir dialog",IDC_CK_DIRCMP_DLG,"Button",
-                    BS_AUTOCHECKBOX | WS_TABSTOP,9,34,111,10
+    LTEXT           "When FCU is started with command line parameters:",-1,9,10,192,11
+    CONTROL         "Show CompareFile dialog",IDC_CK_FILECMP_DLG,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,9,23,111,10
+    CONTROL         "Show CompareDir dialog",IDC_CK_DIRCMP_DLG,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,9,34,111,10
     CONTROL         "Use only one program instance ",IDC_ckOneInstance,
                     "Button",BS_AUTOCHECKBOX | WS_TABSTOP,9,45,111,10
 END
 
-IDD_DIRCMP_OPTIONS DIALOG DISCARDABLE  0, 0, 194, 145
-STYLE DS_MODALFRAME | WS_CHILD
+IDD_DIRCMP_OPTIONS DIALOG 0, 0, 194, 145
+STYLE DS_SETFONT | DS_MODALFRAME | WS_CHILD
 FONT 8, "MS Sans Serif"
 BEGIN
-    CONTROL         "di&fferent",IDC_CB_DIFF,"Button",BS_AUTOCHECKBOX | 
-                    WS_TABSTOP,16,14,48,10
-    CONTROL         "&l&eft only",IDC_CB_LEFT,"Button",BS_AUTOCHECKBOX | 
-                    WS_TABSTOP,108,14,48,10
-    CONTROL         "&identical",IDC_CB_IDENTICAL,"Button",BS_AUTOCHECKBOX | 
-                    WS_TABSTOP,16,24,48,10
-    CONTROL         "righ&t only",IDC_CB_RIGHT,"Button",BS_AUTOCHECKBOX | 
-                    WS_TABSTOP,108,24,48,9
-    CONTROL         "Size",IDC_CB_SIZE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
-                    16,50,48,10
-    CONTROL         "Last Modification Date",IDC_CB_DATE,"Button",
-                    BS_AUTOCHECKBOX | WS_TABSTOP,16,60,109,10
-    CONTROL         "Last Modification Time",IDC_CB_TIME,"Button",
-                    BS_AUTOCHECKBOX | WS_TABSTOP,16,70,86,10
-    CONTROL         "Show Seconds",IDC_CB_SECONDS,"Button",BS_AUTOCHECKBOX | 
-                    WS_TABSTOP,108,70,67,10
-    CONTROL         "Show Comment",IDC_CB_COMMENT,"Button",BS_AUTOCHECKBOX | 
-                    WS_TABSTOP,16,80,109,10
-    CONTROL         "Enabled",IDC_CB_FIleNotifications,"Button",
-                    BS_AUTOCHECKBOX | WS_TABSTOP,16,106,66,10
+    CONTROL         "di&fferent",IDC_CB_DIFF,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,16,14,48,10
+    CONTROL         "&l&eft only",IDC_CB_LEFT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,108,14,48,10
+    CONTROL         "&identical",IDC_CB_IDENTICAL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,16,24,48,10
+    CONTROL         "righ&t only",IDC_CB_RIGHT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,108,24,48,9
+    CONTROL         "Size",IDC_CB_SIZE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,16,50,48,10
+    CONTROL         "Last Modification Date",IDC_CB_DATE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,16,60,109,10
+    CONTROL         "Last Modification Time",IDC_CB_TIME,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,16,70,86,10
+    CONTROL         "Show Seconds",IDC_CB_SECONDS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,108,70,67,10
+    CONTROL         "Show Comment",IDC_CB_COMMENT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,16,80,109,10
+    CONTROL         "Enabled",IDC_CB_FIleNotifications,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,16,106,66,10
     CONTROL         "Show Confirmation Dialog",IDC_CB_ShowNotifyDialog,
-                    "Button",BS_AUTOCHECKBOX | BS_MULTILINE | WS_TABSTOP,107,
-                    102,74,18
+                    "Button",BS_AUTOCHECKBOX | BS_MULTILINE | WS_TABSTOP,107,102,74,18
     GROUPBOX        "File Change Notifications",IDC_STATIC,7,96,180,26
-    GROUPBOX        "Files shown in compare directory view",IDC_STATIC,7,4,
-                    180,34
+    GROUPBOX        "Files shown in compare directory view",IDC_STATIC,7,4,180,34
     GROUPBOX        "File Details",IDC_STATIC,7,40,180,54
 END
 
-IDD_FILDIFF_PRINT_OPTIONS DIALOG DISCARDABLE  0, 0, 194, 145
-STYLE DS_MODALFRAME | WS_CHILD
+IDD_FILDIFF_PRINT_OPTIONS DIALOG 0, 0, 194, 145
+STYLE DS_SETFONT | DS_MODALFRAME | WS_CHILD
 FONT 8, "MS Sans Serif"
 BEGIN
     LTEXT           "Font:",IDC_STATIC,7,8,42,12,SS_CENTERIMAGE
     EDITTEXT        IDC_EB_FONT,50,8,68,13,ES_AUTOHSCROLL
     PUSHBUTTON      "Chan&ge",IDC_BTN_FONT_CHANGE,121,9,33,12
     GROUPBOX        "Colors",IDC_STATIC,3,28,187,62
-    CONTROL         "Use text colors for different sections",
-                    IDC_ckPrintWithColors,"Button",BS_AUTOCHECKBOX | 
-                    WS_TABSTOP,7,41,146,10
-    LTEXT           "Color for left sections:",IDC_STATIC,7,55,76,12,
-                    SS_CENTERIMAGE
-    EDITTEXT        IDC_ebLeftColor,88,55,55,12,ES_AUTOHSCROLL | NOT 
-                    WS_TABSTOP
+    CONTROL         "Use text colors for different sections",IDC_ckPrintWithColors,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,41,146,10
+    LTEXT           "Color for left sections:",IDC_STATIC,7,55,76,12,SS_CENTERIMAGE
+    EDITTEXT        IDC_ebLeftColor,88,55,55,12,ES_AUTOHSCROLL | NOT WS_TABSTOP
     PUSHBUTTON      "Change",IDC_btnLeftColor,147,55,33,12
-    LTEXT           "Color for right sections:",IDC_STATIC,7,71,79,12,
-                    SS_CENTERIMAGE
-    EDITTEXT        IDC_ebRightColor,88,71,55,12,ES_AUTOHSCROLL | NOT 
-                    WS_TABSTOP
+    LTEXT           "Color for right sections:",IDC_STATIC,7,71,79,12,SS_CENTERIMAGE
+    EDITTEXT        IDC_ebRightColor,88,71,55,12,ES_AUTOHSCROLL | NOT WS_TABSTOP
     PUSHBUTTON      "Change",IDC_btnRightColor,147,71,33,12
 END
 
-IDD_DIFFDIR_PRINT_OPTIONS DIALOG DISCARDABLE  0, 0, 194, 145
-STYLE DS_MODALFRAME | WS_CHILD
+IDD_DIFFDIR_PRINT_OPTIONS DIALOG 0, 0, 194, 145
+STYLE DS_SETFONT | DS_MODALFRAME | WS_CHILD
 FONT 8, "MS Sans Serif"
 BEGIN
     LTEXT           "Font:",IDC_STATIC,7,8,42,12,SS_CENTERIMAGE
     EDITTEXT        IDC_EB_FONT,50,8,68,14,ES_AUTOHSCROLL | ES_READONLY
     PUSHBUTTON      "Chan&ge",IDC_BTN_FONT_CHANGE,121,9,33,12
     GROUPBOX        "Colors",IDC_STATIC,3,28,187,62
-    CONTROL         "Use text colors for not identical files",
-                    IDC_ckPrintWithColors,"Button",BS_AUTOCHECKBOX | 
-                    WS_TABSTOP,7,41,146,10
+    CONTROL         "Use text colors for not identical files",IDC_ckPrintWithColors,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,41,146,10
     LTEXT           "Left color:",IDC_STATIC,7,55,42,12,SS_CENTERIMAGE
-    EDITTEXT        IDC_ebLeftColor,50,55,68,12,ES_AUTOHSCROLL | NOT 
-                    WS_TABSTOP
+    EDITTEXT        IDC_ebLeftColor,50,55,68,12,ES_AUTOHSCROLL | NOT WS_TABSTOP
     PUSHBUTTON      "Change",IDC_btnLeftColor,121,55,33,12
     LTEXT           "Right color:",IDC_STATIC,7,71,42,12,SS_CENTERIMAGE
-    EDITTEXT        IDC_ebRightColor,50,71,68,12,ES_AUTOHSCROLL | NOT 
-                    WS_TABSTOP
+    EDITTEXT        IDC_ebRightColor,50,71,68,12,ES_AUTOHSCROLL | NOT WS_TABSTOP
     PUSHBUTTON      "Change",IDC_btnRightColor,121,71,33,12
+END
+
+IDD_SAVE_COMP DIALOG 0, 0, 228, 173
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Save composed file"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,7,152,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,171,152,50,14
+    GROUPBOX        "Select",IDC_STATIC,7,7,214,50
+    CONTROL         "overwrite &right file",IDC_R_RIGHT,"Button",BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,10,17,81,10
+    CONTROL         "overwrite &left file",IDC_R_LEFT,"Button",BS_AUTORADIOBUTTON,10,29,81,10
+    CONTROL         "in selected &directory",IDC_R_MERGE,"Button",BS_AUTORADIOBUTTON,10,41,81,10
+    CONTROL         "&save as...",IDC_R_SAVE_AS,"Button",BS_AUTORADIOBUTTON,124,19,80,10
+    PUSHBUTTON      "Save &As ...",IDC_B_SAVE_AS,124,37,75,14,WS_GROUP | NOT WS_TABSTOP
+    GROUPBOX        "Directory se&ttings",IDC_GR_DIR,7,60,214,48
+    COMBOBOX        IDC_CB_DIR,10,73,183,42,CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "...",IDC_B_SEL,198,73,16,12
+    CONTROL         "including relative s&ubdirectories",IDC_CK_SUBDIR,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,90,149,12
+    LTEXT           "Press OK to save the composed file:",IDC_STATIC,7,116,164,8
+    EDITTEXT        IDC_ED_COMPFILENAME,7,128,214,12,ES_AUTOHSCROLL | ES_READONLY
+END
+
+IDD_FILDIFFVIEW DIALOG 0, 0, 210, 162
+STYLE DS_SETFONT | WS_CHILD | WS_CLIPCHILDREN
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_ED_FMERGE,18,96,165,49,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_WANTRETURN
+    EDITTEXT        IDC_ED_FLEFT,17,13,67,76,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_WANTRETURN
+    EDITTEXT        IDC_ED_FRIGHT,90,15,89,75,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_WANTRETURN
+    LTEXT           "Left file",IDC_stLeftFile,17,3,67,10,SS_SUNKEN
+    LTEXT           "Right file",IDC_stRightFile,91,4,87,10,SS_SUNKEN
+END
+
+IDD_CMP_FIL DIALOG 0, 0, 262, 143
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Compare files"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "&OK",IDOK,18,122,50,14
+    PUSHBUTTON      "&Cancel",IDCANCEL,197,122,50,14
+    LTEXT           "&First File",-1,13,21,72,10
+    COMBOBOX        IDC_CB_FIL1,13,34,204,54,CBS_DROPDOWN | CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "...",IDC_BT_FIL1,225,34,22,12
+    LTEXT           "&Second File",-1,13,54,58,8
+    COMBOBOX        IDC_CB_FIL2,13,67,204,57,CBS_DROPDOWN | CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "...",IDC_BT_FIL2,225,67,22,12
+    GROUPBOX        "Select files",-1,7,7,248,86
+    CONTROL         "Ignore blanks",IDC_CK_IGN_BLANKS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,96,76,15
+    COMBOBOX        IDC_CB_MASK,130,16,48,30,CBS_DROPDOWN | CBS_SORT | NOT WS_VISIBLE | WS_VSCROLL | WS_TABSTOP
 END
 
 
@@ -534,7 +487,7 @@ END
 //
 
 #ifdef APSTUDIO_INVOKED
-GUIDELINES DESIGNINFO DISCARDABLE 
+GUIDELINES DESIGNINFO
 BEGIN
     IDR_DIFF_DIR, DIALOG
     BEGIN
@@ -607,26 +560,28 @@ END
 // Bitmap
 //
 
-IDR_DIFF_DIR            BITMAP  MOVEABLE PURE   "res\\diff_dir.bmp"
-IDR_DIFF_FIL            BITMAP  MOVEABLE PURE   "res\\diff_fil.bmp"
-IDR_MAINFRAME           BITMAP  MOVEABLE PURE   "res\\mainfram.bmp"
+IDR_DIFF_DIR            BITMAP                  "res\\diff_dir.bmp"
+
+IDR_DIFF_FIL            BITMAP                  "res\\diff_fil.bmp"
+
+IDR_MAINFRAME           BITMAP                  "res\\mainfram.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
 // Accelerator
 //
 
-IDR_MAINFRAME ACCELERATORS PRELOAD MOVEABLE PURE 
+IDR_MAINFRAME ACCELERATORS
 BEGIN
     "D",            ID_CMP_DIR,             VIRTKEY, CONTROL, NOINVERT
     "F",            ID_CMP_FILE,            VIRTKEY, CONTROL, NOINVERT
     VK_CANCEL,      ID_BREAK,               VIRTKEY, CONTROL, NOINVERT
 END
 
-IDR_DIFF_DIR ACCELERATORS PRELOAD MOVEABLE PURE 
+IDR_DIFF_DIR ACCELERATORS
 BEGIN
-    "C",            ID_TOOLS_COPYFILES,     VIRTKEY, SHIFT, CONTROL, 
-                                                    NOINVERT
+    "C",            ID_TOOLS_COPYFILES,     VIRTKEY, SHIFT, CONTROL, NOINVERT
     "D",            ID_CMP_DIR,             VIRTKEY, CONTROL, NOINVERT
     "F",            ID_CMP_FILE,            VIRTKEY, CONTROL, NOINVERT
     "S",            ID_FILE_SAVE_DIFF_LIST, VIRTKEY, CONTROL, NOINVERT
@@ -639,7 +594,7 @@ BEGIN
     VK_INSERT,      ID_EDIT_COMMENT,        VIRTKEY, NOINVERT
 END
 
-IDR_DIFF_FIL ACCELERATORS PRELOAD MOVEABLE PURE 
+IDR_DIFF_FIL ACCELERATORS
 BEGIN
     "A",            ID_EDIT_SELECT_ALL,     VIRTKEY, CONTROL, NOINVERT
     "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
@@ -647,14 +602,11 @@ BEGIN
     "F",            ID_EDIT_FIND,           VIRTKEY, CONTROL, NOINVERT
     "H",            ID_EDIT_REPLACE,        VIRTKEY, CONTROL, NOINVERT
     "L",            ID_EDIT_INSERTLEFT,     VIRTKEY, CONTROL, NOINVERT
-    "L",            ID_EDIT_RESTORELEFT,    VIRTKEY, SHIFT, CONTROL, 
-                                                    NOINVERT
-    "N",            ID_VIEW_NEXT_DIFF_FROM_CURSOR, VIRTKEY, SHIFT, CONTROL, 
-                                                    NOINVERT
+    "L",            ID_EDIT_RESTORELEFT,    VIRTKEY, SHIFT, CONTROL, NOINVERT
+    "N",            ID_VIEW_NEXT_DIFF_FROM_CURSOR, VIRTKEY, SHIFT, CONTROL, NOINVERT
     "Q",            ID_EDIT_CMDMODE,        VIRTKEY, CONTROL, NOINVERT
     "R",            ID_EDIT_INSERTRIGHT,    VIRTKEY, CONTROL, NOINVERT
-    "R",            ID_EDIT_RESTORERIGHT,   VIRTKEY, SHIFT, CONTROL, 
-                                                    NOINVERT
+    "R",            ID_EDIT_RESTORERIGHT,   VIRTKEY, SHIFT, CONTROL, NOINVERT
     "S",            ID_FILE_SAVECOMPOSED,   VIRTKEY, CONTROL, NOINVERT
     "T",            ID_VIEW_LINEDIFF,       VIRTKEY, CONTROL, NOINVERT
     "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL, NOINVERT
@@ -678,8 +630,7 @@ BEGIN
     VK_SUBTRACT,    ID_EDIT_DELETEDIFF,     VIRTKEY, CONTROL, NOINVERT
     "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL, NOINVERT
     "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL, NOINVERT
-    "Z",            ID_EDIT_REDO,           VIRTKEY, SHIFT, CONTROL, 
-                                                    NOINVERT
+    "Z",            ID_EDIT_REDO,           VIRTKEY, SHIFT, CONTROL, NOINVERT
 END
 
 
@@ -689,18 +640,18 @@ END
 // TEXTINCLUDE
 //
 
-1 TEXTINCLUDE DISCARDABLE 
+1 TEXTINCLUDE 
 BEGIN
     "resource.h\0"
 END
 
-2 TEXTINCLUDE DISCARDABLE 
+2 TEXTINCLUDE 
 BEGIN
     "#include ""afxres.h""\r\n"
     "\0"
 END
 
-3 TEXTINCLUDE DISCARDABLE 
+3 TEXTINCLUDE 
 BEGIN
     "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
     "#define _AFX_NO_OLE_RESOURCES\r\n"
@@ -731,8 +682,10 @@ END
 // Cursor
 //
 
-IDC_VSIZE               CURSOR  DISCARDABLE     "res\\vsize.cur"
-IDC_HSIZE               CURSOR  DISCARDABLE     "res\\hsize.cur"
+IDC_VSIZE               CURSOR                  "res\\vsize.cur"
+
+IDC_HSIZE               CURSOR                  "res\\hsize.cur"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -741,16 +694,19 @@ IDC_HSIZE               CURSOR  DISCARDABLE     "res\\hsize.cur"
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
-IDR_MAINFRAME           ICON    DISCARDABLE     "res\\idr_main.ico"
-IDR_DIFF_DIR            ICON    DISCARDABLE     "res\\diff_dir.ico"
-IDR_DIFF_FIL            ICON    DISCARDABLE     "res\\Diff_Fil.ico"
+IDR_MAINFRAME           ICON                    "res\\idr_main.ico"
+
+IDR_DIFF_DIR            ICON                    "res\\diff_dir.ico"
+
+IDR_DIFF_FIL            ICON                    "res\\Diff_Fil.ico"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
 // Menu
 //
 
-IDR_DIFFEDIT_POPUP MENU DISCARDABLE 
+IDR_DIFFEDIT_POPUP MENU
 BEGIN
     MENUITEM "&Undo",                       ID_EDIT_UNDO
     MENUITEM "&Redo",                       ID_EDIT_REDO
@@ -765,7 +721,7 @@ BEGIN
     END
 END
 
-IDR_MAINFRAME MENU PRELOAD DISCARDABLE 
+IDR_MAINFRAME MENU
 BEGIN
     POPUP "&File"
     BEGIN
@@ -789,11 +745,8 @@ BEGIN
         POPUP "Customize"
         BEGIN
             MENUITEM "Toolbar",                     ID_TOOLS_CUSTOMIZE_TOOLBAR
-
             MENUITEM "Keyboard",                    ID_TOOLS_CUSTOMIZE_KEYBOARD
-
             MENUITEM "User Tools",                  ID_TOOLS_CUSTOMIZE_USERTOOLS
-
         END
     END
     POPUP "&Help"
@@ -804,7 +757,7 @@ BEGIN
     END
 END
 
-IDR_DIFF_DIR MENU PRELOAD DISCARDABLE 
+IDR_DIFF_DIR MENU
 BEGIN
     POPUP "&File"
     BEGIN
@@ -836,11 +789,8 @@ BEGIN
         POPUP "Customize"
         BEGIN
             MENUITEM "Toolbar",                     ID_TOOLS_CUSTOMIZE_TOOLBAR
-
             MENUITEM "Keyboard",                    ID_TOOLS_CUSTOMIZE_KEYBOARD
-
             MENUITEM "User Tools",                  ID_TOOLS_CUSTOMIZE_USERTOOLS
-
         END
     END
     POPUP "&Windows"
@@ -855,7 +805,7 @@ BEGIN
     END
 END
 
-IDR_DIFF_FIL MENU PRELOAD DISCARDABLE 
+IDR_DIFF_FIL MENU
 BEGIN
     POPUP "&File"
     BEGIN
@@ -910,18 +860,14 @@ BEGIN
         POPUP "Customize"
         BEGIN
             MENUITEM "Toolbar",                     ID_TOOLS_CUSTOMIZE_TOOLBAR
-
             MENUITEM "Keyboard",                    ID_TOOLS_CUSTOMIZE_KEYBOARD
-
             MENUITEM "User Tools",                  ID_TOOLS_CUSTOMIZE_USERTOOLS
-
         END
     END
     POPUP "&Windows"
     BEGIN
         MENUITEM "&Left File",                  ID_WINDOWS_LEFTFILE, CHECKED
-        MENUITEM "&Right File",                 ID_WINDOWS_RIGHTFILE
-        , CHECKED
+        MENUITEM "&Right File",                 ID_WINDOWS_RIGHTFILE, CHECKED
         MENUITEM "&Composed File",              ID_WINDOWS_COMPFILE, CHECKED
         MENUITEM SEPARATOR
         MENUITEM "Compare &directories\tCtrl+TAB", ID_WINDOWS_NEXT
@@ -935,7 +881,7 @@ BEGIN
     END
 END
 
-IDR_DIRDIFF_POPUP MENU DISCARDABLE 
+IDR_DIRDIFF_POPUP MENU
 BEGIN
     POPUP "Left File"
     BEGIN
@@ -963,7 +909,7 @@ END
 // Toolbar
 //
 
-IDR_DIFF_DIR TOOLBAR DISCARDABLE  16, 15
+IDR_DIFF_DIR TOOLBAR 16, 15
 BEGIN
     BUTTON      ID_EDIT_CUT
     SEPARATOR
@@ -971,7 +917,7 @@ BEGIN
     BUTTON      ID_APP_ABOUT
 END
 
-IDR_DIFF_FIL TOOLBAR DISCARDABLE  16, 15
+IDR_DIFF_FIL TOOLBAR 16, 15
 BEGIN
     BUTTON      ID_EDIT_CUT
     BUTTON      ID_VIEW_NEXTDIFF
@@ -981,7 +927,7 @@ BEGIN
     BUTTON      ID_APP_ABOUT
 END
 
-IDR_MAINFRAME TOOLBAR DISCARDABLE  18, 17
+IDR_MAINFRAME TOOLBAR 18, 17
 BEGIN
     BUTTON      ID_FILE_SAVE
     BUTTON      ID_FILE_SAVE_DIFF_LIST
@@ -1010,7 +956,6 @@ BEGIN
 END
 
 
-#ifndef _MAC
 /////////////////////////////////////////////////////////////////////////////
 //
 // Version
@@ -1033,18 +978,15 @@ BEGIN
     BEGIN
         BLOCK "040904b0"
         BEGIN
-            VALUE "Comments", "Generated 25 April 2003\0"
-            VALUE "CompanyName", "smibe\0"
-            VALUE "FileDescription", "FCU File Compare Utility\0"
-            VALUE "FileVersion", "1, 4, 0, 0\0"
-            VALUE "InternalName", "FCU\0"
-            VALUE "LegalCopyright", "Copyright (C) Gerhard Herbert, 1998-2003\0"
-            VALUE "LegalTrademarks", "\0"
-            VALUE "OriginalFilename", "FCU.EXE\0"
-            VALUE "PrivateBuild", "\0"
-            VALUE "ProductName", "FCU File Compare\0"
-            VALUE "ProductVersion", "1, 4, 0, 0\0"
-            VALUE "SpecialBuild", "\0"
+            VALUE "Comments", "Generated 25 April 2003"
+            VALUE "CompanyName", "smibe"
+            VALUE "FileDescription", "FCU File Compare Utility"
+            VALUE "FileVersion", "1, 4, 0, 0"
+            VALUE "InternalName", "FCU"
+            VALUE "LegalCopyright", "Copyright (C) Gerhard Herbert, 1998-2003"
+            VALUE "OriginalFilename", "FCU.EXE"
+            VALUE "ProductName", "FCU File Compare"
+            VALUE "ProductVersion", "1, 4, 0, 0"
         END
     END
     BLOCK "VarFileInfo"
@@ -1053,15 +995,13 @@ BEGIN
     END
 END
 
-#endif    // !_MAC
-
 
 /////////////////////////////////////////////////////////////////////////////
 //
 // RTF
 //
 
-IDR_rtfUsage RTF DISCARDABLE 
+IDR_rtfUsage RTF 
 BEGIN
     0x5c7b, 0x7472, 0x3166, 0x615c, 0x736e, 0x5c69, 0x6e61, 0x6973, 0x7063, 
     0x3167, 0x3532, 0x5c32, 0x6564, 0x6666, 0x5c30, 0x6564, 0x6c66, 0x6e61, 
@@ -1177,19 +1117,19 @@ END
 // String Table
 //
 
-STRINGTABLE PRELOAD DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDR_MAINFRAME           "FCU"
     IDR_DIFF_DIR            "FCU"
 END
 
-STRINGTABLE PRELOAD DISCARDABLE 
+STRINGTABLE
 BEGIN
     AFX_IDS_APP_TITLE       "FCU"
     AFX_IDS_IDLEMESSAGE     "Ready"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     ID_INDICATOR_EXT        "EXT"
     ID_INDICATOR_CAPS       "CAP"
@@ -1199,19 +1139,19 @@ BEGIN
     ID_INDICATOR_REC        "REC"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     ID_APP_ABOUT            "Display program information, version number and copyright\nAbout"
     ID_APP_EXIT             "Quit the application; prompts to save documents\nExit"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     ID_NEXT_PANE            "Switch to the next window pane\nNext Pane"
     ID_PREV_PANE            "Switch back to the previous window pane\nPrevious Pane"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     ID_WINDOW_NEW           "Open another window for the active document\nNew Window"
     ID_WINDOW_ARRANGE       "Arrange icons at the bottom of the window\nArrange Icons"
@@ -1221,7 +1161,7 @@ BEGIN
     ID_WINDOW_SPLIT         "Split the active window into panes\nSplit"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     ID_EDIT_CLEAR           "Erase the selection\nErase"
     ID_EDIT_COPY            "Copy the selection and put it on the Clipboard\nCopy"
@@ -1235,13 +1175,13 @@ BEGIN
     ID_EDIT_REDO            "Redo the previously undone action\nRedo"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     ID_VIEW_TOOLBAR         "Show or hide the toolbar\nToggle ToolBar"
     ID_VIEW_STATUS_BAR      "Show or hide the status bar\nToggle StatusBar"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     AFX_IDS_SCSIZE          "Change the window size"
     AFX_IDS_SCMOVE          "Change the window position"
@@ -1252,19 +1192,19 @@ BEGIN
     AFX_IDS_SCCLOSE         "Close the active window and prompts to save the documents"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     AFX_IDS_SCRESTORE       "Restore the window to normal size"
     AFX_IDS_SCTASKLIST      "Activate Task List"
     AFX_IDS_MDICHILD        "Activate this window"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     AFX_IDS_PREVIEW_CLOSE   "Close print preview mode\nCancel Preview"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_small               "small"
     IDS_beautiful           "beautiful"
@@ -1284,7 +1224,7 @@ BEGIN
     IDS_Windows             "Windows"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     ID_CMP_DIR              "Compare directories\nCompare directories"
     ID_CMP_FILE             "Compare Files\nCompare Files"
@@ -1295,7 +1235,7 @@ BEGIN
     ID_WINDOWS_RIGHTFILE    "Show/Hide right file window\nSHow Right Window"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MEMORY_ALLOC_FAIL   "Memory allocation failed"
     IDS_OUT_OF_MEMORY       "Out Of Memory"
@@ -1303,7 +1243,7 @@ BEGIN
     IDS_LIST_ALLOC_NEGATIVE "Problem in List code.\nList block allocation negative (%d)"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     ID_WINDOWS_COMPFILE     "Show/Hide composed file window\nShow Composed Window"
     ID_VIEW_NEXTDIFF        "Go to next different section\nView next difference"
@@ -1312,7 +1252,7 @@ BEGIN
     ID_EDIT_INSERTLEFT      "Insert the section from left hand file\nInsert Left"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     ID_INDICATOR_DIFF       "Diff"
     ID_STATUSTEXT           "Ready"
@@ -1320,7 +1260,7 @@ BEGIN
     ID_FILE_SAVE_DIFF_LIST  "Save the difference list\nSave difflist"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     ID_WINDOWS_NEXT         "Next window.\nNext Window"
     ID_FILE_SAVECOMPOSED    "Save the composed file\nSave Composed"
@@ -1332,7 +1272,7 @@ BEGIN
     ID_INDICATOR_LINE       "Line"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     ID_COPY_SELECTED_R      "Copy the selected right files to the clipboard.\nCopy RFile"
     ID_DELETE_SELECTED_R    "Delete the selected right files.\nDelete RFile"
@@ -1352,7 +1292,7 @@ BEGIN
     ID_PROPERTIES           "Open the file property dialog\nProperties"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     ID_FILE_SAVE            "Save the current document.\nSave"
     ID_FILE_PAGE_SETUP      "Change the printing options\nPage Setup"
@@ -1361,7 +1301,7 @@ BEGIN
     ID_FILE_PRINT_PREVIEW   "Display full pages\nPrint Preview"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     ID_TOOLS_CUSTOMIZE_TOOLBAR 
                             "Open the dialog for customizing the toolbar.\nCustomize Toolbar"
@@ -1372,7 +1312,7 @@ BEGIN
                             "Open the dialog for adding/removing user tools.\nCustomize User Tools"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDC_CB_DIFF             "Show/hide the different files in the file list of the compare directory view."
     IDC_CB_IDENTICAL        "Show/hide the identical files in the file list of the compare directory view."
@@ -1384,7 +1324,7 @@ BEGIN
     IDC_CB_SECONDS          "Show/hide the column displaying the time, including seconds, of the files in the compare directory view."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_Edit                "Edit"
     IDS_left                "left"
@@ -1398,7 +1338,7 @@ BEGIN
     IDS_Properties          "Properties"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDC_CB_COMMENT          "Show/hide the column displaying the comment in the compare directory view."
     IDC_CB_SYNCSCROLLING    "Enable/disable scrolling syncronization of all three windows. By scrolling one window, all other windows will be scrolled as well."
@@ -1408,25 +1348,25 @@ BEGIN
     IDC_NOTFOLDED           "Number of lines which should not be folded. The specified number of lines at beginning and end of an identical section will not be hidden."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDC_ckShowLineNo        "Show/hide line numbers in the compare directory view. Note that the line numbers in the composed window are not the line numbers from the composed file, the line numbers from the merged files (left and right file) are shown instead."
     IDC_ckShowFileNames     "Show/hide a status bar with the file names on the top of the right and left file windows."
     IDC_rdWrap              "Do not show the message box if the end of the differenc list is reached. A short message is displayed in the status bar if wrapping has occured."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDC_rdInsLeftIdentSect  "The identical sections can still be different (if for example ignore blanks is set). If this option is set, the identical sections from the left file are used in the composed file."
     IDC_rdInsRightIdentSect "The identical sections can still be different (if for example ignore blanks is set). If this option is set, the identical sections from the right file are used in the composed file."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDC_ckFoldLines         "Enable/disable line folding of identical lines, this means that the lines in the identical sections are hidden."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     ID_OPTIONS_SHOWLINENO   "Show line numbers\nShow line numbers"
     ID_OPTIONS_FOLDLINES    "Fold identical lines\nFold identical lines"
@@ -1434,7 +1374,39 @@ BEGIN
                             "Syncronize scrolling of all three edti windows\nSyncronize scrolling"
 END
 
-#endif    // English (U.S.) resources
+STRINGTABLE
+BEGIN
+    IDS_ComposedFileWasChanged 
+                            "The composed file was modified.\nYou want to save the changes?"
+    IDS_FileReadonly        "The file is readonly!"
+    IDS_UnknownErrorWhileReadingFile "Unknown error while reading file!"
+    IDS_ErrorReadingLeftFile "Error reading left file: %1"
+    IDS_ErrorReadingRightFile "Error reading right file: %1"
+    IDS_ComparingFiles      "Comparing files, pleas wait..."
+    IDS_FileCmpBreakReceived "Break received! Abort file compare?"
+    IDS_YouWantToCreateDir  "The directory %1 does not exist. You want to create it?"
+    IDS_Diffxx              "Diff %d/%d"
+    IDS_NoFilenameSpecified "Please specify a file name!"
+    IDS_SelectDirectory     "Select directory"
+    IDS_ComposedFileWasChanged2 
+                            "The composed file was modified.\nYou want to save the changes?"
+    IDS_FileReadonly2       "The file is readonly!"
+    IDS_UnknownErrorWhileReadingFile2 "Unknown error while reading file!"
+    IDS_ErrorReadingLeftFile2 "Error reading left file: %1"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_ErrorReadingRightFile2 "Error reading right file: %1"
+    IDS_ComparingFiles2     "Comparing files, pleas wait..."
+    IDS_FileCmpBreakReceived2 "Break received! Abort file compare?"
+    IDS_YouWantToCreateDir2 "The directory %1 does not exist. You want to create it?"
+    IDS_Diffxx2             "Diff %d/%d"
+    IDS_NoFilenameSpecified2 "Please specify a file name!"
+    IDS_SelectDirectory2    "Select directory"
+END
+
+#endif    // English (United States) resources
 /////////////////////////////////////////////////////////////////////////////
 
 

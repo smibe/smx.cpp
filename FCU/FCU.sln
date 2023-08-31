@@ -4,10 +4,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.7.34018.315
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FCU", "src\FCU.vcxproj", "{6C327594-F52A-4CBF-BE94-E446B2AF0B63}"
+	ProjectSection(ProjectDependencies) = postProject
+		{07DF436E-AE2F-4A00-947A-239DBC80D0E4} = {07DF436E-AE2F-4A00-947A-239DBC80D0E4}
+		{668780FC-E452-4701-961E-4CF90EB3F732} = {668780FC-E452-4701-961E-4CF90EB3F732}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SmxUserExt", "..\SmxUserExt\SmxUserExt.vcxproj", "{668780FC-E452-4701-961E-4CF90EB3F732}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OE103", "..\OE103\OE103.vcxproj", "{07DF436E-AE2F-4A00-947A-239DBC80D0E4}"
+	ProjectSection(ProjectDependencies) = postProject
+		{668780FC-E452-4701-961E-4CF90EB3F732} = {668780FC-E452-4701-961E-4CF90EB3F732}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -21,7 +21,7 @@
 
 #include "OXGridList.h"
 #include "savecompdlg.h"
-#include "MdiChildWndEx.h"
+#include "FcuMdiChildWndEx.h"
 #include "SmxPrnFormView.h"
 
 class CDiffDirDoc;
@@ -132,7 +132,7 @@ protected:
 };
 
 
-class CDiffDirFrame : public CMDIChildWndEx
+class CDiffDirFrame : public CFcuMDIChildWndEx
 {
 	DECLARE_DYNCREATE(CDiffDirFrame)
 protected:

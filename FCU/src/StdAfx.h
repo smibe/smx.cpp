@@ -28,7 +28,7 @@
 
 #define VC_EXTRALEAN		// Selten verwendete Teile der Windows-Header nicht einbinden
 
-#define _WIN32_WINNT 0x0400
+#define _WIN32_WINNT 0x0600
 
 #include <afxwin.h>         // MFC-Kern- und -Standardkomponenten
 #include <afxext.h>         // MFC-Erweiterungen

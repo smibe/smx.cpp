@@ -1,5 +1,5 @@
 //{{NO_DEPENDENCIES}}
-// Microsoft Developer Studio generated include file.
+// Microsoft Visual C++ generated include file.
 // Used by FCU.rc
 //
 #define IDD_FIRST                       100
@@ -14,7 +14,6 @@
 #define IDR_DIFFEDIT_POPUP              143
 #define IDR_DIRDIFF_POPUP               144
 #define IDD_SAVE_COMP                   148
-#define IDD_CMP_FIL                     149
 #define IDD_COLORS                      150
 #define IDD_UNINSTALL                   151
 #define IDB_Question                    152
@@ -37,8 +36,11 @@
 #define IDS_OUT_OF_MEMORY               402
 #define IDS_PAGE_STR                    403
 #define IDS_LIST_ALLOC_NEGATIVE         404
+#define IDC_stLeftFile                  1000
 #define IDC_VSIZE                       1001
+#define IDC_stRightFile                 1001
 #define IDC_HSIZE                       1002
+#define IDC_CB_MASK                     1002
 #define IDC_DIFF_LIST                   1003
 #define IDC_BT_DIR1                     1004
 #define IDC_BT_DIR2                     1006
@@ -136,6 +138,25 @@
 #define IDC_ckPrintWithColors           1093
 #define IDC_ebRightColor                1094
 #define IDC_reUsage                     1128
+#define IDD_CMP_FIL                     1149
+#define IDC_CK_SUBDIR                   1500
+#define IDC_ED_FRIGHT                   1501
+#define IDC_ED_FMERGE                   1502
+#define IDC_ED_FLEFT                    1503
+#define IDC_R_RIGHT                     1504
+#define IDC_R_LEFT                      1505
+#define IDC_R_MERGE                     1506
+#define IDC_B_SEL                       1507
+#define IDC_CB_DIR                      1508
+#define IDC_ED_COMPFILENAME             1509
+#define IDC_B_SAVE_AS                   1510
+#define IDC_R_SAVE_AS                   1511
+#define IDC_GR_DIR                      1512
+#define IDC_CK_IGN_BLANKS               1513
+#define IDC_CB_FIL1                     1514
+#define IDC_BT_FIL1                     1515
+#define IDC_CB_FIL2                     1516
+#define IDC_BT_FIL2                     1517
 #define IDS_small                       2000
 #define IDS_beautiful                   2001
 #define IDS_PassedEndOfFile             2002
@@ -162,6 +183,28 @@
 #define IDS_MovedRight                  2023
 #define IDS_Identical                   2024
 #define IDS_Properties                  2025
+#define IDS_ComposedFileWasChanged      2801
+#define IDS_FileReadonly                2802
+#define IDS_UnknownErrorWhileReadingFile 2803
+#define IDS_ErrorReadingLeftFile        2804
+#define IDS_ErrorReadingRightFile       2805
+#define IDS_ComparingFiles              2806
+#define IDS_FileCmpBreakReceived        2807
+#define IDS_YouWantToCreateDir          2808
+#define IDS_Diffxx                      2809
+#define IDS_NoFilenameSpecified         2810
+#define IDS_SelectDirectory             2811
+#define IDS_ComposedFileWasChanged2     2812
+#define IDS_FileReadonly2               2813
+#define IDS_UnknownErrorWhileReadingFile2 2814
+#define IDS_ErrorReadingLeftFile2       2815
+#define IDS_ErrorReadingRightFile2      2816
+#define IDS_ComparingFiles2             2817
+#define IDS_FileCmpBreakReceived2       2818
+#define IDS_YouWantToCreateDir2         2819
+#define IDS_Diffxx2                     2820
+#define IDS_NoFilenameSpecified2        2821
+#define IDS_SelectDirectory2            2822
 #define ID_EDIT_DOWN                    24600
 #define ID_EDIT_UP                      24601
 #define ID_EDIT_LEFT                    24602

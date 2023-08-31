@@ -25,7 +25,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <PlatformToolset>v143</PlatformToolset>
-    <UseOfMfc>Dynamic</UseOfMfc>
+    <UseOfMfc>Static</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
@@ -58,7 +58,6 @@
       <AdditionalIncludeDirectories>..\SmxUserExt\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <ForceConformanceInForLoopScope>false</ForceConformanceInForLoopScope>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
@@ -109,7 +108,6 @@
       <Culture>0x0407</Culture>
     </ResourceCompile>
     <Lib>
-      <OutputFile>..\lib\Debug\SmxUserExt.lib</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
     </Lib>
     <Bscmake>
@@ -180,7 +178,7 @@
     <ClCompile Include="src\TitleTip.cpp" />
     <ClCompile Include="src\ToolbarEx.cpp" />
     <ClCompile Include="src\UserToolMgr.cpp" />
-    <ClCompile Include="src\UserToolsDlg.cpp" />
+    <ClCompile Include="src\SmxUserToolsDlg.cpp" />
     <ClCompile Include="src\Util.cpp" />
     <ClCompile Include="src\VarMgr.cpp" />
     <ClCompile Include="src\WaitDlg.cpp" />
@@ -254,7 +252,7 @@
     <ClInclude Include="src\TitleTip.h" />
     <ClInclude Include="src\ToolbarEx.h" />
     <ClInclude Include="src\UserToolMgr.h" />
-    <ClInclude Include="src\UserToolsDlg.h" />
+    <ClInclude Include="src\SmxUserToolsDlg.h" />
     <ClInclude Include="src\Util.h" />
     <ClInclude Include="src\VarMgr.h" />
     <ClInclude Include="src\WaitDlg.h" />

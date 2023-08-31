@@ -23,11 +23,11 @@
 #pragma once
 #endif // _MSC_VER > 1000
 
-#include "MDIChildWndEx.h"
+#include "FcuMDIChildWndEx.h"
 
 class CAcceleratorManager;
 
-class CFilDiffFrm : public CMDIChildWndEx
+class CFilDiffFrm : public CFcuMDIChildWndEx
 {
 	DECLARE_DYNCREATE(CFilDiffFrm)
 

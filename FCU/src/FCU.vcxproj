@@ -40,7 +40,7 @@
     <ClCompile Include="LINE.CXX" />
     <ClCompile Include="LIST.cxx" />
     <ClCompile Include="MainFrm.cpp" />
-    <ClCompile Include="MDIChildWndEx.cpp" />
+    <ClCompile Include="FchMDIChildWndEx.cpp" />
     <ClCompile Include="OptionSheet.cpp" />
     <ClCompile Include="PasswdDlg.cpp" />
     <ClCompile Include="SaveCompDlg.cpp" />
@@ -78,7 +78,7 @@
     <ClInclude Include="LINE.H" />
     <ClInclude Include="LIST.H" />
     <ClInclude Include="MainFrm.h" />
-    <ClInclude Include="MDIChildWndEx.h" />
+    <ClInclude Include="FcuMDIChildWndEx.h" />
     <ClInclude Include="optionsheet.h" />
     <ClInclude Include="PasswdDlg.h" />
     <ClInclude Include="resource.h" />
@@ -99,6 +99,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="resource.hm" />
+    <None Include="res\hsize.cur" />
+    <None Include="res\vsize.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\bitmap1.bmp" />
+    <Image Include="res\diff_dir.bmp" />
+    <Image Include="res\diff_dir.ico" />
+    <Image Include="res\diff_fil.bmp" />
+    <Image Include="res\Diff_Fil.ico" />
+    <Image Include="res\idr_main.ico" />
+    <Image Include="res\mainfram.bmp" />
+    <Image Include="res\question.bmp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -121,7 +133,7 @@
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
-    <UseOfMfc>Dynamic</UseOfMfc>
+    <UseOfMfc>Static</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -202,6 +214,8 @@
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
+      <AdditionalLibraryDirectories>..\..\lib\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SmxUserExt.lib</AdditionalDependencies>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -221,7 +235,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_OENOAUTOLIB;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>$(SolutionDir)..\SmxUserExt\src;$(SolutionDir)..\OE103\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
@@ -229,6 +243,8 @@
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>..\..\lib\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>oe103.lib;smxuserext.lib</AdditionalDependencies>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>

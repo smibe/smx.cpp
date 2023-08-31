@@ -86,7 +86,7 @@ CAcceleratorManager* CFilDiffFrm::m_pAccelMgr = NULL;
 
 extern LPCTSTR szInitPath;
 
-IMPLEMENT_DYNCREATE(CFilDiffFrm, CMDIChildWndEx)
+IMPLEMENT_DYNCREATE(CFilDiffFrm, CFcuMDIChildWndEx)
 
 CFilDiffFrm::CFilDiffFrm()
 {
@@ -97,7 +97,7 @@ CFilDiffFrm::~CFilDiffFrm()
 }
 
 
-BEGIN_MESSAGE_MAP(CFilDiffFrm, CMDIChildWndEx)
+BEGIN_MESSAGE_MAP(CFilDiffFrm, CFcuMDIChildWndEx)
 	//{{AFX_MSG_MAP(CFilDiffFrm)
 	//}}AFX_MSG_MAP
 END_MESSAGE_MAP()

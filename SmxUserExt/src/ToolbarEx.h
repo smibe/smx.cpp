@@ -34,11 +34,11 @@
 
 #define ID_CUSTOMIZE_BAR 0xFF
 
-class CMDIChildWndEx;
+class CFcuMDIChildWndEx;
 
 class CToolBarEx : public CToolBar
 {
-friend class CMDIChildWndEx;
+friend class CFcuMDIChildWndEx;
 protected:
 	// Inner structs
 		class  CToolBarButtonInfo

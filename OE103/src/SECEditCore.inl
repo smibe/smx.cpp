@@ -22,7 +22,7 @@
 //
 // Description: Implementation of the SECEditCore class
 //
-	 
+
 #include "SECEdit.h"
 #include "oepageset.h"
 #include "OEFindDlg.h"
@@ -40,7 +40,7 @@
 
 #if _MFC_VER >= 0x0421
 template <class BC>
-BOOL SECEditCore<BC>::OnMouseWheel(UINT nFlags, short zDelta, CPoint pt) 
+BOOL SECEditCore<BC>::OnMouseWheel(UINT nFlags, short zDelta, CPoint pt)
 {
 	// We are doing nothing, but returning TRUE.
 	// the reason is that if your are embedded in a Splitter, and the
@@ -63,7 +63,7 @@ template <class BC>
 SECEditCore<BC>::SECEditCore()
 {
 	m_bSendVScrollChanged = false;
-  m_iLineHeight = 15;
+	m_iLineHeight = 15;
 	m_iFirstLineNo = 1;
 	m_pTopLine = m_pCurLine = NULL;
 	// Paste in text after the caret by default
@@ -73,11 +73,11 @@ SECEditCore<BC>::SECEditCore()
 
 	// This works if it is in a dll
 	CBitmap bm;
-	HANDLE hBitmap = ::LoadImage(AfxFindResourceHandle(MAKEINTRESOURCE(IDB_SECEDIT_GUTTER),RT_BITMAP),
+	HANDLE hBitmap = ::LoadImage(AfxFindResourceHandle(MAKEINTRESOURCE(IDB_SECEDIT_GUTTER), RT_BITMAP),
 		MAKEINTRESOURCE(IDB_SECEDIT_GUTTER), IMAGE_BITMAP, 0, 0,
 		LR_DEFAULTCOLOR);
 
-	ASSERT (hBitmap != NULL);
+	ASSERT(hBitmap != NULL);
 	bm.Attach(hBitmap);
 	m_brGutter.CreatePatternBrush(&bm);
 
@@ -85,7 +85,7 @@ SECEditCore<BC>::SECEditCore()
 	m_hAccelTable = NULL;
 	m_bFinding = m_bReplacing = FALSE;
 	m_bUseVirtualWhitespace = FALSE; // Set this to TRUE Keep just like it was before.
-									// Set FALSE to keep cursor where stuff has been typed
+	// Set FALSE to keep cursor where stuff has been typed
 	m_bFinding = FALSE;
 	m_bReplacing = FALSE;
 
@@ -94,9 +94,9 @@ SECEditCore<BC>::SECEditCore()
 	m_nSplitRow = 0;
 	m_nSplitCol = 0;
 	m_bScrollMessage = FALSE;
-  m_nAccelTableID  = IDR_SEC_DEVSTUDIO_ACCEL;
+	m_nAccelTableID = IDR_SEC_DEVSTUDIO_ACCEL;
 
-  m_iLineNumSpace = 1;
+	m_iLineNumSpace = 1;
 }
 
 //@doc SECEditCore 
@@ -114,18 +114,18 @@ SECEditCore<BC>::~SECEditCore()
 }
 
 template <class BC>
-BOOL SECEditCore<BC>::PreTranslateMessage(MSG* pMsg) 
+BOOL SECEditCore<BC>::PreTranslateMessage(MSG* pMsg)
 {
 	if (pMsg->message >= WM_KEYFIRST && pMsg->message <= WM_KEYLAST)
 	{
 		// finally, translate the message
 		//HACCEL hAccel = GetDefaultAccelerator();
-		if((m_hAccelTable != NULL) &&  (::TranslateAccelerator(m_hWnd, m_hAccelTable, pMsg)))
+		if ((m_hAccelTable != NULL) && (::TranslateAccelerator(m_hWnd, m_hAccelTable, pMsg)))
 		{
 			// Handled by the Accel Table
 			return TRUE;
 		}
-	}	
+	}
 	// Else return Default
 	return BC::PreTranslateMessage(pMsg);
 }
@@ -157,11 +157,11 @@ COLORREF SECEditCore<BC>::GetGutterColor(COLORREF clrEmpty)
 //@parm CREATESTRUCT& cs An MFC create structure.
 
 template <class BC>
- BOOL SECEditCore<BC>::PreCreateWindow(CREATESTRUCT& cs)
+BOOL SECEditCore<BC>::PreCreateWindow(CREATESTRUCT& cs)
 {
-   HCURSOR hCursor = ::LoadCursor(NULL,IDC_IBEAM);
-	cs.lpszClass = AfxRegisterWndClass(CS_OWNDC|CS_DBLCLKS|CS_BYTEALIGNWINDOW|CS_BYTEALIGNCLIENT|CS_HREDRAW|CS_VREDRAW,
-		            hCursor,NULL,NULL);	
+	HCURSOR hCursor = ::LoadCursor(NULL, IDC_IBEAM);
+	cs.lpszClass = AfxRegisterWndClass(CS_OWNDC | CS_DBLCLKS | CS_BYTEALIGNWINDOW | CS_BYTEALIGNCLIENT | CS_HREDRAW | CS_VREDRAW,
+		hCursor, NULL, NULL);
 	return BC::PreCreateWindow(cs);
 }
 
@@ -175,8 +175,8 @@ template <class BC>
 template <class BC>
 void SECEditCore<BC>::OnDraw(CDC* pDC)
 {
-pDC; //UNUSED
-	
+	pDC; //UNUSED
+
 }
 
 
@@ -213,25 +213,25 @@ void SECEditCore<BC>::Dump(CDumpContext& dc) const
 //@parm  BOOL bUpdate
 template <class BC>
 int SECEditCore<BC>::DoError(int iCode, BOOL bUpdate)
-	{
+{
 	CString str;
-	TCHAR szBuf[_MAX_PATH+128];
+	TCHAR szBuf[_MAX_PATH + 128];
 
 	if (!bUpdate)
 		return iCode;
 
 	if (!str.LoadString(iCode))
-		{
-		TRACE(_T("DoError: Undefined error code %d\r\n"),iCode);
+	{
+		TRACE(_T("DoError: Undefined error code %d\r\n"), iCode);
 		return iCode;
-		}
+	}
 	else
-		_tcscpy(szBuf,str);
-	
-	AfxMessageBox(szBuf,MB_ICONEXCLAMATION|MB_OK);
+		_tcscpy(szBuf, str);
+
+	AfxMessageBox(szBuf, MB_ICONEXCLAMATION | MB_OK);
 
 	return iCode;
-	}
+}
 
 
 //@doc SECEditCore
@@ -248,29 +248,29 @@ BOOL SECEditCore<BC>::GetWordOrSelection(CString& str)
 
 	// use the current selection if it's all on one line
 	if (m_BlockStart.pLine && m_BlockEnd.pLine)
-		{
+	{
 		if (m_BlockStart.pLine == m_BlockEnd.pLine)
-			{
+		{
 			if (m_BlockEnd.iOffset < OE_MAXLINELENGTH)
-				{
-				int iStart = pEdit->GetRealOffset(m_BlockStart.pLine,m_BlockStart.iOffset);
-				int iEnd = pEdit->GetRealOffset(m_BlockEnd.pLine,m_BlockEnd.iOffset);
-				int iCount = iEnd-iStart;
-				strncpy(szWord,&(m_BlockStart.pLine->pText[iStart]),
-				        iCount);
+			{
+				int iStart = pEdit->GetRealOffset(m_BlockStart.pLine, m_BlockStart.iOffset);
+				int iEnd = pEdit->GetRealOffset(m_BlockEnd.pLine, m_BlockEnd.iOffset);
+				int iCount = iEnd - iStart;
+				strncpy(szWord, &(m_BlockStart.pLine->pText[iStart]),
+					iCount);
 				szWord[iCount] = 0;
 				iCount = strlen(szWord);
-				if (szWord[iCount-pEdit->m_iLineEndLength] == pEdit->m_szLineEnd[0])
-					szWord[iCount-pEdit->m_iLineEndLength] = 0;
+				if (szWord[iCount - pEdit->m_iLineEndLength] == pEdit->m_szLineEnd[0])
+					szWord[iCount - pEdit->m_iLineEndLength] = 0;
 				str = szWord;
 				return TRUE;
-				}
 			}
- 		}
+		}
+	}
 
 	PLINEDESC lpLine;
 	LPSTR szText;
-	int iPos,iLength,iColNo;
+	int iPos, iLength, iColNo;
 
 	lpLine = m_pCurLine;
 	szText = lpLine->pText;
@@ -278,33 +278,33 @@ BOOL SECEditCore<BC>::GetWordOrSelection(CString& str)
 		iLength = lpLine->iTxtSize;
 	else
 		iLength = 0;
-	if (iLength>1)
-		{
+	if (iLength > 1)
+	{
 		/* (maybe) adjust for OE_CR/OE_LF */
-		if (szText[iLength-pEdit->m_iLineEndLength] == pEdit->m_szLineEnd[0])
+		if (szText[iLength - pEdit->m_iLineEndLength] == pEdit->m_szLineEnd[0])
 			iLength -= pEdit->m_iLineEndLength;
-		}
+	}
 
-	iPos = pEdit->GetRealOffset(lpLine,m_iColNo);
+	iPos = pEdit->GetRealOffset(lpLine, m_iColNo);
 
 	/*  non-word:
 	 *     (!isalnum(szText[iPos]) && (szText[iPos] != '_')
 	 */
- 
-	/*  word:
-	 *     (isalnum(szText[iPos]) || (szText[iPos] == '_')
-	 */
+
+	 /*  word:
+	  *     (isalnum(szText[iPos]) || (szText[iPos] == '_')
+	  */
 	if (
-		 !iLength ||
-		 (iLength < iPos+1) ||
-		 ((!pEdit->Myisalnum(szText[iPos]) && (szText[iPos] != '_')))
+		!iLength ||
+		(iLength < iPos + 1) ||
+		((!pEdit->Myisalnum(szText[iPos]) && (szText[iPos] != '_')))
 		)
-		{
+	{
 		return FALSE;
-		}
+	}
 
 	/* back up to the beginning of the current word */
-	while (iPos && (pEdit->Myisalnum(szText[iPos-1]) || (szText[iPos-1] == '_')))
+	while (iPos && (pEdit->Myisalnum(szText[iPos - 1]) || (szText[iPos - 1] == '_')))
 		iPos--;
 
 	iColNo = iPos;
@@ -315,8 +315,8 @@ BOOL SECEditCore<BC>::GetWordOrSelection(CString& str)
 
 	//iPos = pEdit->GetTabbedOffset(lpLine,iPos);
 
-	strncpy(szWord,&(m_pCurLine->pText[iColNo]),(iPos-iColNo)+1);
-	szWord[(iPos-iColNo)+1] = 0;
+	strncpy(szWord, &(m_pCurLine->pText[iColNo]), (iPos - iColNo) + 1);
+	szWord[(iPos - iColNo) + 1] = 0;
 	str = szWord;
 	return TRUE;
 }
@@ -330,40 +330,40 @@ BOOL SECEditCore<BC>::GetWordOrSelection(CString& str)
 //@parm  BOOL bUpdate
 template <class BC>
 int SECEditCore<BC>::DoError(int iCode, LPCTSTR lpExtraText, BOOL bUpdate)
-   {
+{
 
 	CString str;
-	TCHAR szBuf[_MAX_PATH+128];
+	TCHAR szBuf[_MAX_PATH + 128];
 
 	if (!bUpdate)
 		return iCode;
 
 	if (str.LoadString(iCode))
-	   wsprintf(szBuf,str,(LPTSTR)lpExtraText);
+		wsprintf(szBuf, str, (LPTSTR)lpExtraText);
 	else
-		{
-		TRACE(_T("DoError: Undefined error code %d\r\n"),iCode);
+	{
+		TRACE(_T("DoError: Undefined error code %d\r\n"), iCode);
 		return iCode;
-		}
+	}
 
-	AfxMessageBox(szBuf, MB_ICONEXCLAMATION|MB_OK );
+	AfxMessageBox(szBuf, MB_ICONEXCLAMATION | MB_OK);
 
 	return iCode;
-	}
+}
 
 template <class BC>
 void SECEditCore<BC>::InvalidateLineRect(PLINEDESC pLine)
 {
-  if (!pLine)
-    return;
+	if (!pLine)
+		return;
 
-  if (!IsLineVisible(pLine->iLineNo))
-    return;
-  
-  CRect rcInvalid = m_rect;
-  rcInvalid.top += max(0, pLine->iLineNo - m_pTopLine->iLineNo) * m_iLineHeight;
-  rcInvalid.bottom = rcInvalid.top + m_iLineHeight;
-  InvalidateRect(rcInvalid);
+	if (!IsLineVisible(pLine->iLineNo))
+		return;
+
+	CRect rcInvalid = m_rect;
+	rcInvalid.top += max(0, pLine->iLineNo - m_pTopLine->iLineNo) * m_iLineHeight;
+	rcInvalid.bottom = rcInvalid.top + m_iLineHeight;
+	InvalidateRect(rcInvalid);
 }
 
 
@@ -374,73 +374,73 @@ void SECEditCore<BC>::InvalidateLineRect(PLINEDESC pLine)
 //@parm CPoint point The point to test against the current selection.
 
 template <class BC>
-BOOL SECEditCore<BC>::IsPointInBlock(CPoint point) 
-   {
+BOOL SECEditCore<BC>::IsPointInBlock(CPoint point)
+{
 	if (!m_bSelecting)
 		return FALSE;
 
-   PLINEDESC pLine;
-   int nNumLines,nNumChars;
-   int nTargetCol,iTargetLine;
-	int iLineNo,iColNo;
+	PLINEDESC pLine;
+	int nNumLines, nNumChars;
+	int nTargetCol, iTargetLine;
+	int iLineNo, iColNo;
 	CPoint ptBlock;
 
-   nNumChars = m_rect.right / m_iCharWidth;
-   nNumLines = m_rect.bottom / m_iLineHeight;
+	nNumChars = m_rect.right / m_iCharWidth;
+	nNumLines = m_rect.bottom / m_iLineHeight;
 
 	SECEdit* pEdit = GetEdit();
 	ASSERT(pEdit != NULL);
-   nTargetCol = ( (point.x-m_iMarkSpace) + (m_iCharWidth / 2) ) / m_iCharWidth;
+	nTargetCol = ((point.x - m_iMarkSpace) + (m_iCharWidth / 2)) / m_iCharWidth;
 
-   iTargetLine = point.y / m_iLineHeight;
-   if (((iTargetLine*m_iLineHeight)+m_iLineHeight) > m_rect.bottom)
-      return FALSE;
+	iTargetLine = point.y / m_iLineHeight;
+	if (((iTargetLine * m_iLineHeight) + m_iLineHeight) > m_rect.bottom)
+		return FALSE;
 
 	iTargetLine += m_iFirstLineNo;
-   pLine = m_pTopLine;
-   if (!pLine)
-      return FALSE;
+	pLine = m_pTopLine;
+	if (!pLine)
+		return FALSE;
 
 	iLineNo = m_iFirstLineNo;
-   while (pLine && (iTargetLine != iLineNo))
-      {
-      pLine = pLine->pNext;
-      if (!pLine)
+	while (pLine && (iTargetLine != iLineNo))
+	{
+		pLine = pLine->pNext;
+		if (!pLine)
 			return FALSE;
 		iLineNo++;
-      }
+	}
 
-	if (InBlock(pLine, pEdit->GetTabbedOffset(pLine,pLine->iTxtSize), &ptBlock))
-		{
+	if (InBlock(pLine, pEdit->GetTabbedOffset(pLine, pLine->iTxtSize), &ptBlock))
+	{
 		if (m_iBlockType == OE_COLUMN)
-			{
+		{
 			if ((nTargetCol >= ptBlock.x) && (nTargetCol <= (ptBlock.x + ptBlock.y)))
 				return TRUE;
-			}
+		}
 		else
-			{
-			iColNo = nTargetCol+m_iLeftEdge;
+		{
+			iColNo = nTargetCol + m_iLeftEdge;
 			if (pLine == m_BlockStart.pLine)
-				{
+			{
 				if ((pLine != m_BlockEnd.pLine) && (iColNo >= ptBlock.x))
 					return TRUE;
-				else if ((iColNo >= ptBlock.x) && (iColNo <= (ptBlock.x+ptBlock.y)))
+				else if ((iColNo >= ptBlock.x) && (iColNo <= (ptBlock.x + ptBlock.y)))
 					return TRUE;
-				}
+			}
 			else if (pLine == m_BlockEnd.pLine)
-				{
+			{
 				//if (iColNo <= (ptBlock.x+ptBlock.y))
-				if (iColNo < (ptBlock.x+ptBlock.y))
+				if (iColNo < (ptBlock.x + ptBlock.y))
 					return TRUE;
-				}
+			}
 			else
 				return TRUE;
 
-			}
 		}
+	}
 
 	return FALSE;
-	}
+}
 
 
 //@doc SECEditCore
@@ -448,11 +448,11 @@ BOOL SECEditCore<BC>::IsPointInBlock(CPoint point)
 //@rdesc int 0 on success, -1 on failure.
 //@parm LPCREATESTRUCT lpCreateStruct
 template <class BC>
-int SECEditCore<BC>::OnCreate(LPCREATESTRUCT lpCreateStruct) 
+int SECEditCore<BC>::OnCreate(LPCREATESTRUCT lpCreateStruct)
 {
 	if (BC::OnCreate(lpCreateStruct) == -1)
 		return -1;
-	
+
 	return 0;
 }
 
@@ -492,24 +492,24 @@ BOOL SECEditCore<BC>::InitializeDataSource(COleDataSource* pDataSource, CLIPFORM
 //@parm  DWORD dwKeyState
 //@parm  CPoint point
 template <class BC>
-DROPEFFECT SECEditCore<BC>::OnDragOver(COleDataObject* pDataObject, DWORD dwKeyState, CPoint point) 
+DROPEFFECT SECEditCore<BC>::OnDragOver(COleDataObject* pDataObject, DWORD dwKeyState, CPoint point)
 {
 	// Check to see if Data is in a format that we desire...
 	if (!pDataObject->IsDataAvailable(CF_TEXT))
 		return DROPEFFECT_NONE;
 
-	int nTargetCol = ( (point.x-m_iMarkSpace) + (m_iCharWidth / 2) ) / m_iCharWidth;
+	int nTargetCol = ((point.x - m_iMarkSpace) + (m_iCharWidth / 2)) / m_iCharWidth;
 
 	int nTargetLine = point.y / m_iLineHeight;
-	if (((nTargetLine*m_iLineHeight)+m_iLineHeight) > m_rect.bottom)
+	if (((nTargetLine * m_iLineHeight) + m_iLineHeight) > m_rect.bottom)
 		nTargetLine--;
-	
+
 	point.x = (nTargetCol * m_iCharWidth) + m_iMarkSpace;
 	point.y = nTargetLine * m_iLineHeight;
 	SetCaretPos(point);
 
-   return (dwKeyState & MK_CONTROL) ?
-             DROPEFFECT_COPY : DROPEFFECT_MOVE;
+	return (dwKeyState & MK_CONTROL) ?
+		DROPEFFECT_COPY : DROPEFFECT_MOVE;
 }
 
 //@doc SECEditCore
@@ -519,7 +519,7 @@ DROPEFFECT SECEditCore<BC>::OnDragOver(COleDataObject* pDataObject, DWORD dwKeyS
 //@parm  DWORD dwKeyState
 //@parm  CPoint point
 template <class BC>
-DROPEFFECT SECEditCore<BC>::OnDragEnter(COleDataObject* pDataObject, DWORD dwKeyState, CPoint point) 
+DROPEFFECT SECEditCore<BC>::OnDragEnter(COleDataObject* pDataObject, DWORD dwKeyState, CPoint point)
 {
 	point;
 
@@ -527,17 +527,17 @@ DROPEFFECT SECEditCore<BC>::OnDragEnter(COleDataObject* pDataObject, DWORD dwKey
 	if (!pDataObject->IsDataAvailable(CF_TEXT))
 		return DROPEFFECT_NONE;
 
-	::CreateCaret(m_hWnd,(HBITMAP)1,2,m_iLineHeight);
+	::CreateCaret(m_hWnd, (HBITMAP)1, 2, m_iLineHeight);
 	ShowCaret();
 	return (dwKeyState & MK_CONTROL) ?
-				DROPEFFECT_COPY : DROPEFFECT_MOVE;
+		DROPEFFECT_COPY : DROPEFFECT_MOVE;
 }
 
 //@doc SECEditCore
 //@mfunc Internal function used to implement OLE drag and drop.
 //@rdesc void 
 template <class BC>
-void SECEditCore<BC>::OnDragLeave() 
+void SECEditCore<BC>::OnDragLeave()
 {
 	DestroyCaret();
 }
@@ -557,27 +557,27 @@ void SECEditCore<BC>::DoDropPaste(LPSTR lpDropText, int iLength)
 
 	TEXTPOS pos;
 	pos.pLine = m_pCurLine;
-	pos.iOffset = pEdit->GetRealOffset(m_pCurLine,m_iColNo);
+	pos.iOffset = pEdit->GetRealOffset(m_pCurLine, m_iColNo);
 
-   // if it has our column block header, strip it off
-   if ((iLength > 21) && !memcmp(lpDropText,"*SECEdit Column Block*",22))
-		{
+	// if it has our column block header, strip it off
+	if ((iLength > 21) && !memcmp(lpDropText, "*SECEdit Column Block*", 22))
+	{
 		bColumn = TRUE;
-      iOffset = 24;
-		}
+		iOffset = 24;
+	}
 
-   // is there more than one line?
-	char search[4] = {0x0D,0x0A,0,0};
-	LPSTR lpTemp = strpbrk(&lpDropText[iOffset],search);
+	// is there more than one line?
+	char search[4] = { 0x0D,0x0A,0,0 };
+	LPSTR lpTemp = strpbrk(&lpDropText[iOffset], search);
 	if (!lpTemp)
-		pEdit->InsertString(&pos,&lpDropText[iOffset],TRUE,TRUE);
+		pEdit->InsertString(&pos, &lpDropText[iOffset], TRUE, TRUE);
 	else
-		{
+	{
 		if (bColumn)
-			pEdit->ColumnPaste(&pos,&lpDropText[iOffset], iLength, TRUE);
+			pEdit->ColumnPaste(&pos, &lpDropText[iOffset], iLength, TRUE);
 		else
 			pEdit->Paste(&pos, &lpDropText[iOffset], iLength, TRUE);
-		}
+	}
 }
 
 // ((SECEditCore<BC>*)_secDndState->pDropOrigin)
@@ -588,11 +588,11 @@ void SECEditCore<BC>::DoDropPaste(LPSTR lpDropText, int iLength)
 //@parm  DROPEFFECT dropEffect
 //@parm  CPoint point
 template <class BC>
-BOOL SECEditCore<BC>::OnDrop(COleDataObject* pDataObject, DROPEFFECT dropEffect, CPoint point) 
+BOOL SECEditCore<BC>::OnDrop(COleDataObject* pDataObject, DROPEFFECT dropEffect, CPoint point)
 {
-  if ((dropEffect == DROPEFFECT_COPY || 
-       dropEffect == DROPEFFECT_MOVE)) 
-	  {
+	if ((dropEffect == DROPEFFECT_COPY ||
+		dropEffect == DROPEFFECT_MOVE))
+	{
 
 		if (IsPointInBlock(point))
 			return FALSE;
@@ -605,52 +605,52 @@ BOOL SECEditCore<BC>::OnDrop(COleDataObject* pDataObject, DROPEFFECT dropEffect,
 		pEdit->SetUndoGroup(TRUE);
 
 		if (_secDndState->pDropOrigin && (dropEffect == DROPEFFECT_MOVE))
-			{
+		{
 			TEXTPOS DropPoint;
 
 			ASSERT_VALID(_secDndState->pDropOrigin);
 
 			// cache the TEXTPOS of the drop point
 			DropPoint.pLine = m_pCurLine;
-			DropPoint.iOffset = pEdit->GetRealOffset(m_pCurLine,m_iColNo);
+			DropPoint.iOffset = pEdit->GetRealOffset(m_pCurLine, m_iColNo);
 
 			if (this == _secDndState->pDropOrigin)
-				{
+			{
 				// move to the beginning of the block
 				((SECEditCore<BC>*)_secDndState->pDropOrigin)->m_pCurLine = m_BlockStart.pLine;
 				((SECEditCore<BC>*)_secDndState->pDropOrigin)->m_iColNo = m_BlockStart.iOffset;
-				}
+			}
 
 			// If we're dropping to a point on the same line as the marked 
 			// block we need to calculate what the offset of the drop point
 			// will be after the cut is done.
 
 			if (DropPoint.pLine == ((SECEditCore<BC>*)_secDndState->pDropOrigin)->m_BlockEnd.pLine)
-				{
+			{
 				if (((SECEditCore<BC>*)_secDndState->pDropOrigin)->m_BlockStart.pLine == ((SECEditCore<BC>*)_secDndState->pDropOrigin)->m_BlockEnd.pLine)
-					{
+				{
 					if (DropPoint.iOffset > ((SECEditCore<BC>*)_secDndState->pDropOrigin)->m_BlockEnd.iOffset)
 						DropPoint.iOffset -= (((SECEditCore<BC>*)_secDndState->pDropOrigin)->m_BlockEnd.iOffset - ((SECEditCore<BC>*)_secDndState->pDropOrigin)->m_BlockStart.iOffset);
-					}
-				else
-					{
-					DropPoint.pLine = ((SECEditCore<BC>*)_secDndState->pDropOrigin)->m_BlockStart.pLine;
-					DropPoint.iOffset = ((SECEditCore<BC>*)_secDndState->pDropOrigin)->m_BlockStart.iOffset + 
-						                  (DropPoint.iOffset - ((SECEditCore<BC>*)_secDndState->pDropOrigin)->m_BlockEnd.iOffset);
-					}
 				}
+				else
+				{
+					DropPoint.pLine = ((SECEditCore<BC>*)_secDndState->pDropOrigin)->m_BlockStart.pLine;
+					DropPoint.iOffset = ((SECEditCore<BC>*)_secDndState->pDropOrigin)->m_BlockStart.iOffset +
+						(DropPoint.iOffset - ((SECEditCore<BC>*)_secDndState->pDropOrigin)->m_BlockEnd.iOffset);
+				}
+			}
 
-			((SECEditCore<BC>*)_secDndState->pDropOrigin)->Cut(FALSE,TRUE);
+			((SECEditCore<BC>*)_secDndState->pDropOrigin)->Cut(FALSE, TRUE);
 
 			// move to the drop point
 			m_pCurLine = DropPoint.pLine;
 			m_iLineNo = pEdit->GetLineNo(DropPoint.pLine);
-			m_iColNo = pEdit->GetTabbedOffset(DropPoint.pLine,DropPoint.iOffset);
+			m_iColNo = pEdit->GetTabbedOffset(DropPoint.pLine, DropPoint.iOffset);
 
 			if (this != _secDndState->pDropOrigin)
 				_secDndState->pDropOrigin->Invalidate();
 
-			}
+		}
 
 		// do the paste
 		STGMEDIUM stg;
@@ -663,27 +663,27 @@ BOOL SECEditCore<BC>::OnDrop(COleDataObject* pDataObject, DROPEFFECT dropEffect,
 		fe.ptd = NULL;
 
 		if (pDataObject->GetData(CF_TEXT, &stg, &fe))
-			{
+		{
 			LPSTR lpDropText = LPSTR(GlobalLock(stg.hGlobal));
 			DoDropPaste(lpDropText, strlen(lpDropText));
 			GlobalUnlock(stg.hGlobal);
-			}
+		}
 		else
-			{
+		{
 			pEdit->SetUndoGroup(FALSE);
 			return FALSE;
-			}
+		}
 
 		// update the display
-		InvalidateRect(NULL,FALSE);
+		InvalidateRect(NULL, FALSE);
 		UpdateWindow();
 		CountLines();
 		MakeCursorVisible();
-		UpdateViews(this,NULL,NULL);
+		UpdateViews(this, NULL, NULL);
 
 		pEdit->SetUndoGroup();
-		}
-	return TRUE;  
+	}
+	return TRUE;
 }
 
 //@doc SECEditCore
@@ -701,39 +701,41 @@ DROPEFFECT SECEditCore<BC>::DoDragCopy()
 	int iExtra;
 	LPSTR lpData;
 
-   if (m_iBlockType == OE_COLUMN)
-		{
-      Start = m_BlockStart;
-      End = m_BlockEnd;
-      Start.iOffset = pEdit->GetRealOffset(Start.pLine,Start.iOffset);
-      End.iOffset = pEdit->GetRealOffset(Start.pLine,End.iOffset);
-      lpSource = pEdit->ColumnCopy(&Start,&End,FALSE);  
+	if (m_iBlockType == OE_COLUMN)
+	{
+		Start = m_BlockStart;
+		End = m_BlockEnd;
+		Start.iOffset = pEdit->GetRealOffset(Start.pLine, Start.iOffset);
+		End.iOffset = pEdit->GetRealOffset(Start.pLine, End.iOffset);
+		lpSource = pEdit->ColumnCopy(&Start, &End, FALSE);
 		iExtra = 25;
-		}
-   else if (m_BlockStart.pLine && m_BlockEnd.pLine)
-      {
-      // BlockStart and BlockEnd positions are tabbed,
-      // SECEdit::Copy gets the real offset
-      Start = m_BlockStart;
-      End = m_BlockEnd;
-      Start.iOffset = pEdit->GetRealOffset(Start.pLine,Start.iOffset);
-      End.iOffset = pEdit->GetRealOffset(End.pLine,End.iOffset);
-      lpSource = pEdit->Copy(&Start,&End,FALSE);
+	}
+	else if (m_BlockStart.pLine && m_BlockEnd.pLine)
+	{
+		// BlockStart and BlockEnd positions are tabbed,
+		// SECEdit::Copy gets the real offset
+		Start = m_BlockStart;
+		End = m_BlockEnd;
+		Start.iOffset = pEdit->GetRealOffset(Start.pLine, Start.iOffset);
+		End.iOffset = pEdit->GetRealOffset(End.pLine, End.iOffset);
+		lpSource = pEdit->Copy(&Start, &End, FALSE);
 		iExtra = 1;
-      }
+	}
 
 	HGLOBAL h = GlobalAlloc(GHND | GMEM_SHARE, strlen(lpSource) + iExtra);
 	lpData = (LPSTR)GlobalLock(h);
-   if (m_iBlockType == OE_COLUMN)
-		{
-      strcpy(lpData,"*SECEdit Column Block*");
-      for (int i=0;i<pEdit->m_iLineEndLength;i++)
-         lpData[i+22] = pEdit->m_szLineEnd[i];
-      lpData[i+22] = 0;
-      strcat(lpData,lpSource);
-		}
+	if (m_iBlockType == OE_COLUMN)
+	{
+		strcpy(lpData, "*SECEdit Column Block*");
+		int i = 0;
+		for (i = 0; i < pEdit->m_iLineEndLength; i++)
+			lpData[i + 22] = pEdit->m_szLineEnd[i];
+
+		lpData[i + 22] = 0;
+		strcat(lpData, lpSource);
+	}
 	else
-		strcpy(lpData,lpSource);
+		strcpy(lpData, lpSource);
 
 	COleDataSource* pDataSource = GetNewDataSource();
 
@@ -742,15 +744,15 @@ DROPEFFECT SECEditCore<BC>::DoDragCopy()
 	BOOL bDoDragStart = InitializeDataSource(pDataSource, CF_TEXT, h);
 
 	GlobalUnlock(h);
-	delete [] lpSource;
+	delete[] lpSource;
 
 	DROPEFFECT de = DROPEFFECT_NONE;
-	
-	if(bDoDragStart)
+
+	if (bDoDragStart)
 	{
 		ASSERT_VALID(pDataSource);
 		_secDndState->pDropOrigin = this;
-		de = pDataSource->DoDragDrop(DROPEFFECT_COPY|DROPEFFECT_MOVE);
+		de = pDataSource->DoDragDrop(DROPEFFECT_COPY | DROPEFFECT_MOVE);
 		_secDndState->pDropOrigin = NULL;
 		delete pDataSource;
 	}
@@ -764,113 +766,113 @@ DROPEFFECT SECEditCore<BC>::DoDragCopy()
 //@parm UINT nFlags
 //@parm  CPoint point
 template <class BC>
-void SECEditCore<BC>::OnLButtonDown(UINT nFlags, CPoint point) 
-   {
+void SECEditCore<BC>::OnLButtonDown(UINT nFlags, CPoint point)
+{
 	PLINEDESC pTempLine;
-	int iPrevLine,iPrevCol;
+	int iPrevLine, iPrevCol;
 
 	if (m_bSelecting)
-		{
+	{
 		if (nFlags & MK_SHIFT)  // extend selection to here
-			{
+		{
 			iPrevLine = m_iLineNo;
 			iPrevCol = m_iColNo;
 			pTempLine = m_pCurLine;
 			m_pCurLine->bInvalidStart = TRUE;
 			m_pCurLine->iInvalidStartCol = m_iColNo;
-			MouseGoTo(point.x,point.y);
+			MouseGoTo(point.x, point.y);
 			if ((iPrevLine > m_iLineNo) ||
-				 ((iPrevLine == m_iLineNo) && (iPrevCol > m_iColNo)))
-				{
+				((iPrevLine == m_iLineNo) && (iPrevCol > m_iColNo)))
+			{
 				pTempLine->bInvalidStart = FALSE;
 				pTempLine->iInvalidStartCol = 0;
 				pTempLine->bInvalidEnd = TRUE;
 				pTempLine->iInvalidEndCol = iPrevCol;
 				m_pCurLine->bInvalidStart = TRUE;
 				m_pCurLine->iInvalidStartCol = m_iColNo;
-				}
+			}
 			else
-				{
+			{
 				m_pCurLine->bInvalidEnd = TRUE;
 				m_pCurLine->iInvalidEndCol = m_iColNo;
-				}
-			UpdateSelection(m_bUpdate);
 			}
+			UpdateSelection(m_bUpdate);
+		}
 		else if (IsPointInBlock(point))   // start a drag operation
-			{
+		{
 
 			if (DoDragCopy() == DROPEFFECT_NONE)
-				{
-				// kill the selection and start over
-   			ClearSelection(m_bUpdate);
-		   	MouseGoTo(point.x,point.y);
-				}
-			}
-		else
 			{
+				// kill the selection and start over
+				ClearSelection(m_bUpdate);
+				MouseGoTo(point.x, point.y);
+			}
+		}
+		else
+		{
 			// there was a selection, kill it and start over
-   		ClearSelection(m_bUpdate);
-	   	MouseGoTo(point.x,point.y);
-		   StartSelection(m_iBlockType,m_bUpdate);
+			ClearSelection(m_bUpdate);
+			MouseGoTo(point.x, point.y);
+			StartSelection(m_iBlockType, m_bUpdate);
 			GetCursorPos(&m_ptOldCursor);
 			ScreenToClient(&m_ptOldCursor);
 			if (!m_bTrack)
-				{
-			   SetCapture();
-			   m_bTrack = TRUE;
-			   m_iTimer=SetTimer(6,100,NULL);
-   			m_bEatIt = TRUE;
-				}
+			{
+				SetCapture();
+				m_bTrack = TRUE;
+				m_iTimer = SetTimer(6, 100, NULL);
+				m_bEatIt = TRUE;
 			}
 		}
+	}
 	else  // starting a new selection
-		{
+	{
 		BOOL bAlt = GetKeyState(VK_MENU) < 0;
 		if ((m_iBlockType == OE_COLUMN) || bAlt)
 			m_iBlockType = OE_COLUMN;
 		else
 			m_iBlockType = OE_STREAM;
 		if (nFlags & MK_SHIFT)  // extend selection to here
-			{
-			StartSelection(m_iBlockType,m_bUpdate);
+		{
+			StartSelection(m_iBlockType, m_bUpdate);
 			iPrevLine = m_iLineNo;
 			iPrevCol = m_iColNo;
 			pTempLine = m_pCurLine;
 			m_pCurLine->bInvalidStart = TRUE;
 			m_pCurLine->iInvalidStartCol = m_iColNo;
-			MouseGoTo(point.x,point.y);
+			MouseGoTo(point.x, point.y);
 			if ((iPrevLine > m_iLineNo) ||
-				 ((iPrevLine == m_iLineNo) && (iPrevCol > m_iColNo)))
-				{
+				((iPrevLine == m_iLineNo) && (iPrevCol > m_iColNo)))
+			{
 				pTempLine->bInvalidStart = FALSE;
 				pTempLine->iInvalidStartCol = 0;
 				pTempLine->bInvalidEnd = TRUE;
 				pTempLine->iInvalidEndCol = iPrevCol;
 				m_pCurLine->bInvalidStart = TRUE;
 				m_pCurLine->iInvalidStartCol = m_iColNo;
-				}
+			}
 			else
-				{
+			{
 				m_pCurLine->bInvalidEnd = TRUE;
 				m_pCurLine->iInvalidEndCol = m_iColNo;
-				}
+			}
 			UpdateSelection(m_bUpdate);
-			}
+		}
 		else
-			{
-	      // move, then start selecting
-			MouseGoTo(point.x,point.y);
-			StartSelection(m_iBlockType,m_bUpdate);
-			}
-     
+		{
+			// move, then start selecting
+			MouseGoTo(point.x, point.y);
+			StartSelection(m_iBlockType, m_bUpdate);
+		}
+
 		GetCursorPos(&m_ptOldCursor);
 		ScreenToClient(&m_ptOldCursor);
 		SetCapture();
 		m_bTrack = TRUE;
-		m_iTimer=SetTimer(6,100,NULL);
+		m_iTimer = SetTimer(6, 100, NULL);
 		m_bEatIt = TRUE;
-		}
-   }
+	}
+}
 
 
 //@doc SECEditCore
@@ -879,36 +881,36 @@ void SECEditCore<BC>::OnLButtonDown(UINT nFlags, CPoint point)
 //@parm UINT nFlags
 //@parm  CPoint point
 template <class BC>
-void SECEditCore<BC>::OnLButtonUp(UINT nFlags, CPoint point) 
-	{
+void SECEditCore<BC>::OnLButtonUp(UINT nFlags, CPoint point)
+{
 	nFlags; //UNUSED
 	point; //UNUSED
 
 	if (m_iTimer)
-		{
+	{
 		KillTimer(6);
 		m_iTimer = 0;
-		}
+	}
 	if (m_bTrack)
-		{
+	{
 		m_bTrack = FALSE;
 		ReleaseCapture();
 		if (m_BlockStart.pLine &&
-			 (m_BlockStart.pLine == m_BlockEnd.pLine))
-			{
+			(m_BlockStart.pLine == m_BlockEnd.pLine))
+		{
 			int iLength = m_BlockStart.pLine->iTxtSize;
 			SECEdit* pEdit = GetEdit();
 			ASSERT(pEdit != NULL);
 			if ((m_BlockStart.iOffset == m_BlockEnd.iOffset) ||
 				!iLength ||
 				((iLength - pEdit->m_iLineEndLength) < 1) ||
-				(pEdit->GetRealOffset(m_BlockStart.pLine,m_BlockStart.iOffset) > (iLength - pEdit->m_iLineEndLength)))
+				(pEdit->GetRealOffset(m_BlockStart.pLine, m_BlockStart.iOffset) > (iLength - pEdit->m_iLineEndLength)))
 				ClearSelection(m_bUpdate);
-			}
+		}
 		if (!m_bSelecting && (point.x <= (m_iMarkSpace - (m_iCharWidth / 2))))
 			SelectLine(m_bUpdate);
-		}
-   }
+	}
+}
 
 
 //@doc SECEditCore
@@ -917,34 +919,34 @@ void SECEditCore<BC>::OnLButtonUp(UINT nFlags, CPoint point)
 //@parm UINT nFlags
 //@parm  CPoint point
 template <class BC>
-void SECEditCore<BC>::OnMouseMove(UINT nFlags, CPoint point) 
-   {
+void SECEditCore<BC>::OnMouseMove(UINT nFlags, CPoint point)
+{
 	nFlags;//UNUSED
-   PLINEDESC pOldLine;
-	int iOldColNo,iOldLineNo;
+	PLINEDESC pOldLine;
+	int iOldColNo, iOldLineNo;
 
 	if (m_bTrack)
-		{
+	{
 		if (point.y >= m_rect.bottom)
-			{
+		{
 			m_pCurLine->bInvalidStart = TRUE;
 			m_pCurLine->iInvalidStartCol = m_iColNo;
 			DownLine(m_bUpdate);
 			m_pCurLine->bInvalidEnd = TRUE;
 			m_pCurLine->iInvalidEndCol = m_iColNo;
 			UpdateSelection(m_bUpdate);
-			}
+		}
 		else if (point.y <= m_rect.top)
-			{
+		{
 			m_pCurLine->bInvalidEnd = TRUE;
 			m_pCurLine->iInvalidEndCol = m_iColNo;
 			UpLine(m_bUpdate);
 			m_pCurLine->bInvalidStart = TRUE;
 			m_pCurLine->iInvalidStartCol = m_iColNo;
 			UpdateSelection(m_bUpdate);
-			}
+		}
 		else       // inside the top and bottom
-			{
+		{
 			static int bReentrant;
 			if (bReentrant)
 				return;
@@ -956,51 +958,51 @@ void SECEditCore<BC>::OnMouseMove(UINT nFlags, CPoint point)
 			pOldLine = m_pCurLine;
 			iOldLineNo = m_iLineNo;
 			iOldColNo = m_iColNo;
-			MouseGoTo(point.x,point.y);
+			MouseGoTo(point.x, point.y);
 			if (m_iLineNo > iOldLineNo)      // went to next line
-				{
+			{
 				pOldLine->bInvalidStart = TRUE;
 				pOldLine->iInvalidStartCol = iOldColNo;
 				m_pCurLine->bInvalidEnd = TRUE;
 				m_pCurLine->iInvalidEndCol = m_iColNo;
-				}
+			}
 			else if (m_iLineNo < iOldLineNo) // went to prev line
-				{
+			{
 				m_pCurLine->bInvalidStart = TRUE;
 				m_pCurLine->iInvalidStartCol = m_iColNo;
 				pOldLine->bInvalidEnd = TRUE;
 				pOldLine->iInvalidEndCol = iOldColNo;
-				}
+			}
 			else                                  // stayed on same line
-				{
+			{
 				if (m_iColNo > iOldColNo)     // towards end of line
-					{
+				{
 					m_pCurLine->bInvalidStart = TRUE;
 					m_pCurLine->iInvalidStartCol = iOldColNo;
 					m_pCurLine->bInvalidEnd = TRUE;
 					m_pCurLine->iInvalidEndCol = m_iColNo;
-					}
+				}
 				else if (m_iColNo < iOldColNo)// towards beginning of line
-					{
+				{
 					m_pCurLine->bInvalidStart = TRUE;
 					m_pCurLine->iInvalidStartCol = m_iColNo;
 					m_pCurLine->bInvalidEnd = TRUE;
 					m_pCurLine->iInvalidEndCol = iOldColNo;
-					}
+				}
 				else
-					{
+				{
 					// same line and column, forget it
 					m_ptOldCursor = point;
 					bReentrant = FALSE;
 					return;
-					}
 				}
+			}
 			bReentrant = FALSE;
 			UpdateSelection(m_bUpdate);
-			}
+		}
 		m_ptOldCursor = point;
-      }
-   }
+	}
+}
 
 
 //@doc SECEditCore
@@ -1011,33 +1013,33 @@ void SECEditCore<BC>::OnMouseMove(UINT nFlags, CPoint point)
 //@rdesc void 
 //@parm UINT nIDEvent
 template <class BC>
-void SECEditCore<BC>::OnTimer(UINT nIDEvent) 
-	{
+void SECEditCore<BC>::OnTimer(UINT nIDEvent)
+{
 	POINT ptCursor;
 
 	if (nIDEvent == 6)
-		{
+	{
 		if (m_bEatIt)
-			{
+		{
 			m_bEatIt = FALSE;
 			return;
-			}
+		}
 		GetCursorPos(&ptCursor);
 		ScreenToClient(&ptCursor);
 		if ((ptCursor.y == m_ptOldCursor.y) &&
-			 (ptCursor.x == m_ptOldCursor.x) &&
-			 (ptCursor.y < m_rect.bottom) &&
-			 (ptCursor.y > m_rect.top) &&
-			 (ptCursor.x < m_rect.right) &&
-			 (ptCursor.x > m_rect.left))
+			(ptCursor.x == m_ptOldCursor.x) &&
+			(ptCursor.y < m_rect.bottom) &&
+			(ptCursor.y > m_rect.top) &&
+			(ptCursor.x < m_rect.right) &&
+			(ptCursor.x > m_rect.left))
 			return;
 		else
-			{
+		{
 			m_ptOldCursor = ptCursor;
-			OnMouseMove(0,ptCursor);
-			}
+			OnMouseMove(0, ptCursor);
 		}
 	}
+}
 
 //@doc SECEditCore
 //@mfunc Internal double click message handler.
@@ -1045,7 +1047,7 @@ void SECEditCore<BC>::OnTimer(UINT nIDEvent)
 //@parm UINT nFlags
 //@parm  CPoint point
 template <class BC>
-void SECEditCore<BC>::OnLButtonDblClk(UINT nFlags, CPoint point) 
+void SECEditCore<BC>::OnLButtonDblClk(UINT nFlags, CPoint point)
 {
 	point;  //UNUSED
 	nFlags; //UNUSED
@@ -1056,7 +1058,7 @@ void SECEditCore<BC>::OnLButtonDblClk(UINT nFlags, CPoint point)
 //@mfunc Internal paint handler.
 //@rdesc void 
 template <class BC>
-void SECEditCore<BC>::OnPaint() 
+void SECEditCore<BC>::OnPaint()
 {
 	Paint();
 }
@@ -1068,17 +1070,17 @@ void SECEditCore<BC>::OnPaint()
 //@parm CWnd* pWnd
 //@parm  CPoint point
 template <class BC>
-void SECEditCore<BC>::OnContextMenu(CWnd* pWnd, CPoint point) 
+void SECEditCore<BC>::OnContextMenu(CWnd* pWnd, CPoint point)
 {
 	CMenu menu;
-	if (menu.CreatePopupMenu()) 
+	if (menu.CreatePopupMenu())
 	{
 		// Set up the menu
-		if(ExtendContextMenu(&menu))
+		if (ExtendContextMenu(&menu))
 		{
 			menu.TrackPopupMenu(TPM_LEFTALIGN | TPM_RIGHTBUTTON, point.x, point.y, this);
 		}
-	} 
+	}
 	else
 		BC::OnContextMenu(pWnd, point);
 }
@@ -1098,32 +1100,32 @@ BOOL SECEditCore<BC>::ExtendContextMenu(CMenu* pMenu)
 
 	DWORD dwStyle;
 
-	dwStyle = pEdit->m_iUndoPos ? MF_STRING : MF_GRAYED|MF_STRING;
+	dwStyle = pEdit->m_iUndoPos ? MF_STRING : MF_GRAYED | MF_STRING;
 	pMenu->AppendMenu(dwStyle, ID_EDIT_UNDO, _T("&Undo"));
-	
-	dwStyle = (pEdit->m_iUndoCount && (pEdit->m_iUndoPos < pEdit->m_iUndoCount)) ? MF_STRING : MF_GRAYED|MF_STRING;
+
+	dwStyle = (pEdit->m_iUndoCount && (pEdit->m_iUndoPos < pEdit->m_iUndoCount)) ? MF_STRING : MF_GRAYED | MF_STRING;
 	pMenu->AppendMenu(dwStyle, ID_EDIT_REDO, _T("&Redo"));
-	
+
 	pMenu->AppendMenu(MF_SEPARATOR);
 
-	dwStyle = m_bSelecting ? MF_STRING : MF_GRAYED|MF_STRING;
+	dwStyle = m_bSelecting ? MF_STRING : MF_GRAYED | MF_STRING;
 	pMenu->AppendMenu(dwStyle, ID_EDIT_CUT, _T("Cu&t"));
 	pMenu->AppendMenu(dwStyle, ID_EDIT_COPY, _T("&Copy"));
-	
+
 	if (OpenClipboard())
-		{
+	{
 		if (IsClipboardFormatAvailable(CF_TEXT) || IsClipboardFormatAvailable(CF_OEMTEXT))
 			dwStyle = MF_STRING;
 		else
-			dwStyle = MF_GRAYED|MF_STRING;
+			dwStyle = MF_GRAYED | MF_STRING;
 		CloseClipboard();
-		}
+	}
 	else
-		dwStyle = MF_GRAYED|MF_STRING;
+		dwStyle = MF_GRAYED | MF_STRING;
 	pMenu->AppendMenu(dwStyle, ID_EDIT_PASTE, _T("&Paste"));
-	
+
 	pMenu->AppendMenu(MF_SEPARATOR);
-	
+
 	dwStyle = MF_STRING;
 	pMenu->AppendMenu(dwStyle, ID_BOOKMARKSET, _T("Toggle &Bookmark"));
 
@@ -1134,25 +1136,25 @@ BOOL SECEditCore<BC>::ExtendContextMenu(CMenu* pMenu)
 //@mfunc Internal message handler.
 //@rdesc void 
 template <class BC>
-void SECEditCore<BC>::OnEditBottomfile() 
+void SECEditCore<BC>::OnEditBottomfile()
 {
-   if (m_bSelecting)
+	if (m_bSelecting)
 		ClearSelection(m_bUpdate);
 	BottomOfFile(m_bUpdate);
-	
+
 }
 
 //@doc SECEditCore
 //@mfunc Internal message handler
 //@rdesc void
 template <class BC>
-void SECEditCore<BC>::OnToggleInsert() 
+void SECEditCore<BC>::OnToggleInsert()
 {
 	SECEdit* pEdit = GetEdit();
 	pEdit->SetInsertMode(!pEdit->GetInsertMode());
 }
 template <class BC>
-void SECEditCore<BC>::OnUpdateToggleInsert(CCmdUI* pCmdUI) 
+void SECEditCore<BC>::OnUpdateToggleInsert(CCmdUI* pCmdUI)
 {
 	SECEdit* pEdit = GetEdit();
 	pCmdUI->SetText(pEdit->GetInsertMode() ? afxEmptyString : _T("OVR"));
@@ -1161,117 +1163,117 @@ void SECEditCore<BC>::OnUpdateToggleInsert(CCmdUI* pCmdUI)
 //@mfunc Internal message handler.
 //@rdesc void 
 template <class BC>
-void SECEditCore<BC>::OnEditDown() 
+void SECEditCore<BC>::OnEditDown()
 {
-   if (m_bSelecting)
+	if (m_bSelecting)
 		ClearSelection(m_bUpdate);
 	DownLine(m_bUpdate);
-	
+
 }
 
 //@doc SECEditCore
 //@mfunc Internal message handler.
 //@rdesc void 
 template <class BC>
-void SECEditCore<BC>::OnEditEnd() 
+void SECEditCore<BC>::OnEditEnd()
 {
-   if (m_bSelecting)
+	if (m_bSelecting)
 		ClearSelection(m_bUpdate);
 	EndOfLine(m_bUpdate);
-	
+
 }
 
 //@doc SECEditCore
 //@mfunc Inernal message handler.
 //@rdesc void 
 template <class BC>
-void SECEditCore<BC>::OnEditHome() 
+void SECEditCore<BC>::OnEditHome()
 {
-   if (m_bSelecting)
+	if (m_bSelecting)
 		ClearSelection(m_bUpdate);
 	BeginningOfLine(m_bUpdate);
-	
+
 }
 
 //@doc SECEditCore
 //@mfunc Internal message handler.
 //@rdesc void 
 template <class BC>
-void SECEditCore<BC>::OnEditLeft() 
+void SECEditCore<BC>::OnEditLeft()
 {
-   if (m_bSelecting)
+	if (m_bSelecting)
 		ClearSelection(m_bUpdate);
 	CursorLeft(m_bUpdate);
-	
+
 }
 
 //@doc SECEditCore
 //@mfunc Internal message handler.
 //@rdesc void 
 template <class BC>
-void SECEditCore<BC>::OnEditPgdn() 
+void SECEditCore<BC>::OnEditPgdn()
 {
-   if (m_bSelecting)
+	if (m_bSelecting)
 		ClearSelection(m_bUpdate);
 	DownPage(m_bUpdate);
-	
+
 }
 
 //@doc SECEditCore
 //@mfunc Internal message handler.
 //@rdesc void 
 template <class BC>
-void SECEditCore<BC>::OnEditPgup() 
+void SECEditCore<BC>::OnEditPgup()
 {
-   if (m_bSelecting)
+	if (m_bSelecting)
 		ClearSelection(m_bUpdate);
 	UpPage(m_bUpdate);
-	
+
 }
 
 //@doc SECEditCore
 //@mfunc Internal message handler.
 //@rdesc void 
 template <class BC>
-void SECEditCore<BC>::OnEditRight() 
+void SECEditCore<BC>::OnEditRight()
 {
-   if (m_bSelecting)
+	if (m_bSelecting)
 		ClearSelection(m_bUpdate);
 	CursorRight(m_bUpdate);
-	
+
 }
 
 //@doc SECEditCore
 //@mfunc Internal message handler.
 //@rdesc void 
 template <class BC>
-void SECEditCore<BC>::OnEditTopfile() 
+void SECEditCore<BC>::OnEditTopfile()
 {
-   if (m_bSelecting)
+	if (m_bSelecting)
 		ClearSelection(m_bUpdate);
 	TopOfFile(m_bUpdate);
-	
+
 }
 
 //@doc SECEditCore
 //@mfunc Internal message handler.
 //@rdesc void 
 template <class BC>
-void SECEditCore<BC>::OnEditUp() 
+void SECEditCore<BC>::OnEditUp()
 {
-   if (m_bSelecting)
+	if (m_bSelecting)
 		ClearSelection(m_bUpdate);
 	UpLine(m_bUpdate);
-	
+
 }
 
 //@doc SECEditCore
 //@mfunc Internal message handler.
 //@rdesc void 
 template <class BC>
-void SECEditCore<BC>::OnEditWordleft() 
+void SECEditCore<BC>::OnEditWordleft()
 {
-   if (m_bSelecting)
+	if (m_bSelecting)
 		ClearSelection(m_bUpdate);
 	WordLeft(m_bUpdate);
 }
@@ -1280,9 +1282,9 @@ void SECEditCore<BC>::OnEditWordleft()
 //@mfunc Internal message handler.
 //@rdesc void 
 template <class BC>
-void SECEditCore<BC>::OnEditWordright() 
+void SECEditCore<BC>::OnEditWordright()
 {
-   if (m_bSelecting)
+	if (m_bSelecting)
 		ClearSelection(m_bUpdate);
 	WordRight(m_bUpdate);
 }
@@ -1294,7 +1296,7 @@ void SECEditCore<BC>::OnEditWordright()
 //@parm  int cx
 //@parm  int cy
 template <class BC>
-void SECEditCore<BC>::OnSize(UINT nType, int cx, int cy) 
+void SECEditCore<BC>::OnSize(UINT nType, int cx, int cy)
 {
 	SECEdit* pEdit = GetEdit();
 	ASSERT(pEdit != NULL);
@@ -1302,9 +1304,9 @@ void SECEditCore<BC>::OnSize(UINT nType, int cx, int cy)
 	m_rect.right = cx;
 	m_rect.top = 0;
 	m_rect.bottom = cy;
-	MySetScrollRange(SB_VERT, 0, pEdit->m_iLinesInFile-1,TRUE); 
+	MySetScrollRange(SB_VERT, 0, pEdit->m_iLinesInFile - 1, TRUE);
 	if (m_iFirstLineNo)
-		MySetScrollPos(SB_VERT, m_iFirstLineNo-1, TRUE);
+		MySetScrollPos(SB_VERT, m_iFirstLineNo - 1, TRUE);
 	BC::OnSize(nType, cx, cy);
 }
 
@@ -1322,37 +1324,37 @@ BOOL SECEditCore<BC>::OnScroll(UINT nScrollCode, UINT nPos, BOOL bDoScroll)
 	BOOL bRval = FALSE;
 
 	switch (horzcode)
-		{
-		case SB_LINEUP:
-			bRval = (m_iLeftEdge > 0);
-			if (bDoScroll)
-				OnHScroll(horzcode, nPos, NULL);
-			break;
-		case SB_LINEDOWN:
-			bRval = (m_iLeftEdge < OE_MAXLINELENGTH);
-			if (bDoScroll)
-				OnHScroll(horzcode, nPos, NULL);
-			break;
-		}
+	{
+	case SB_LINEUP:
+		bRval = (m_iLeftEdge > 0);
+		if (bDoScroll)
+			OnHScroll(horzcode, nPos, NULL);
+		break;
+	case SB_LINEDOWN:
+		bRval = (m_iLeftEdge < OE_MAXLINELENGTH);
+		if (bDoScroll)
+			OnHScroll(horzcode, nPos, NULL);
+		break;
+	}
 
 	switch (vertcode)
-		{
-      case SB_LINEUP:
-		  if(m_pTopLine == NULL)
-			  break;
-			bRval = (m_pTopLine->pPrev != NULL);
-			if (bDoScroll)
-				OnVScroll(vertcode, nPos, NULL);
-         break;
+	{
+	case SB_LINEUP:
+		if (m_pTopLine == NULL)
+			break;
+		bRval = (m_pTopLine->pPrev != NULL);
+		if (bDoScroll)
+			OnVScroll(vertcode, nPos, NULL);
+		break;
 
-      case SB_LINEDOWN:
-		  if(m_pCurLine == NULL)
-			  break;
-			bRval = (m_pCurLine->pNext != NULL);
-			if (bDoScroll)
-				OnVScroll(vertcode, nPos, NULL);
-         break;
-		}
+	case SB_LINEDOWN:
+		if (m_pCurLine == NULL)
+			break;
+		bRval = (m_pCurLine->pNext != NULL);
+		if (bDoScroll)
+			OnVScroll(vertcode, nPos, NULL);
+		break;
+	}
 
 	return bRval;
 }
@@ -1364,50 +1366,50 @@ BOOL SECEditCore<BC>::OnScroll(UINT nScrollCode, UINT nPos, BOOL bDoScroll)
 //@parm  UINT nPos
 //@parm  CScrollBar* pScrollBar
 template <class BC>
-void SECEditCore<BC>::OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar) 
+void SECEditCore<BC>::OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
 {
 	m_bScrollMessage = TRUE;
 
 	pScrollBar; //UNUSED
 	int iOldLeftEdge = m_iLeftEdge;
 	switch (nSBCode)
-		{
-      case SB_LINEDOWN:
-			if (m_iLeftEdge < OE_MAXLINELENGTH)
-				m_iLeftEdge++;
-         break;
+	{
+	case SB_LINEDOWN:
+		if (m_iLeftEdge < OE_MAXLINELENGTH)
+			m_iLeftEdge++;
+		break;
 
-      case SB_LINEUP:
-			if (m_iLeftEdge)
-				m_iLeftEdge--;
-         break;
+	case SB_LINEUP:
+		if (m_iLeftEdge)
+			m_iLeftEdge--;
+		break;
 
-      case SB_PAGEDOWN:
-			m_iLeftEdge += OE_HPAGESIZE;
-			if (m_iLeftEdge > OE_MAXLINELENGTH)
-				m_iLeftEdge = OE_MAXLINELENGTH;
-         break;
+	case SB_PAGEDOWN:
+		m_iLeftEdge += OE_HPAGESIZE;
+		if (m_iLeftEdge > OE_MAXLINELENGTH)
+			m_iLeftEdge = OE_MAXLINELENGTH;
+		break;
 
-      case SB_PAGEUP:
-			m_iLeftEdge -= OE_HPAGESIZE;
-			if (m_iLeftEdge < 0)
-				m_iLeftEdge = 0;
-         break;
+	case SB_PAGEUP:
+		m_iLeftEdge -= OE_HPAGESIZE;
+		if (m_iLeftEdge < 0)
+			m_iLeftEdge = 0;
+		break;
 
-      case SB_THUMBPOSITION:
-      case SB_THUMBTRACK:
-         m_iLeftEdge = nPos;
-         break;
+	case SB_THUMBPOSITION:
+	case SB_THUMBTRACK:
+		m_iLeftEdge = nPos;
+		break;
 
-      case SB_ENDSCROLL:
-         MySetScrollPos(SB_HORZ,m_iLeftEdge,m_bUpdate);
-      }
+	case SB_ENDSCROLL:
+		MySetScrollPos(SB_HORZ, m_iLeftEdge, m_bUpdate);
+	}
 	if (iOldLeftEdge != m_iLeftEdge)
-		{
-      MySetScrollPos(SB_HORZ,m_iLeftEdge,m_bUpdate);
+	{
+		MySetScrollPos(SB_HORZ, m_iLeftEdge, m_bUpdate);
 		Invalidate();
 		MySetCaretPos();
-		}
+	}
 
 	m_bScrollMessage = FALSE;
 }
@@ -1419,7 +1421,7 @@ void SECEditCore<BC>::OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
 //@parm  UINT nPos
 //@parm  CScrollBar* pScrollBar
 template <class BC>
-void SECEditCore<BC>::OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar) 
+void SECEditCore<BC>::OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
 {
 	m_bScrollMessage = TRUE;
 
@@ -1430,36 +1432,36 @@ void SECEditCore<BC>::OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
 	ASSERT(pEdit != NULL);
 
 	switch (nSBCode)
-		{
-      case SB_LINEDOWN:
-         ScrollDownLine(m_bUpdate);
-         break;
+	{
+	case SB_LINEDOWN:
+		ScrollDownLine(m_bUpdate);
+		break;
 
-      case SB_LINEUP:
-         ScrollUpLine(m_bUpdate);
-         break;
+	case SB_LINEUP:
+		ScrollUpLine(m_bUpdate);
+		break;
 
-      case SB_PAGEDOWN:
-         ScrollDownPage(TRUE);
-         MySetScrollPos(SB_VERT,m_iFirstLineNo-1,m_bUpdate);
-         break;
+	case SB_PAGEDOWN:
+		ScrollDownPage(TRUE);
+		MySetScrollPos(SB_VERT, m_iFirstLineNo - 1, m_bUpdate);
+		break;
 
-      case SB_PAGEUP:
-         ScrollUpPage(TRUE);
-         MySetScrollPos(SB_VERT,m_iFirstLineNo-1,m_bUpdate);
-         break;
+	case SB_PAGEUP:
+		ScrollUpPage(TRUE);
+		MySetScrollPos(SB_VERT, m_iFirstLineNo - 1, m_bUpdate);
+		break;
 
-      case SB_THUMBPOSITION:
-			iPos = wPos * m_iVScale;
-			ScrollGoToLine(iPos+1,m_bUpdate);
-			MySetScrollPos(SB_VERT,m_iFirstLineNo-1,m_bUpdate);
-         break;
+	case SB_THUMBPOSITION:
+		iPos = wPos * m_iVScale;
+		ScrollGoToLine(iPos + 1, m_bUpdate);
+		MySetScrollPos(SB_VERT, m_iFirstLineNo - 1, m_bUpdate);
+		break;
 
-      case SB_THUMBTRACK:
-			iPos = wPos * m_iVScale;
-			ScrollGoToLine(iPos+1,m_bUpdate);
-			MySetScrollPos(SB_VERT,m_iFirstLineNo-1,m_bUpdate);
-         break;
+	case SB_THUMBTRACK:
+		iPos = wPos * m_iVScale;
+		ScrollGoToLine(iPos + 1, m_bUpdate);
+		MySetScrollPos(SB_VERT, m_iFirstLineNo - 1, m_bUpdate);
+		break;
 	}
 	m_bScrollMessage = FALSE;
 }
@@ -1473,145 +1475,145 @@ void SECEditCore<BC>::OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
 //@parm  UINT nRepCnt
 //@parm  UINT nFlags
 template <class BC>
-void SECEditCore<BC>::OnChar(UINT nChar, UINT nRepCnt, UINT nFlags) 
+void SECEditCore<BC>::OnChar(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
 
 	// Do not allow typing while the left mouse button is down
-	if (((GetAsyncKeyState(GetSystemMetrics(SM_SWAPBUTTON) ? 
-			VK_RBUTTON : VK_LBUTTON))>>8) & 0x0ff)
+	if (((GetAsyncKeyState(GetSystemMetrics(SM_SWAPBUTTON) ?
+		VK_RBUTTON : VK_LBUTTON)) >> 8) & 0x0ff)
 		return;
 
 	// Bail Out if read only
 	SECEdit* pEdit = GetEdit();
 	ASSERT(pEdit);
-	if(pEdit->GetReadOnly())
+	if (pEdit->GetReadOnly())
 		return;
 
 	nFlags;//UNUSED
 	nRepCnt;//UNUSED
 	switch (nChar)
+	{
+	case VK_RETURN:
+	{
+		SECEdit* pEdit = GetEdit();
+		ASSERT(pEdit != NULL);
+		pEdit->SetUndoGroup(TRUE);
+		if (m_bSelecting)
+			OnEditCut();
+		SplitLine(TRUE, TRUE);
+		pEdit->SetUndoGroup(FALSE);
+	}
+	break;
+	case VK_ESCAPE:
+		if (m_bSelecting)
+			ClearSelection(m_bUpdate);
+
+	default:
+		if (isprint(nChar))
 		{
-		case VK_RETURN:
-			{
-			SECEdit* pEdit = GetEdit();
-			ASSERT(pEdit != NULL);
-			pEdit->SetUndoGroup(TRUE);
-			if (m_bSelecting)
-				OnEditCut();
-			SplitLine(TRUE,TRUE);
-			pEdit->SetUndoGroup(FALSE);
-			}
-			break;
-		case VK_ESCAPE:
-			if (m_bSelecting)
-				ClearSelection(m_bUpdate);
-
-		default:
-			if (isprint(nChar))
-				{
-				int iRval = InsertChar(nChar,m_bUpdate,TRUE);
-				if (iRval)
-					DoError(iRval,m_bUpdate);
-				}
-			break;
+			int iRval = InsertChar(nChar, m_bUpdate, TRUE);
+			if (iRval)
+				DoError(iRval, m_bUpdate);
 		}
+		break;
+	}
 }
 
 //@doc SECEditCore
 //@mfunc Internal handler.
 //@rdesc void 
 template <class BC>
-void SECEditCore<BC>::OnEditSelectDown() 
+void SECEditCore<BC>::OnEditSelectDown()
 {
-	SelectDown(m_iBlockType,m_bUpdate);
+	SelectDown(m_iBlockType, m_bUpdate);
 }
 
 //@doc SECEditCore
 //@mfunc Internal handler.
 //@rdesc void 
 template <class BC>
-void SECEditCore<BC>::OnEditSelectEnd() 
+void SECEditCore<BC>::OnEditSelectEnd()
 {
-	SelectEnd(m_iBlockType,m_bUpdate);
+	SelectEnd(m_iBlockType, m_bUpdate);
 }
 
 //@doc SECEditCore
 //@mfunc Internal handler.
 //@rdesc void 
 template <class BC>
-void SECEditCore<BC>::OnEditSelectHome() 
+void SECEditCore<BC>::OnEditSelectHome()
 {
-	SelectHome(m_iBlockType,m_bUpdate);
+	SelectHome(m_iBlockType, m_bUpdate);
 }
 
 //@doc SECEditCore
 //@mfunc Internal handler.
 //@rdesc void 
 template <class BC>
-void SECEditCore<BC>::OnEditSelectLeft() 
+void SECEditCore<BC>::OnEditSelectLeft()
 {
-	SelectLeft(m_iBlockType,m_bUpdate);
+	SelectLeft(m_iBlockType, m_bUpdate);
 }
 
 //@doc SECEditCore
 //@mfunc Internal handler.
 //@rdesc void 
 template <class BC>
-void SECEditCore<BC>::OnEditSelectPgdn() 
+void SECEditCore<BC>::OnEditSelectPgdn()
 {
-	SelectPageDown(m_iBlockType,m_bUpdate);
+	SelectPageDown(m_iBlockType, m_bUpdate);
 }
 
 //@doc SECEditCore
 //@mfunc Internal handler.
 //@rdesc void 
 template <class BC>
-void SECEditCore<BC>::OnEditSelectPgup() 
+void SECEditCore<BC>::OnEditSelectPgup()
 {
-	SelectPageUp(m_iBlockType,m_bUpdate);
+	SelectPageUp(m_iBlockType, m_bUpdate);
 }
 
 //@doc SECEditCore
 //@mfunc Internal handler.
 //@rdesc void 
 template <class BC>
-void SECEditCore<BC>::OnEditSelectRight() 
+void SECEditCore<BC>::OnEditSelectRight()
 {
-	SelectRight(m_iBlockType,m_bUpdate);
+	SelectRight(m_iBlockType, m_bUpdate);
 }
 
 //@doc SECEditCore
 //@mfunc Internal handler.
 //@rdesc void 
 template <class BC>
-void SECEditCore<BC>::OnEditSelectUp() 
+void SECEditCore<BC>::OnEditSelectUp()
 {
-	SelectUp(m_iBlockType,m_bUpdate);
+	SelectUp(m_iBlockType, m_bUpdate);
 }
 
 //@doc SECEditCore
 //@mfunc Internal handler.
 //@rdesc void 
 template <class BC>
-void SECEditCore<BC>::OnEditSelectWordleft() 
+void SECEditCore<BC>::OnEditSelectWordleft()
 {
-	SelectWordLeft(m_iBlockType,m_bUpdate);
+	SelectWordLeft(m_iBlockType, m_bUpdate);
 }
 
 //@doc SECEditCore
 //@mfunc Internal handler.
 //@rdesc void 
 template <class BC>
-void SECEditCore<BC>::OnEditSelectWordright() 
+void SECEditCore<BC>::OnEditSelectWordright()
 {
-	SelectWordRight(m_iBlockType,m_bUpdate);
+	SelectWordRight(m_iBlockType, m_bUpdate);
 }
 
 //@doc SECEditCore
 //@mfunc Internal handler.
 //@rdesc void 
 template <class BC>
-void SECEditCore<BC>::OnEditSelectAll() 
+void SECEditCore<BC>::OnEditSelectAll()
 {
 	SelectAll(m_bUpdate);
 }
@@ -1621,27 +1623,27 @@ void SECEditCore<BC>::OnEditSelectAll()
 //@rdesc void 
 //@parm CCmdUI* pCmdUI
 template <class BC>
-void SECEditCore<BC>::OnUpdateEditSelectAll(CCmdUI* pCmdUI) 
+void SECEditCore<BC>::OnUpdateEditSelectAll(CCmdUI* pCmdUI)
 {
-   pCmdUI->Enable();
+	pCmdUI->Enable();
 }
 
 //@doc SECEditCore
 //@mfunc Internal handler.
 //@rdesc void 
 template <class BC>
-void SECEditCore<BC>::OnEditSelectTop() 
+void SECEditCore<BC>::OnEditSelectTop()
 {
-	SelectTopOfFile(m_iBlockType,m_bUpdate);
+	SelectTopOfFile(m_iBlockType, m_bUpdate);
 }
 
 //@doc SECEditCore
 //@mfunc Internal handler.
 //@rdesc void 
 template <class BC>
-void SECEditCore<BC>::OnEditSelectBottom() 
+void SECEditCore<BC>::OnEditSelectBottom()
 {
-	SelectEndOfFile(m_iBlockType,m_bUpdate);
+	SelectEndOfFile(m_iBlockType, m_bUpdate);
 }
 
 
@@ -1650,15 +1652,15 @@ void SECEditCore<BC>::OnEditSelectBottom()
 //@rdesc void 
 //@parm CWnd* pNewWnd
 template <class BC>
-void SECEditCore<BC>::OnKillFocus(CWnd* pNewWnd) 
+void SECEditCore<BC>::OnKillFocus(CWnd* pNewWnd)
 {
 	BC::OnKillFocus(pNewWnd);
-	
+
 	if (m_bHaveCaret)
-		{
-	   DestroyCaret();
+	{
+		DestroyCaret();
 		m_bHaveCaret = FALSE;
-		}
+	}
 	if (m_bSelecting)
 		ClearBlockFromScreen();
 }
@@ -1669,7 +1671,7 @@ void SECEditCore<BC>::OnKillFocus(CWnd* pNewWnd)
 //@rdesc void 
 //@parm CWnd* pOldWnd
 template <class BC>
-void SECEditCore<BC>::OnSetFocus(CWnd* pOldWnd) 
+void SECEditCore<BC>::OnSetFocus(CWnd* pOldWnd)
 {
 	SECEdit* pEdit = GetEdit();
 	ASSERT(pEdit != NULL);
@@ -1680,13 +1682,13 @@ void SECEditCore<BC>::OnSetFocus(CWnd* pOldWnd)
 	BC::OnSetFocus(pOldWnd);
 
 	if (!m_bHaveCaret && !m_bSelecting)
-   	{
-	   ::CreateCaret(m_hWnd,NULL,2,m_iLineHeight);
+	{
+		::CreateCaret(m_hWnd, NULL, 2, m_iLineHeight);
 		m_bHaveCaret = TRUE;
-   	ShowCaret();
-		}
+		ShowCaret();
+	}
 	if (m_bSelecting)
-		InvalidateRect(NULL,FALSE);
+		InvalidateRect(NULL, FALSE);
 	MySetCaretPos();
 
 }
@@ -1696,15 +1698,15 @@ void SECEditCore<BC>::OnSetFocus(CWnd* pOldWnd)
 //@mfunc Internal handler.
 //@rdesc void 
 template <class BC>
-void SECEditCore<BC>::OnEditCopy() 
+void SECEditCore<BC>::OnEditCopy()
 {
-   int iRval = 0;
+	int iRval = 0;
 
 	if (m_bSelecting || m_bCopyLine)
-   	iRval = Copy(m_bUpdate,TRUE);
+		iRval = Copy(m_bUpdate, TRUE);
 	if (iRval)
-		DoError(iRval,m_bUpdate);
-	
+		DoError(iRval, m_bUpdate);
+
 }
 
 //@doc SECEditCore
@@ -1712,16 +1714,16 @@ void SECEditCore<BC>::OnEditCopy()
 //@rdesc void 
 //@parm CCmdUI* pCmdUI
 template <class BC>
-void SECEditCore<BC>::OnUpdateEditCopy(CCmdUI* pCmdUI) 
+void SECEditCore<BC>::OnUpdateEditCopy(CCmdUI* pCmdUI)
 {
-   pCmdUI->Enable(HasSelection());
+	pCmdUI->Enable(HasSelection());
 }
 
 //GeH ---->
 template <class BC>
 BOOL SECEditCore<BC>::HasSelection()
 {
-  return (m_BlockEnd.pLine != m_BlockStart.pLine) || (m_BlockEnd.iOffset != m_BlockStart.iOffset);
+	return (m_BlockEnd.pLine != m_BlockStart.pLine) || (m_BlockEnd.iOffset != m_BlockStart.iOffset);
 }
 //GeH <----
 
@@ -1729,27 +1731,27 @@ BOOL SECEditCore<BC>::HasSelection()
 //@mfunc Internal handler.
 //@rdesc void 
 template <class BC>
-void SECEditCore<BC>::OnEditCut() 
+void SECEditCore<BC>::OnEditCut()
 {
 	// If read only do a copy instead
 	SECEdit* pEdit = GetEdit();
 	ASSERT(pEdit);
-	if(pEdit->GetReadOnly())
+	if (pEdit->GetReadOnly())
 	{
 		OnEditCopy();
 		return;
 	}
 
-   int iRval = 0;
+	int iRval = 0;
 
 	if (m_bSelecting || m_bCutLine)
-		{
-		iRval = Copy(m_bUpdate,TRUE);
+	{
+		iRval = Copy(m_bUpdate, TRUE);
 		if (!iRval)
-   	   iRval = Cut(m_bUpdate,TRUE);
-		}
+			iRval = Cut(m_bUpdate, TRUE);
+	}
 	if (iRval)
-		DoError(iRval,m_bUpdate);
+		DoError(iRval, m_bUpdate);
 }
 
 //@doc SECEditCore
@@ -1757,36 +1759,36 @@ void SECEditCore<BC>::OnEditCut()
 //@rdesc void 
 //@parm CCmdUI* pCmdUI
 template <class BC>
-void SECEditCore<BC>::OnUpdateEditCut(CCmdUI* pCmdUI) 
+void SECEditCore<BC>::OnUpdateEditCut(CCmdUI* pCmdUI)
 {
-   BOOL bEnable = HasSelection();
+	BOOL bEnable = HasSelection();
 
 	// Set False if read only
 	SECEdit* pEdit = GetEdit();
 	ASSERT(pEdit);
-	if(pEdit->GetReadOnly())
+	if (pEdit->GetReadOnly())
 		bEnable = FALSE;
 
-   pCmdUI->Enable(bEnable);
+	pCmdUI->Enable(bEnable);
 }
 
 //@doc SECEditCore
 //@mfunc Internal handler.
 //@rdesc void 
 template <class BC>
-void SECEditCore<BC>::OnEditPaste() 
+void SECEditCore<BC>::OnEditPaste()
 {
 	// Bail out if read only
 	SECEdit* pEdit = GetEdit();
 	ASSERT(pEdit);
-	if(pEdit->GetReadOnly())
+	if (pEdit->GetReadOnly())
 		return;
 
 	int iRval;
-	
-   iRval = Paste(m_bUpdate,TRUE);
+
+	iRval = Paste(m_bUpdate, TRUE);
 	if (iRval)
-		DoError(iRval,m_bUpdate);
+		DoError(iRval, m_bUpdate);
 }
 
 //@doc SECEditCore
@@ -1794,74 +1796,74 @@ void SECEditCore<BC>::OnEditPaste()
 //@rdesc void 
 //@parm CCmdUI* pCmdUI
 template <class BC>
-void SECEditCore<BC>::OnUpdateEditPaste(CCmdUI* pCmdUI) 
+void SECEditCore<BC>::OnUpdateEditPaste(CCmdUI* pCmdUI)
 {
 	BOOL bEnable = FALSE;
 
 	if (OpenClipboard())
-		{
-		bEnable =  (IsClipboardFormatAvailable(CF_TEXT)
-				|| IsClipboardFormatAvailable(CF_OEMTEXT));
+	{
+		bEnable = (IsClipboardFormatAvailable(CF_TEXT)
+			|| IsClipboardFormatAvailable(CF_OEMTEXT));
 		CloseClipboard();
-		}
+	}
 
 	// Set False if read only
 	SECEdit* pEdit = GetEdit();
 	ASSERT(pEdit);
-	if(pEdit->GetReadOnly())
+	if (pEdit->GetReadOnly())
 		bEnable = FALSE;
 
-   pCmdUI->Enable(bEnable);
+	pCmdUI->Enable(bEnable);
 }
 
 //@doc SECEditCore
 //@mfunc Internal handler.
 //@rdesc void 
 template <class BC>
-void SECEditCore<BC>::OnEditClear() 
+void SECEditCore<BC>::OnEditClear()
 {
 	// Bail out if read only
 	SECEdit* pEdit = GetEdit();
 	ASSERT(pEdit);
-	if(pEdit->GetReadOnly())
+	if (pEdit->GetReadOnly())
 		return;
 
-	int iRval = DeleteChar(m_bUpdate,TRUE);
+	int iRval = DeleteChar(m_bUpdate, TRUE);
 	if (iRval)
-		DoError(iRval,m_bUpdate);
+		DoError(iRval, m_bUpdate);
 }
 
 //@doc SECEditCore
 //@mfunc Internal handler.
 //@rdesc void 
 template <class BC>
-void SECEditCore<BC>::OnEditBackspace() 
+void SECEditCore<BC>::OnEditBackspace()
 {
-	int iRval = BackSpace(m_bUpdate,TRUE);
+	int iRval = BackSpace(m_bUpdate, TRUE);
 	if (iRval && iRval != IDS_OE_READONLY)
-		DoError(iRval,m_bUpdate);
+		DoError(iRval, m_bUpdate);
 }
 
 //@doc SECEditCore
 //@mfunc Internal handler.
 //@rdesc void 
 template <class BC>
-void SECEditCore<BC>::OnEditBacktab() 
+void SECEditCore<BC>::OnEditBacktab()
 {
-	int iRval = BackTab(m_bUpdate,TRUE);
+	int iRval = BackTab(m_bUpdate, TRUE);
 	if (iRval)
-		DoError(iRval,m_bUpdate);
+		DoError(iRval, m_bUpdate);
 }
 
 //@doc SECEditCore
 //@mfunc Internal handler.
 //@rdesc void 
 template <class BC>
-void SECEditCore<BC>::OnEditTab() 
+void SECEditCore<BC>::OnEditTab()
 {
-	int iRval = InsertTab(m_bUpdate,TRUE);
+	int iRval = InsertTab(m_bUpdate, TRUE);
 	if (iRval)
-		DoError(iRval,m_bUpdate);
+		DoError(iRval, m_bUpdate);
 }
 
 
@@ -1870,26 +1872,26 @@ void SECEditCore<BC>::OnEditTab()
 //              Find dialog is already active.
 //@rdesc void 
 template <class BC>
-void SECEditCore<BC>::OnEditReplace() 
+void SECEditCore<BC>::OnEditReplace()
 {
-   if (m_bFinding)
-		{
+	if (m_bFinding)
+	{
 		m_finddlg->SetFocus();
 		return;
-		}
-   if (!m_bReplacing)
-		{
+	}
+	if (!m_bReplacing)
+	{
 		m_bReplacing = TRUE;
-	   m_replacedlg = new OEFindDlg;
-	   m_replacedlg->m_fr.lpTemplateName = MAKEINTRESOURCE(IDD_OE_REPLACEDLGORD);
-		m_replacedlg->m_fr.hInstance = 
-			AfxFindResourceHandle( m_replacedlg->m_fr.lpTemplateName, RT_DIALOG );
+		m_replacedlg = new OEFindDlg;
+		m_replacedlg->m_fr.lpTemplateName = MAKEINTRESOURCE(IDD_OE_REPLACEDLGORD);
+		m_replacedlg->m_fr.hInstance =
+			AfxFindResourceHandle(m_replacedlg->m_fr.lpTemplateName, RT_DIALOG);
 		m_replacedlg->m_bReplacing = TRUE;
 		InitFindDialog(m_replacedlg);
-	   m_replacedlg->Create(FALSE,afxEmptyString,afxEmptyString,FR_DOWN|FR_ENABLETEMPLATE,this);
+		m_replacedlg->Create(FALSE, afxEmptyString, afxEmptyString, FR_DOWN | FR_ENABLETEMPLATE, this);
 		m_replacedlg->SetActiveWindow();
 		m_replacedlg->ShowWindow(SW_SHOW);
-		}
+	}
 	else
 		m_replacedlg->SetFocus();
 }
@@ -1899,7 +1901,7 @@ void SECEditCore<BC>::OnEditReplace()
 //@rdesc void 
 //@parm CCmdUI* pCmdUI
 template <class BC>
-void SECEditCore<BC>::OnUpdateEditReplace(CCmdUI* pCmdUI) 
+void SECEditCore<BC>::OnUpdateEditReplace(CCmdUI* pCmdUI)
 {
 	pCmdUI->Enable();
 }
@@ -1911,26 +1913,26 @@ void SECEditCore<BC>::OnUpdateEditReplace(CCmdUI* pCmdUI)
 //@rdesc void 
 
 template <class BC>
-void SECEditCore<BC>::OnEditFind() 
+void SECEditCore<BC>::OnEditFind()
 {
-   if (m_bReplacing)
-		{
+	if (m_bReplacing)
+	{
 		m_replacedlg->SetFocus();
 		return;
-		}
-   if (!m_bFinding)
-		{
+	}
+	if (!m_bFinding)
+	{
 		m_bFinding = TRUE;
-	   m_finddlg = new OEFindDlg;
-	   m_finddlg->m_fr.lpTemplateName = MAKEINTRESOURCE(IDD_OE_FINDDLGORD);
-		m_finddlg->m_fr.hInstance = 
-			AfxFindResourceHandle( m_finddlg->m_fr.lpTemplateName, RT_DIALOG );
+		m_finddlg = new OEFindDlg;
+		m_finddlg->m_fr.lpTemplateName = MAKEINTRESOURCE(IDD_OE_FINDDLGORD);
+		m_finddlg->m_fr.hInstance =
+			AfxFindResourceHandle(m_finddlg->m_fr.lpTemplateName, RT_DIALOG);
 		m_finddlg->m_bReplacing = FALSE;
 		InitFindDialog(m_finddlg);
-	   m_finddlg->Create(TRUE,afxEmptyString,NULL,FR_DOWN|FR_ENABLETEMPLATE,this);
+		m_finddlg->Create(TRUE, afxEmptyString, NULL, FR_DOWN | FR_ENABLETEMPLATE, this);
 		m_finddlg->SetActiveWindow();
 		m_finddlg->ShowWindow(SW_SHOW);
-		}
+	}
 	else
 		m_finddlg->SetFocus();
 }
@@ -1940,7 +1942,7 @@ void SECEditCore<BC>::OnEditFind()
 //@rdesc void 
 //@parm CCmdUI* pCmdUI
 template <class BC>
-void SECEditCore<BC>::OnUpdateEditFind(CCmdUI* pCmdUI) 
+void SECEditCore<BC>::OnUpdateEditFind(CCmdUI* pCmdUI)
 {
 	pCmdUI->Enable();
 }
@@ -1951,11 +1953,11 @@ void SECEditCore<BC>::OnUpdateEditFind(CCmdUI* pCmdUI)
 //@parm OEFindDlg* dlg
 template <class BC>
 void SECEditCore<BC>::SetLineAvoidance(OEFindDlg* dlg)
-   {
+{
 	CRect dlgrect;
 	dlg->GetWindowRect(&dlgrect);
 	m_badrect = dlgrect;
-	}
+}
 
 //@doc SECEditCore
 //@mfunc Internal handler.
@@ -1969,19 +1971,19 @@ void SECEditCore<BC>::DoFindMarkAll(PSEARCHRECORD pSearch)
 	//OnBookmarkdelete();   // clear all existing bookmarks
 	TEXTPOS StartPos;
 	TEXTPOS EndPos;
-	StartPos.pLine = pEdit->ListGetFirst(m_pCurLine,NULL);
+	StartPos.pLine = pEdit->ListGetFirst(m_pCurLine, NULL);
 	StartPos.iOffset = 0;
 	EndPos.pLine = NULL;
 	EndPos.iOffset = 0;
 	pSearch->fForward = TRUE;
 
-	while (pEdit->Find(&StartPos,&EndPos,pSearch))
-		{
+	while (pEdit->Find(&StartPos, &EndPos, pSearch))
+	{
 		// set a bookmark on this line
 		pEdit->m_iBookmarkCount++;
 		StartPos.pLine->fBookMark = TRUE;
 		StartPos.iOffset += pSearch->iReturnLength;
-		}
+	}
 	if (pEdit->m_iBookmarkCount)
 	{
 		TopOfFile(FALSE);
@@ -1999,7 +2001,7 @@ void SECEditCore<BC>::DoFindMarkAll(PSEARCHRECORD pSearch)
 //@parm  LPARAM lParam
 template <class BC>
 LONG SECEditCore<BC>::OnFindReplace(WPARAM wParam, LPARAM lParam)
-   {
+{
 	USES_CONVERSION_T;
 
 	lParam; //UNUSED
@@ -2011,8 +2013,8 @@ LONG SECEditCore<BC>::OnFindReplace(WPARAM wParam, LPARAM lParam)
 	TEXTPOS EndPos;
 	SEARCHRECORD Search;
 	static LPSTR lpSaveFoundText = NULL;
-	char str[OE_MAXLINELENGTH+1];
-	char str2[OE_MAXLINELENGTH+1];
+	char str[OE_MAXLINELENGTH + 1];
+	char str2[OE_MAXLINELENGTH + 1];
 	CString find;
 	CString replace;
 	OEFindDlg* dlg;
@@ -2030,21 +2032,21 @@ LONG SECEditCore<BC>::OnFindReplace(WPARAM wParam, LPARAM lParam)
 	dlg->UpdateData(TRUE);
 
 	if (dlg->IsTerminating())
-		{
+	{
 		m_bFinding = FALSE;
 		m_bReplacing = FALSE;
 		m_finddlg = m_replacedlg = dlg = NULL;
 		bFoundOnce = FALSE;
 		strReplace.Empty();
 		if (lpSaveFoundText)
-			{
-			delete [] lpSaveFoundText;
-			lpSaveFoundText = NULL;
-			}
-		return 0L;
-		}
-	else 
 		{
+			delete[] lpSaveFoundText;
+			lpSaveFoundText = NULL;
+		}
+		return 0L;
+	}
+	else
+	{
 		SaveFindDlgSettings(dlg);
 		if (m_bReplacing)
 			SaveReplaceDlgSettings(dlg);
@@ -2055,47 +2057,47 @@ LONG SECEditCore<BC>::OnFindReplace(WPARAM wParam, LPARAM lParam)
 		find = dlg->m_FindWhat;
 		Search.lpSearchText = str;
 		Search.lpReplaceText = NULL;
-		strcpy(Search.lpSearchText,T2CA(find));
+		strcpy(Search.lpSearchText, T2CA(find));
 		if (m_bReplacing)
-			{
+		{
 			replace = dlg->m_ReplaceWith;
 			Search.lpReplaceText = str2;
-			strcpy(Search.lpReplaceText,T2CA(replace));
-			}
+			strcpy(Search.lpReplaceText, T2CA(replace));
 		}
-											
+	}
+
 	if (dlg->FindNext())
-		{
-doitagain:
+	{
+	doitagain:
 		if (m_bSelecting)
-			{
+		{
 			if (Search.fForward)
-				{
+			{
 				m_pCurLine = m_BlockEnd.pLine;
 				m_iLineNo = pEdit->GetLineNo(m_pCurLine);
 				m_iColNo = m_BlockEnd.iOffset;
-				}
+			}
 			else
-				{
+			{
 				m_pCurLine = m_BlockStart.pLine;
 				m_iLineNo = pEdit->GetLineNo(m_pCurLine);
 				m_iColNo = m_BlockStart.iOffset;
-				}
-			if (!bFoundOnce)
-				{
-			   ClearSelection(m_bUpdate);
-				InvalidateRect(NULL,FALSE);
-			   MakeCursorVisible();
-				}
 			}
+			if (!bFoundOnce)
+			{
+				ClearSelection(m_bUpdate);
+				InvalidateRect(NULL, FALSE);
+				MakeCursorVisible();
+			}
+		}
 
 		StartPos.pLine = m_pCurLine;
-		StartPos.iOffset = pEdit->GetRealOffset(m_pCurLine,m_iColNo);
+		StartPos.iOffset = pEdit->GetRealOffset(m_pCurLine, m_iColNo);
 		EndPos.pLine = NULL;
 		EndPos.iOffset = 0;
 
 		if (dlg->m_bMarkAll)
-			{
+		{
 			m_bFinding = FALSE;
 			m_bReplacing = FALSE;
 			m_finddlg = m_replacedlg = NULL;
@@ -2104,33 +2106,33 @@ doitagain:
 			DoFindMarkAll(&Search);
 			strReplace.Empty();
 			return 0L;
-			}
+		}
 
-		if (!pEdit->Find(&StartPos,&EndPos,&Search))
-			{
+		if (!pEdit->Find(&StartPos, &EndPos, &Search))
+		{
 			//strReplace.Empty();
 			if (dlg->m_bWrapSearch)
-				{
+			{
 				// wrap around to search the whole file
 				EndPos = StartPos;
 				if (Search.fForward)
-					{
+				{
 					StartPos.pLine = pEdit->ListGetFirst(m_pCurLine, NULL);
 					StartPos.iOffset = 0;
-					}
+				}
 				else
-					{
+				{
 					if (Search.lpReplaceText)
 						EndPos.iOffset += strlen(Search.lpReplaceText);
 					StartPos.pLine = pEdit->ListGetLast(m_pCurLine);
 					StartPos.iOffset = StartPos.pLine->iTxtSize;
-					}
-				if (!pEdit->Find(&StartPos,&EndPos,&Search))
-					{
+				}
+				if (!pEdit->Find(&StartPos, &EndPos, &Search))
+				{
 					strReplace.Empty();
 					if (bFoundOnce)
-						{
-						DoError(IDS_OE_FINISHEDSEARCH,A2CT(str),m_bUpdate);
+					{
+						DoError(IDS_OE_FINISHEDSEARCH, A2CT(str), m_bUpdate);
 						m_bFinding = FALSE;
 						m_bReplacing = FALSE;
 						m_finddlg = m_replacedlg = NULL;
@@ -2138,20 +2140,20 @@ doitagain:
 						dlg = NULL;
 						bFoundOnce = FALSE;
 						return 0L;
-						}
+					}
 					else
-						DoError(IDS_OE_NOTFOUND,A2CT(str),m_bUpdate);
+						DoError(IDS_OE_NOTFOUND, A2CT(str), m_bUpdate);
 					dlg->GetDlgItem(IDC_FINDCOMBO1)->SetFocus();
 					if (m_bReplacing)
-						{
+					{
 						dlg->GetDlgItem(IDC_OE_PSH1)->EnableWindow(FALSE);
 						dlg->GetDlgItem(IDC_OE_PSH2)->EnableWindow(FALSE);
-						}
-      			return 0L;
 					}
+					return 0L;
+				}
 				if (bFoundOnce && (StartPos.pLine == m_pCurLine) && (StartPos.iOffset == m_iColNo))
-					{
-					DoError(IDS_OE_FINISHEDSEARCH,A2CT(str),m_bUpdate);
+				{
+					DoError(IDS_OE_FINISHEDSEARCH, A2CT(str), m_bUpdate);
 					m_bFinding = FALSE;
 					m_bReplacing = FALSE;
 					m_finddlg = m_replacedlg = NULL;
@@ -2160,14 +2162,14 @@ doitagain:
 					bFoundOnce = FALSE;
 					strReplace.Empty();
 					return 0L;
-					}
 				}
+			}
 			else
-				{
+			{
 				strReplace.Empty();
 				if (bFoundOnce)
-					{
-					DoError(IDS_OE_FINISHEDSEARCH,A2CT(str),m_bUpdate);
+				{
+					DoError(IDS_OE_FINISHEDSEARCH, A2CT(str), m_bUpdate);
 					m_bFinding = FALSE;
 					m_bReplacing = FALSE;
 					m_finddlg = m_replacedlg = NULL;
@@ -2175,89 +2177,89 @@ doitagain:
 					dlg = NULL;
 					bFoundOnce = FALSE;
 					return 0L;
-					}
+				}
 				else
-					DoError(IDS_OE_NOTFOUND,A2CT(str),m_bUpdate);
+					DoError(IDS_OE_NOTFOUND, A2CT(str), m_bUpdate);
 				dlg->GetDlgItem(IDC_FINDCOMBO1)->SetFocus();
 				if (m_bReplacing)
-					{
+				{
 					dlg->GetDlgItem(IDC_OE_PSH1)->EnableWindow(FALSE);
 					dlg->GetDlgItem(IDC_OE_PSH2)->EnableWindow(FALSE);
-					}
-      		return 0L;
 				}
+				return 0L;
 			}
+		}
 		else
-			{
+		{
 			if (m_bReplacing)
-				{
+			{
 				dlg->GetDlgItem(IDC_OE_PSH1)->EnableWindow(TRUE);
 				dlg->GetDlgItem(IDC_OE_PSH2)->EnableWindow(TRUE);
-				}
+			}
 			strReplace = Search.lpReplaceText;
 			bFoundOnce = TRUE;
-			}
+		}
 
 		if (m_bReplacing)
-		   SetLineAvoidance(dlg);
-		SelectFoundText(&StartPos,Search.iReturnLength,m_bUpdate);
+			SetLineAvoidance(dlg);
+		SelectFoundText(&StartPos, Search.iReturnLength, m_bUpdate);
 		// save our selected text.  we do this each time
 		// because with regular expressions, the found text
 		// doesn't necessarily match the search text
 		if (lpSaveFoundText)
-			delete [] lpSaveFoundText;
+			delete[] lpSaveFoundText;
 		lpSaveFoundText = GetSelection();
 		if (m_bFinding)
-			{
+		{
 			m_bFinding = FALSE;
 			m_bReplacing = FALSE;
 			m_finddlg = m_replacedlg = NULL;
 			dlg->DestroyWindow();
 			dlg = NULL;
 			bFoundOnce = FALSE;
-			}
-		if(bFirstFind && dlg && dlg->ReplaceCurrent())
+		}
+		if (bFirstFind && dlg && dlg->ReplaceCurrent())
 		{
 			bFirstFind = FALSE;
 			goto replacefirst;
 		}
-		}
+	}
 	else if (dlg->ReplaceCurrent())
-		{
+	{
 		if (!bFoundOnce)
 		{
 			bFirstFind = TRUE;
 			goto doitagain;
 		}
-replacefirst:
+	replacefirst:
 		// since our dialog is modeless, make sure the 
 		// selected text is really what we're supposed to
 		// be replacing. if not, search again
 		{
-		LPSTR lpSelected = GetSelection();
-		if (!lpSelected || strcmp(lpSelected,lpSaveFoundText))
+			LPSTR lpSelected = GetSelection();
+			if (!lpSelected || strcmp(lpSelected, lpSaveFoundText))
 			{
-			bFirstFind = TRUE;
-			delete [] lpSelected;
-			goto doitagain;
+				bFirstFind = TRUE;
+				delete[] lpSelected;
+				goto doitagain;
 			}
-		delete [] lpSelected;
+			delete[] lpSelected;
 		}
 
 		SaveFindDlgSettings(dlg);
 		SaveReplaceDlgSettings(dlg);
 		strReplace = Search.lpReplaceText;
-      InsertString((LPTSTR)(LPCTSTR)strReplace, m_bUpdate, TRUE);
+		InsertString((LPTSTR)(LPCTSTR)strReplace, m_bUpdate, TRUE);
 		if (!Search.fForward)
 			m_iColNo -= strReplace.GetLength();
-      dlg->GetDlgItem(IDC_OE_PSH1)->EnableWindow(TRUE);
-      dlg->GetDlgItem(IDC_OE_PSH2)->EnableWindow(TRUE);
-	   dlg->GetDlgItem(IDC_OE_PSH1)->SetFocus();
+		dlg->GetDlgItem(IDC_OE_PSH1)->EnableWindow(TRUE);
+		dlg->GetDlgItem(IDC_OE_PSH2)->EnableWindow(TRUE);
+		dlg->GetDlgItem(IDC_OE_PSH1)->SetFocus();
 		bFoundOnce = TRUE;
 		goto doitagain;
-		}
+	}
 	else if (dlg->ReplaceAll())
-		{
+	{
 		TEXTPOS TextPos;
 		int iCount = 0;
 		CWaitCursor wait;
@@ -2275,28 +2277,28 @@ replacefirst:
 		EndPos.pLine = NULL;
 		EndPos.iOffset = 0;
 		Search.fForward = TRUE;
-      dlg->SendDlgItemMessage(IDC_FINDCOMBO1, WM_GETTEXT, sizeof(str),(LPARAM)str);
-      dlg->SendDlgItemMessage(IDC_FINDCOMBO2, WM_GETTEXT, sizeof(str),(LPARAM)str2);
+		dlg->SendDlgItemMessage(IDC_FINDCOMBO1, WM_GETTEXT, sizeof(str), (LPARAM)str);
+		dlg->SendDlgItemMessage(IDC_FINDCOMBO2, WM_GETTEXT, sizeof(str), (LPARAM)str2);
 		Search.lpSearchText = str;
 		Search.lpReplaceText = str2;
 		int iReplaceLength = strlen(Search.lpReplaceText);
-		while (pEdit->Find(&StartPos,&EndPos,&Search))
-			{
-			SelectFoundText(&StartPos,Search.iReturnLength,FALSE);
-         InsertString(A2T(Search.lpReplaceText), FALSE, TRUE);
-		   iCount++;
+		while (pEdit->Find(&StartPos, &EndPos, &Search))
+		{
+			SelectFoundText(&StartPos, Search.iReturnLength, FALSE);
+			InsertString(A2T(Search.lpReplaceText), FALSE, TRUE);
+			iCount++;
 			StartPos.iOffset += iReplaceLength;
 			Search.lpReplaceText = str2;
-			}
+		}
 		m_bUpdate = bSaveUpdate;
 		if (!iCount)
-			{
+		{
 			m_pCurLine = TextPos.pLine;
 			m_iColNo = TextPos.iOffset;
-		   DoError(IDS_OE_NOTFOUND,A2CT(str),m_bUpdate);
-			}
+			DoError(IDS_OE_NOTFOUND, A2CT(str), m_bUpdate);
+		}
 		else
-			{
+		{
 			ClearInvalidMarkers();
 			m_bFinding = FALSE;
 			m_bReplacing = FALSE;
@@ -2304,29 +2306,29 @@ replacefirst:
 			dlg->DestroyWindow();
 			dlg = NULL;
 			MakeCursorVisible();
-			InvalidateRect(NULL,FALSE);
+			InvalidateRect(NULL, FALSE);
 			UpdateViews(this, NULL, NULL);
 			bFoundOnce = FALSE;
 			return 0L;
-			}
-		strReplace.Empty();
 		}
-	return 0L;
+		strReplace.Empty();
 	}
+	return 0L;
+}
 
 //@doc SECEditCore
 //@mfunc Internal handler.
 //@rdesc void 
 //@parm CCmdUI* pCmdUI
 template <class BC>
-void SECEditCore<BC>::OnUpdateEditFindnext(CCmdUI* pCmdUI) 
+void SECEditCore<BC>::OnUpdateEditFindnext(CCmdUI* pCmdUI)
 {
 	CString section; section.LoadString(IDS_OE_SETTINGSFIND);
 	CString temp; temp.LoadString(IDS_OE_FINDPERCENT);
-	CString entry; entry.Format(temp,1);
+	CString entry; entry.Format(temp, 1);
 
-	CString str; 
-	str = AfxGetApp()->GetProfileString(section,entry,afxEmptyString);
+	CString str;
+	str = AfxGetApp()->GetProfileString(section, entry, afxEmptyString);
 	pCmdUI->Enable(!str.IsEmpty());
 }
 
@@ -2338,100 +2340,100 @@ void SECEditCore<BC>::OnUpdateEditFindnext(CCmdUI* pCmdUI)
 //@rdesc void 
 template <class BC>
 void SECEditCore<BC>::OnEditFindnext()
-   {
+{
 	USES_CONVERSION_T;
 
 	TEXTPOS StartPos;
 	TEXTPOS EndPos;
-	SEARCHRECORD Search;	
+	SEARCHRECORD Search;
 	CString section; section.LoadString(IDS_OE_SETTINGSFIND);
 	CString temp; temp.LoadString(IDS_OE_FINDPERCENT);
-	CString entry; entry.Format(temp,1);
+	CString entry; entry.Format(temp, 1);
 	CString find;
-	char str[OE_MAXLINELENGTH+1];
+	char str[OE_MAXLINELENGTH + 1];
 	SECEdit* pEdit = GetEdit();
 	ASSERT(pEdit != NULL);
 
 	m_bFoundNext = FALSE;
 	if (m_bFinding)
-		{
-      m_finddlg->SetFocus();
+	{
+		m_finddlg->SetFocus();
 		return;
-		}
-	find =  AfxGetApp()->GetProfileString(section,entry,afxEmptyString);
+	}
+	find = AfxGetApp()->GetProfileString(section, entry, afxEmptyString);
 	if (find.IsEmpty())
-		{
+	{
 		OnEditFind();
 		return;
-		}
+	}
 	Search.lpReplaceText = NULL;
 	Search.lpSearchText = str;
-	strcpy(Search.lpSearchText,T2CA(find));
+	strcpy(Search.lpSearchText, T2CA(find));
 	temp.LoadString(IDS_OE_REGULAR);
-	Search.fRegular = AfxGetApp()->GetProfileInt(section,temp,0);
+	Search.fRegular = AfxGetApp()->GetProfileInt(section, temp, 0);
 	temp.LoadString(IDS_OE_MATCHCASE);
-	Search.fMatchCase = AfxGetApp()->GetProfileInt(section,temp,0);
+	Search.fMatchCase = AfxGetApp()->GetProfileInt(section, temp, 0);
 	temp.LoadString(IDS_OE_FORWARD);
-	Search.fForward = AfxGetApp()->GetProfileInt(section,temp,1);
+	Search.fForward = AfxGetApp()->GetProfileInt(section, temp, 1);
 	temp.LoadString(IDS_OE_WRAPSEARCH);
-	m_bWrapSearch = AfxGetApp()->GetProfileInt(section,temp,1);
+	m_bWrapSearch = AfxGetApp()->GetProfileInt(section, temp, 1);
 	Search.fComplain = 0;
 
 	if (m_bSelecting)
-		{
+	{
 		if (Search.fForward)
-			{
+		{
 			m_pCurLine = m_BlockEnd.pLine;
 			m_iLineNo = pEdit->GetLineNo(m_pCurLine);
 			m_iColNo = m_BlockEnd.iOffset;
-			}
+		}
 		else
-			{
+		{
 			m_pCurLine = m_BlockStart.pLine;
 			m_iLineNo = pEdit->GetLineNo(m_pCurLine);
 			m_iColNo = m_BlockStart.iOffset;
-			}
+		}
 		ClearSelection(m_bUpdate);
 		MakeCursorVisible();
-		}
+	}
 	StartPos.pLine = m_pCurLine;
-	StartPos.iOffset = pEdit->GetRealOffset(m_pCurLine,m_iColNo);
+	StartPos.iOffset = pEdit->GetRealOffset(m_pCurLine, m_iColNo);
 	EndPos.pLine = NULL;
 	EndPos.iOffset = 0;
-	if (!pEdit->Find(&StartPos,&EndPos,&Search))
-		{
+	if (!pEdit->Find(&StartPos, &EndPos, &Search))
+	{
 		if (m_bWrapSearch)
-			{
+		{
 			// wrap around to search the whole file
 			EndPos = StartPos;
 			if (Search.fForward)
-				{
+			{
 				StartPos.pLine = pEdit->ListGetFirst(m_pCurLine, NULL);
 				StartPos.iOffset = 0;
-				}
+			}
 			else
-				{
+			{
 				EndPos.iOffset += strlen(Search.lpSearchText);
 				StartPos.pLine = pEdit->ListGetLast(m_pCurLine);
 				StartPos.iOffset = StartPos.pLine->iTxtSize;
-				}
-			if (!pEdit->Find(&StartPos,&EndPos,&Search))
-				{
-				DoError(IDS_OE_NOTFOUND,A2CT(str),m_bUpdate);
-      		return;
-				}
 			}
-		else
+			if (!pEdit->Find(&StartPos, &EndPos, &Search))
 			{
-			DoError(IDS_OE_NOTFOUND,A2CT(str),m_bUpdate);
-			return;
+				DoError(IDS_OE_NOTFOUND, A2CT(str), m_bUpdate);
+				return;
 			}
 		}
+		else
+		{
+			DoError(IDS_OE_NOTFOUND, A2CT(str), m_bUpdate);
+			return;
+		}
+	}
 
 	// else we found it
-	SelectFoundText(&StartPos,Search.iReturnLength,m_bUpdate);
+	SelectFoundText(&StartPos, Search.iReturnLength, m_bUpdate);
 	m_bFoundNext = TRUE;
-	}
+}
 
 
 //@doc SECEditCore
@@ -2440,20 +2442,20 @@ void SECEditCore<BC>::OnEditFindnext()
 //@parm OEFindDlg* dlg
 template <class BC>
 void SECEditCore<BC>::SaveFindDlgSettings(OEFindDlg* dlg)
-   {
+{
 	CString section; section.LoadString(IDS_OE_SETTINGSFIND);
 	CString temp;
 
 	temp.LoadString(IDS_OE_REGULAR);
-	AfxGetApp()->WriteProfileInt(section,temp,dlg->m_bRegular);
+	AfxGetApp()->WriteProfileInt(section, temp, dlg->m_bRegular);
 	temp.LoadString(IDS_OE_MATCHCASE);
-	AfxGetApp()->WriteProfileInt(section,temp,dlg->m_bMatchCase);
+	AfxGetApp()->WriteProfileInt(section, temp, dlg->m_bMatchCase);
 	temp.LoadString(IDS_OE_FORWARD);
-	AfxGetApp()->WriteProfileInt(section,temp,dlg->m_iUp);
+	AfxGetApp()->WriteProfileInt(section, temp, dlg->m_iUp);
 	temp.LoadString(IDS_OE_WRAPSEARCH);
-	AfxGetApp()->WriteProfileInt(section,temp,dlg->m_bWrapSearch);
+	AfxGetApp()->WriteProfileInt(section, temp, dlg->m_bWrapSearch);
 	AddFindString(dlg->m_FindWhat);
-	}
+}
 
 
 //@doc SECEditCore
@@ -2462,9 +2464,9 @@ void SECEditCore<BC>::SaveFindDlgSettings(OEFindDlg* dlg)
 //@parm OEFindDlg* dlg
 template <class BC>
 void SECEditCore<BC>::SaveReplaceDlgSettings(OEFindDlg* dlg)
-   {
+{
 	AddReplaceString(dlg->m_ReplaceWith);
-	}
+}
 
 //@doc SECEditCore
 //@mfunc Internal handler that initializes Find dialog settings from the Registry.
@@ -2472,20 +2474,20 @@ void SECEditCore<BC>::SaveReplaceDlgSettings(OEFindDlg* dlg)
 //@parm OEFindDlg* dlg
 template <class BC>
 void SECEditCore<BC>::InitFindDialog(OEFindDlg* dlg)
-   {
+{
 	GetWordOrSelection(dlg->m_FindWhat);
 	CString section; section.LoadString(IDS_OE_SETTINGSFIND);
 	CString temp;
 
 	temp.LoadString(IDS_OE_REGULAR);
-	dlg->m_bRegular = AfxGetApp()->GetProfileInt(section,temp,0);
+	dlg->m_bRegular = AfxGetApp()->GetProfileInt(section, temp, 0);
 	temp.LoadString(IDS_OE_MATCHCASE);
-	dlg->m_bMatchCase = AfxGetApp()->GetProfileInt(section,temp,0);
+	dlg->m_bMatchCase = AfxGetApp()->GetProfileInt(section, temp, 0);
 	temp.LoadString(IDS_OE_FORWARD);
-	dlg->m_iUp = AfxGetApp()->GetProfileInt(section,temp,1);
+	dlg->m_iUp = AfxGetApp()->GetProfileInt(section, temp, 1);
 	temp.LoadString(IDS_OE_WRAPSEARCH);
-	dlg->m_bWrapSearch = AfxGetApp()->GetProfileInt(section,temp,1);
-	}
+	dlg->m_bWrapSearch = AfxGetApp()->GetProfileInt(section, temp, 1);
+}
 
 
 //@doc SECEditCore
@@ -2494,7 +2496,7 @@ void SECEditCore<BC>::InitFindDialog(OEFindDlg* dlg)
 //@parm CString& newstring
 template <class BC>
 void SECEditCore<BC>::AddFindString(CString& newstring)
-	{
+{
 	if (newstring.IsEmpty())
 		return;
 
@@ -2509,25 +2511,25 @@ void SECEditCore<BC>::AddFindString(CString& newstring)
 	// move all the old guys down one,
 	// stop if we find our newstring
 	temp.LoadString(IDS_OE_FINDPERCENT);
-	nextspot.Format(temp,1);
-	oldstring =  AfxGetApp()->GetProfileString(section,nextspot,afxEmptyString);
+	nextspot.Format(temp, 1);
+	oldstring = AfxGetApp()->GetProfileString(section, nextspot, afxEmptyString);
 	if (oldstring == newstring)
 		return;
-	AfxGetApp()->WriteProfileString(section,nextspot,newstring);
+	AfxGetApp()->WriteProfileString(section, nextspot, newstring);
 	if (oldstring.IsEmpty())
 		return;
 	for (int j = 2; j < 11; j++)
-		{
-  		nextspot.Format(temp,j);
-		nextstring =  AfxGetApp()->GetProfileString(section,nextspot,afxEmptyString);
-	   AfxGetApp()->WriteProfileString(section,nextspot,oldstring);
+	{
+		nextspot.Format(temp, j);
+		nextstring = AfxGetApp()->GetProfileString(section, nextspot, afxEmptyString);
+		AfxGetApp()->WriteProfileString(section, nextspot, oldstring);
 		if (nextstring == newstring)
 			break;
 		oldstring = nextstring;
 		if (nextstring.IsEmpty())
 			break;
-		}
 	}
+}
 
 
 //@doc SECEditCore
@@ -2536,7 +2538,7 @@ void SECEditCore<BC>::AddFindString(CString& newstring)
 //@parm CString& newstring
 template <class BC>
 void SECEditCore<BC>::AddReplaceString(CString& newstring)
-	{
+{
 	if (newstring.IsEmpty())
 		newstring = _T("<OE empty string>");
 
@@ -2551,25 +2553,25 @@ void SECEditCore<BC>::AddReplaceString(CString& newstring)
 	// move all the old guys down one,
 	// stop if we find our newstring
 	temp.LoadString(IDS_OE_REPLACEPERCENT);
-	nextspot.Format(temp,1);
-	oldstring =  AfxGetApp()->GetProfileString(section,nextspot,afxEmptyString);
+	nextspot.Format(temp, 1);
+	oldstring = AfxGetApp()->GetProfileString(section, nextspot, afxEmptyString);
 	if (oldstring == newstring)
 		return;
-	AfxGetApp()->WriteProfileString(section,nextspot,newstring);
+	AfxGetApp()->WriteProfileString(section, nextspot, newstring);
 	if (oldstring.IsEmpty())
 		return;
 	for (int j = 2; j < 11; j++)
-		{
-  		nextspot.Format(temp,j);
-		nextstring =  AfxGetApp()->GetProfileString(section,nextspot,afxEmptyString);
-	   AfxGetApp()->WriteProfileString(section,nextspot,oldstring);
+	{
+		nextspot.Format(temp, j);
+		nextstring = AfxGetApp()->GetProfileString(section, nextspot, afxEmptyString);
+		AfxGetApp()->WriteProfileString(section, nextspot, oldstring);
 		if (nextstring == newstring)
 			break;
 		oldstring = nextstring;
 		if (nextstring.IsEmpty())
 			break;
-		}
 	}
+}
 
 
 //@doc SECEditCore
@@ -2587,33 +2589,33 @@ void SECEditCore<BC>::CheckLines(PLINEDESC pLine)
 
 	// check for curline
 	if (pLine)
-		{
+	{
 		pLine = pEdit->ListGetFirst(pLine, NULL);
 		while (pLine)
-			{
+		{
 			if (pLine == m_pCurLine)
 				break;
 			pLine = pLine->pNext;
-			}
 		}
+	}
 	if (!pLine)  // will be NULL if not found
-		{
+	{
 		int iLineNo = m_iLineNo;
 		m_pCurLine = m_pTopLine = pEdit->GoToLineNo(iLineNo);
 		m_iLineNo = m_iFirstLineNo = pEdit->GetLineNo(m_pCurLine);
-		}
+	}
 	else
-		{
+	{
 		// check for topline
 		pLine = m_pCurLine;
 		while (pLine && pLine != m_pTopLine)
 			pLine = pLine->pPrev;
 		if (!pLine)
-			{
+		{
 			m_iFirstLineNo = m_iLineNo;
 			m_pTopLine = m_pCurLine;
-			}
 		}
+	}
 }
 
 
@@ -2621,7 +2623,7 @@ void SECEditCore<BC>::CheckLines(PLINEDESC pLine)
 //@mfunc Pop one undo record from the list and Undo it.
 
 template <class BC>
-void SECEditCore<BC>::OnEditUndo() 
+void SECEditCore<BC>::OnEditUndo()
 {
 	if (m_bSelecting)
 		ClearSelection(m_bUpdate);
@@ -2630,55 +2632,55 @@ void SECEditCore<BC>::OnEditUndo()
 	ASSERT(pEdit != NULL);
 	PUNDORECORD pFirst = pEdit->m_pUndoBuffer;
 	int iCount = pEdit->m_iUndoPos;
-   pFirst += (iCount-1);
+	pFirst += (iCount - 1);
 	if (!pEdit->UndoEdit())
 		return;
 
 	iCount -= pEdit->m_iUndoPos;
 
 	PUNDORECORD pLast = pEdit->m_pUndoBuffer;
-   pLast += pEdit->m_iUndoPos;
+	pLast += pEdit->m_iUndoPos;
 
 	m_pCurLine = pEdit->GoToLineNo(pLast->iRow);
 	m_iLineNo = pEdit->GetLineNo(m_pCurLine);
-	m_iColNo = pEdit->GetTabbedOffset(m_pCurLine,pLast->iCol);
+	m_iColNo = pEdit->GetTabbedOffset(m_pCurLine, pLast->iCol);
 
 	BOOL bRedraw = FALSE;
 	for (int i = 0; i < iCount; i++)
-		{
+	{
 		switch (pLast->iUndoType)
-			{
-			case OE_UNDO_MERGE:
-			case OE_UNDO_CUT:
-			case OE_UNDO_UNFOLD:
-			case OE_UNDO_PASTE:
-			case OE_UNDO_COLUMNCUT:
-			case OE_UNDO_COLUMNPASTE:
-			case OE_UNDO_JOINLINE:
-			case OE_UNDO_NEWLINE:
-				bRedraw = TRUE;
-				break;
-			}
+		{
+		case OE_UNDO_MERGE:
+		case OE_UNDO_CUT:
+		case OE_UNDO_UNFOLD:
+		case OE_UNDO_PASTE:
+		case OE_UNDO_COLUMNCUT:
+		case OE_UNDO_COLUMNPASTE:
+		case OE_UNDO_JOINLINE:
+		case OE_UNDO_NEWLINE:
+			bRedraw = TRUE;
+			break;
+		}
 		pLast++;
-		} 
+	}
 
 	if (bRedraw)
-		{
+	{
 		CheckLines(m_pCurLine);		  // we might have toasted m_pTopLine
 		CountLines();
-		InvalidateRect(NULL,FALSE);
-		}
+		InvalidateRect(NULL, FALSE);
+	}
 	else
-		{
+	{
 		CRect rect;
 		rect = m_rect;
-		rect.top = (int)(m_iLineNo - m_iFirstLineNo)*m_iLineHeight;
-		rect.bottom = rect.top+m_iLineHeight;
-		InvalidateRect(&rect,FALSE);
-		}
+		rect.top = (int)(m_iLineNo - m_iFirstLineNo) * m_iLineHeight;
+		rect.bottom = rect.top + m_iLineHeight;
+		InvalidateRect(&rect, FALSE);
+	}
 	UpdateWindow();
 	MakeCursorVisible();
-	UpdateViews(this,NULL,NULL);
+	UpdateViews(this, NULL, NULL);
 
 	if (!pEdit->m_iUndoPos)
 		pEdit->SetModified(FALSE);
@@ -2689,7 +2691,7 @@ void SECEditCore<BC>::OnEditUndo()
 //@rdesc void 
 //@parm CCmdUI* pCmdUI
 template <class BC>
-void SECEditCore<BC>::OnUpdateEditUndo(CCmdUI* pCmdUI) 
+void SECEditCore<BC>::OnUpdateEditUndo(CCmdUI* pCmdUI)
 {
 	SECEdit* pEdit = GetEdit();
 	ASSERT(pEdit != NULL);
@@ -2701,7 +2703,7 @@ void SECEditCore<BC>::OnUpdateEditUndo(CCmdUI* pCmdUI)
 //@rdesc void 
 
 template <class BC>
-void SECEditCore<BC>::OnEditRedo() 
+void SECEditCore<BC>::OnEditRedo()
 {
 	if (m_bSelecting)
 		ClearSelection(m_bUpdate);
@@ -2709,51 +2711,51 @@ void SECEditCore<BC>::OnEditRedo()
 	SECEdit* pEdit = GetEdit();
 	ASSERT(pEdit != NULL);
 	PUNDORECORD pFirst = pEdit->m_pUndoBuffer;
-   pFirst += pEdit->m_iUndoPos;
+	pFirst += pEdit->m_iUndoPos;
 	int iCount = pEdit->m_iUndoPos;
 	if (!pEdit->RedoEdit())
 		return;
 	PUNDORECORD pLast = pEdit->m_pUndoBuffer;
-   pLast += (pEdit->m_iUndoPos-1);
+	pLast += (pEdit->m_iUndoPos - 1);
 	iCount = pEdit->m_iUndoPos - iCount;
 	m_pCurLine = pEdit->GoToLineNo(pLast->iRow);
 	m_iLineNo = pEdit->GetLineNo(m_pCurLine);
-	m_iColNo = pEdit->GetTabbedOffset(m_pCurLine,pLast->iCol);
+	m_iColNo = pEdit->GetTabbedOffset(m_pCurLine, pLast->iCol);
 
 	if (pLast->iUndoType == OE_UNDO_INSERT)
 		m_iColNo++;
 
 	BOOL bRedraw = FALSE;
 	for (int i = 0; i < iCount; i++)
-		{
+	{
 		switch (pLast->iUndoType)
-			{
-			case OE_UNDO_MERGE:
-			case OE_UNDO_UNFOLD:
-			case OE_UNDO_CUT:
-			case OE_UNDO_PASTE:
-			case OE_UNDO_COLUMNCUT:
-			case OE_UNDO_COLUMNPASTE:
-			case OE_UNDO_JOINLINE:
-			case OE_UNDO_NEWLINE:
-				bRedraw = TRUE;
-			}
-		pLast--;
-		}
-	if (bRedraw)
 		{
+		case OE_UNDO_MERGE:
+		case OE_UNDO_UNFOLD:
+		case OE_UNDO_CUT:
+		case OE_UNDO_PASTE:
+		case OE_UNDO_COLUMNCUT:
+		case OE_UNDO_COLUMNPASTE:
+		case OE_UNDO_JOINLINE:
+		case OE_UNDO_NEWLINE:
+			bRedraw = TRUE;
+		}
+		pLast--;
+	}
+	if (bRedraw)
+	{
 		CheckLines(m_pCurLine);		  // we might have toasted m_pTopLine
 		CountLines();
-		InvalidateRect(NULL,FALSE);
-		}
+		InvalidateRect(NULL, FALSE);
+	}
 	else
-		{
+	{
 		CRect rect;
 		rect = m_rect;
-		rect.top = (int)(m_iLineNo - m_iFirstLineNo)*m_iLineHeight;
-		rect.bottom = rect.top+m_iLineHeight;
-		InvalidateRect(&rect,FALSE);
-		}
+		rect.top = (int)(m_iLineNo - m_iFirstLineNo) * m_iLineHeight;
+		rect.bottom = rect.top + m_iLineHeight;
+		InvalidateRect(&rect, FALSE);
+	}
 	UpdateWindow();
 	MakeCursorVisible();
 	UpdateViews(this, NULL, NULL);
@@ -2764,12 +2766,12 @@ void SECEditCore<BC>::OnEditRedo()
 //@rdesc void 
 //@parm CCmdUI* pCmdUI
 template <class BC>
-void SECEditCore<BC>::OnUpdateEditRedo(CCmdUI* pCmdUI) 
+void SECEditCore<BC>::OnUpdateEditRedo(CCmdUI* pCmdUI)
 {
 	SECEdit* pEdit = GetEdit();
 	ASSERT(pEdit != NULL);
-	pCmdUI->Enable(pEdit->m_iUndoCount && 
-		            (pEdit->m_iUndoPos < pEdit->m_iUndoCount));
+	pCmdUI->Enable(pEdit->m_iUndoCount &&
+		(pEdit->m_iUndoPos < pEdit->m_iUndoCount));
 }
 
 
@@ -2778,27 +2780,27 @@ void SECEditCore<BC>::OnUpdateEditRedo(CCmdUI* pCmdUI)
 //              move to that line.
 //@rdesc void 
 template <class BC>
-void SECEditCore<BC>::OnBookmarknext() 
+void SECEditCore<BC>::OnBookmarknext()
 {
 	SECEdit* pEdit = GetEdit();
 	ASSERT(pEdit != NULL);
 	if (pEdit->m_iBookmarkCount)
-		{
+	{
 		PLINEDESC pLine = m_pCurLine->pNext;
 		while (pLine && !pLine->fBookMark)
 			pLine = pLine->pNext;
 		if (!pLine)
-			{
+		{
 			pLine = pEdit->ListGetFirst(m_pCurLine, NULL);
 			while (pLine && !pLine->fBookMark)
 				pLine = pLine->pNext;
-			}
+		}
 		if (pLine)
-			{
+		{
 			m_iColNo = 0;
 			CenterLine(pLine);
-			}
 		}
+	}
 }
 
 //@doc SECEditCore
@@ -2806,7 +2808,7 @@ void SECEditCore<BC>::OnBookmarknext()
 //@rdesc void 
 //@parm CCmdUI* pCmdUI
 template <class BC>
-void SECEditCore<BC>::OnUpdateBookmarknext(CCmdUI* pCmdUI) 
+void SECEditCore<BC>::OnUpdateBookmarknext(CCmdUI* pCmdUI)
 {
 	pCmdUI->Enable(GetEdit()->m_iBookmarkCount > 0);
 }
@@ -2817,7 +2819,7 @@ void SECEditCore<BC>::OnUpdateBookmarknext(CCmdUI* pCmdUI)
 
 
 template <class BC>
-void SECEditCore<BC>::OnBookmarkset() 
+void SECEditCore<BC>::OnBookmarkset()
 {
 	SECEdit* pEdit = GetEdit();
 	ASSERT(pEdit != NULL);
@@ -2828,10 +2830,10 @@ void SECEditCore<BC>::OnBookmarkset()
 	m_pCurLine->fBookMark = ~m_pCurLine->fBookMark;
 	CRect rect;
 	rect = m_rect;
-	rect.top = (int)(m_iLineNo - m_iFirstLineNo)*m_iLineHeight;
-	rect.bottom = rect.top+m_iLineHeight;
-	InvalidateRect(&rect,FALSE);
-	UpdateViews(this,NULL,NULL);
+	rect.top = (int)(m_iLineNo - m_iFirstLineNo) * m_iLineHeight;
+	rect.bottom = rect.top + m_iLineHeight;
+	InvalidateRect(&rect, FALSE);
+	UpdateViews(this, NULL, NULL);
 }
 
 //@doc SECEditCore
@@ -2840,7 +2842,7 @@ void SECEditCore<BC>::OnBookmarkset()
 //@parm CCmdUI* pCmdUI
 
 template <class BC>
-void SECEditCore<BC>::OnUpdateBookmarkset(CCmdUI* pCmdUI) 
+void SECEditCore<BC>::OnUpdateBookmarkset(CCmdUI* pCmdUI)
 {
 	pCmdUI->Enable();
 }
@@ -2850,27 +2852,27 @@ void SECEditCore<BC>::OnUpdateBookmarkset(CCmdUI* pCmdUI)
 //@mfunc Internal handler that moves to the previous bookmark.
 
 template <class BC>
-void SECEditCore<BC>::OnBookmarkprev() 
+void SECEditCore<BC>::OnBookmarkprev()
 {
 	SECEdit* pEdit = GetEdit();
 	ASSERT(pEdit != NULL);
 	if (pEdit->m_iBookmarkCount)
-		{
+	{
 		PLINEDESC pLine = m_pCurLine->pPrev;
 		while (pLine && !pLine->fBookMark)
 			pLine = pLine->pPrev;
 		if (!pLine)
-			{
+		{
 			pLine = pEdit->ListGetLast(m_pCurLine);
 			while (pLine && !pLine->fBookMark)
 				pLine = pLine->pPrev;
-			}
+		}
 		if (pLine)
-			{
+		{
 			m_iColNo = 0;
 			CenterLine(pLine);
-			}
 		}
+	}
 }
 
 //@doc SECEditCore
@@ -2878,7 +2880,7 @@ void SECEditCore<BC>::OnBookmarkprev()
 //@rdesc void 
 //@parm CCmdUI* pCmdUI
 template <class BC>
-void SECEditCore<BC>::OnUpdateBookmarkprev(CCmdUI* pCmdUI) 
+void SECEditCore<BC>::OnUpdateBookmarkprev(CCmdUI* pCmdUI)
 {
 	pCmdUI->Enable(GetEdit()->m_iBookmarkCount > 0);
 }
@@ -2900,17 +2902,17 @@ void SECEditCore<BC>::CenterLine(PLINEDESC pLine)
 	int iNumLines = m_rect.bottom / m_iLineHeight;
 	int iTargetLine = iNumLines / 2;
 
-	if ((m_iFirstLineNo > m_iLineNo) || ((m_iLineNo-m_iFirstLineNo) >= iNumLines))
-		{
+	if ((m_iFirstLineNo > m_iLineNo) || ((m_iLineNo - m_iFirstLineNo) >= iNumLines))
+	{
 		m_pTopLine = m_pCurLine;
 		m_iFirstLineNo = m_iLineNo;
-		while (m_pTopLine->pPrev && (m_iLineNo-m_iFirstLineNo) < iTargetLine)
-			{
+		while (m_pTopLine->pPrev && (m_iLineNo - m_iFirstLineNo) < iTargetLine)
+		{
 			m_pTopLine = m_pTopLine->pPrev;
 			m_iFirstLineNo--;
-			}
-		Invalidate();
 		}
+		Invalidate();
+	}
 	MakeCursorVisible();
 
 }
@@ -2919,19 +2921,19 @@ void SECEditCore<BC>::CenterLine(PLINEDESC pLine)
 //@mfunc Internal handler that removes the bookmark status from all lines in this document.
 //@rdesc void 
 template <class BC>
-void SECEditCore<BC>::OnBookmarkdelete() 
+void SECEditCore<BC>::OnBookmarkdelete()
 {
 	SECEdit* pEdit = GetEdit();
 	ASSERT(pEdit != NULL);
 	PLINEDESC pLine = pEdit->ListGetFirst(m_pCurLine, NULL);
 	while (pLine)
-		{
+	{
 		pLine->fBookMark = 0;
 		pLine = pLine->pNext;
-		}
+	}
 	pEdit->m_iBookmarkCount = 0;
 	Invalidate();
-	UpdateViews(this,NULL,NULL);
+	UpdateViews(this, NULL, NULL);
 }
 
 //@doc SECEditCore
@@ -2939,7 +2941,7 @@ void SECEditCore<BC>::OnBookmarkdelete()
 //@rdesc void 
 //@parm CCmdUI* pCmdUI
 template <class BC>
-void SECEditCore<BC>::OnUpdateBookmarkdelete(CCmdUI* pCmdUI) 
+void SECEditCore<BC>::OnUpdateBookmarkdelete(CCmdUI* pCmdUI)
 {
 	pCmdUI->Enable(GetEdit()->m_iBookmarkCount > 0);
 }
@@ -2956,11 +2958,11 @@ int SECEditCore<BC>::CountBookmarks()
 	int i = 0;
 	PLINEDESC pLine = pEdit->ListGetFirst(m_pCurLine, NULL);
 	while (pLine)
-		{
+	{
 		if (pLine->fBookMark)
 			i++;
 		pLine = pLine->pNext;
-		}
+	}
 	return i;
 }
 
@@ -2983,7 +2985,7 @@ void SECEditCore<BC>::OnPageSetup()
 //@rdesc void 
 //@parm CCmdUI* pCmdUI
 template <class BC>
-void SECEditCore<BC>::OnUpdatePageSetup(CCmdUI* pCmdUI) 
+void SECEditCore<BC>::OnUpdatePageSetup(CCmdUI* pCmdUI)
 {
 	pCmdUI->Enable();
 }
@@ -2995,27 +2997,27 @@ void SECEditCore<BC>::OnUpdatePageSetup(CCmdUI* pCmdUI)
 //@parm  UINT nHitTest
 //@parm  UINT message
 template <class BC>
-BOOL SECEditCore<BC>::OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message) 
+BOOL SECEditCore<BC>::OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message)
 {
-	if(nHitTest & HTCLIENT)
+	if (nHitTest & HTCLIENT)
 	{
 		CPoint pt;
-		if(GetCursorPos(&pt))
+		if (GetCursorPos(&pt))
 		{
 			ScreenToClient(&pt);
 			if (pt.x <= (m_iMarkSpace - (m_iCharWidth / 2)))
 			{
 				// Make sure that we find the cursor
 				HCURSOR hCursor = ::LoadCursor(AfxFindResourceHandle(MAKEINTRESOURCE(IDC_SECEDIT_GUTTER),
-												   RT_GROUP_CURSOR),
-												   MAKEINTRESOURCE(IDC_SECEDIT_GUTTER));
+					RT_GROUP_CURSOR),
+					MAKEINTRESOURCE(IDC_SECEDIT_GUTTER));
 				ASSERT(hCursor != NULL);
 
 				::SetCursor(hCursor);
 
 				return 0;
 			}
-			else if(IsPointInBlock(pt))
+			else if (IsPointInBlock(pt))
 			{
 				SetCursor(AfxGetApp()->LoadStandardCursor(IDC_ARROW));
 				return 0;
@@ -3041,12 +3043,12 @@ long SECEditCore<BC>::GetTextLength()
 	SECEdit* pEdit = GetEdit();
 	ASSERT(pEdit != NULL);
 	int iTextLength = 0;
-	PLINEDESC pLine = pEdit->ListGetFirst(m_pTopLine,NULL);
+	PLINEDESC pLine = pEdit->ListGetFirst(m_pTopLine, NULL);
 	while (pLine)
-		{
+	{
 		iTextLength += pLine->iTxtSize;
 		pLine = pLine->pNext;
-		}
+	}
 	return (long)iTextLength;
 }
 
@@ -3065,12 +3067,12 @@ BOOL SECEditCore<BC>::FindText(LPCTSTR lpszFind, BOOL bCase, BOOL bWord)
 	// set up the registry entries that OnEditFindnext() uses
 	CString section;	section.LoadString(IDS_OE_SETTINGSFIND);
 	CString temp;		temp.LoadString(IDS_OE_FINDPERCENT);
-	CString entry;		entry.Format(temp,1);
+	CString entry;		entry.Format(temp, 1);
 
-	AfxGetApp()->WriteProfileString(section,entry,lpszFind);
+	AfxGetApp()->WriteProfileString(section, entry, lpszFind);
 
 	temp.LoadString(IDS_OE_MATCHCASE);
-	AfxGetApp()->WriteProfileInt(section,temp,bCase);
+	AfxGetApp()->WriteProfileInt(section, temp, bCase);
 
 	OnEditFindnext();
 	return m_bFoundNext;
@@ -3083,73 +3085,73 @@ BOOL SECEditCore<BC>::FindText(LPCTSTR lpszFind, BOOL bCase, BOOL bWord)
 //@parm  int nMaxCount The maximum number of characters to copy into the lpszStringBuf argument string buffer.
 
 template <class BC>
-int SECEditCore<BC>::GetWindowText( LPTSTR lpszStringBuf, int nMaxCount )
+int SECEditCore<BC>::GetWindowText(LPTSTR lpszStringBuf, int nMaxCount)
 {
 	if (!m_pTopLine)
-		{
+	{
 		*lpszStringBuf = 0;
 		return 0;
-		}
+	}
 
 	long iTextLength = GetTextLength();
-	iTextLength = min(iTextLength,nMaxCount) * sizeof(TCHAR); // Dealing with a possible UNICODE buffer
+	iTextLength = min(iTextLength, nMaxCount) * sizeof(TCHAR); // Dealing with a possible UNICODE buffer
 	int iRval = iTextLength;
 
 	TCHAR* pBuffer = lpszStringBuf;
 
 	SECEdit* pEdit = GetEdit();
 	ASSERT(pEdit != NULL);
-	PLINEDESC pLine = pEdit->ListGetFirst(m_pTopLine,NULL);
+	PLINEDESC pLine = pEdit->ListGetFirst(m_pTopLine, NULL);
 	int iCopyLength;
 	while (iTextLength)
-		{
-		iCopyLength = min(pLine->iTxtSize,iTextLength);
-		memcpy(pBuffer,pLine->pText,iCopyLength);
+	{
+		iCopyLength = min(pLine->iTxtSize, iTextLength);
+		memcpy(pBuffer, pLine->pText, iCopyLength);
 		pBuffer += iCopyLength;
 		iTextLength -= iCopyLength;
 		pLine = pLine->pNext;
-		}
+	}
 	*pBuffer = 0;
 
 	return iRval;
 }
-  
+
 //@doc SECEditCore
 //@mfunc Returns the contents of the buffer in the CString object passed in as an argument.  This function is provided for CEdit/CRichEdit compatibility.
 //@rdesc void 
 //@parm  CString& rString The CString object to place the contents of the buffer into.
 
 template <class BC>
-void SECEditCore<BC>::GetWindowText( CString& rString )
+void SECEditCore<BC>::GetWindowText(CString& rString)
 {
 	USES_CONVERSION_T;
 
 	if (!m_pTopLine)
-		{
+	{
 		rString.Empty();
-		}
+	}
 
 	int iTextLength = 0;
 
 	SECEdit* pEdit = GetEdit();
 	ASSERT(pEdit != NULL);
-	PLINEDESC pLine = pEdit->ListGetFirst(m_pTopLine,NULL);
+	PLINEDESC pLine = pEdit->ListGetFirst(m_pTopLine, NULL);
 	while (pLine)
-		{
+	{
 		rString += A2T(pLine->pText);
 		iTextLength += pLine->iTxtSize;
 		pLine = pLine->pNext;
-		}
+	}
 
 }
-  
+
 //@doc SECEditCore
 //@mfunc Replaces the document with the text provided.  This function is provided for CEdit/CRichEdit compatibility.
 //@rdesc void 
 //@parm  LPCTSTR lpszString The text to put into the buffer.
 
 template <class BC>
-void SECEditCore<BC>::SetWindowText( LPCTSTR lpszString )
+void SECEditCore<BC>::SetWindowText(LPCTSTR lpszString)
 {
 	// need to select all the text first
 	SelectAll(FALSE);
@@ -3176,26 +3178,26 @@ void SECEditCore<BC>::SetWindowText( LPCTSTR lpszString )
 //@parm  BOOL* pbColumnar TRUE if we're dealing with columnar selection, FALSE otherwise.
 
 template <class BC>
-BOOL  SECEditCore<BC>::GetSelection( TEXTPOS& Start, TEXTPOS& End, BOOL* pbColumnar /* = NULL */ )
+BOOL  SECEditCore<BC>::GetSelection(TEXTPOS& Start, TEXTPOS& End, BOOL* pbColumnar /* = NULL */)
 {
 	SECEdit* pEdit = GetEdit();
-	ASSERT( pEdit != NULL );
+	ASSERT(pEdit != NULL);
 
-	if ( pbColumnar )
+	if (pbColumnar)
 		*pbColumnar = FALSE;
 
-	if ( m_BlockStart.pLine && m_BlockEnd.pLine )
+	if (m_BlockStart.pLine && m_BlockEnd.pLine)
 	{
 		// BlockStart and BlockEnd positions are tabbed,
 		// WndCopy gets the real offset
 		Start = m_BlockStart;
-		End	  = m_BlockEnd;
-		Start.iOffset = pEdit->GetRealOffset( Start.pLine, Start.iOffset );
-		End.iOffset   = pEdit->GetRealOffset( End.pLine,   End.iOffset );
+		End = m_BlockEnd;
+		Start.iOffset = pEdit->GetRealOffset(Start.pLine, Start.iOffset);
+		End.iOffset = pEdit->GetRealOffset(End.pLine, End.iOffset);
 
-		if ( m_iBlockType == OE_COLUMN )
+		if (m_iBlockType == OE_COLUMN)
 		{
-			if ( pbColumnar )
+			if (pbColumnar)
 				*pbColumnar = TRUE;
 		}
 
@@ -3203,10 +3205,10 @@ BOOL  SECEditCore<BC>::GetSelection( TEXTPOS& Start, TEXTPOS& End, BOOL* pbColum
 	}
 	else
 	{
-	Start.pLine = m_pCurLine;
-	Start.iOffset = pEdit->GetRealOffset( m_pCurLine, m_iColNo );
-	End = Start;
-	return FALSE;	
+		Start.pLine = m_pCurLine;
+		Start.iOffset = pEdit->GetRealOffset(m_pCurLine, m_iColNo);
+		End = Start;
+		return FALSE;
 	}
 }
 
@@ -3217,33 +3219,33 @@ BOOL  SECEditCore<BC>::GetSelection( TEXTPOS& Start, TEXTPOS& End, BOOL* pbColum
 //@parm  BOOL* pbColumnar Is this columnar selection?
 
 template <class BC>
-LPSTR  SECEditCore<BC>::GetSelection( BOOL* pbColumnar /* = NULL */ )
+LPSTR  SECEditCore<BC>::GetSelection(BOOL* pbColumnar /* = NULL */)
 {
 	LPSTR  lpText = NULL;
 
 	SECEdit* pEdit = GetEdit();
-	ASSERT( pEdit != NULL );
+	ASSERT(pEdit != NULL);
 
-	if ( pbColumnar )
+	if (pbColumnar)
 		*pbColumnar = FALSE;
 
-	if ( m_BlockStart.pLine && m_BlockEnd.pLine )
+	if (m_BlockStart.pLine && m_BlockEnd.pLine)
 	{
 		// BlockStart and BlockEnd positions are tabbed,
 		// WndCopy gets the real offset
 		TEXTPOS Start = m_BlockStart;
-		TEXTPOS End	  = m_BlockEnd;
-		Start.iOffset = pEdit->GetRealOffset( Start.pLine, Start.iOffset );
-		End.iOffset   = pEdit->GetRealOffset( End.pLine,   End.iOffset );
-		if ( m_iBlockType == OE_COLUMN )
+		TEXTPOS End = m_BlockEnd;
+		Start.iOffset = pEdit->GetRealOffset(Start.pLine, Start.iOffset);
+		End.iOffset = pEdit->GetRealOffset(End.pLine, End.iOffset);
+		if (m_iBlockType == OE_COLUMN)
 		{
-			if ( pbColumnar )
+			if (pbColumnar)
 				*pbColumnar = TRUE;
 
-			lpText = pEdit->ColumnCopy( &Start, &End, TRUE );
+			lpText = pEdit->ColumnCopy(&Start, &End, TRUE);
 		}
 		else
-			lpText = pEdit->Copy( &Start, &End, TRUE );
+			lpText = pEdit->Copy(&Start, &End, TRUE);
 	}
 
 	return lpText;
@@ -3257,17 +3259,17 @@ LPSTR  SECEditCore<BC>::GetSelection( BOOL* pbColumnar /* = NULL */ )
 //@parm  BOOL bColumnar TRUE to make a columnar selection, FALSE otherwise.
 
 template <class BC>
-void SECEditCore<BC>::SetSelection( PTEXTPOS Start, PTEXTPOS End, BOOL bColumnar /* = FALSE */ )
+void SECEditCore<BC>::SetSelection(PTEXTPOS Start, PTEXTPOS End, BOOL bColumnar /* = FALSE */)
 {
 
 	SECEdit* pEdit = GetEdit();
-	ASSERT( pEdit != NULL );
+	ASSERT(pEdit != NULL);
 
 	ClearSelection(FALSE);
 
-	GotoLineCol(pEdit->GetLineNo(Start->pLine),pEdit->GetTabbedOffset(Start->pLine,Start->iOffset));
+	GotoLineCol(pEdit->GetLineNo(Start->pLine), pEdit->GetTabbedOffset(Start->pLine, Start->iOffset));
 	StartSelection(bColumnar ? OE_COLUMN : OE_STREAM, FALSE);
-	GotoLineCol(pEdit->GetLineNo(End->pLine),pEdit->GetTabbedOffset(End->pLine,End->iOffset));
+	GotoLineCol(pEdit->GetLineNo(End->pLine), pEdit->GetTabbedOffset(End->pLine, End->iOffset));
 	UpdateSelection(FALSE);
 	UpdateEditor();
 }
@@ -3280,32 +3282,32 @@ void SECEditCore<BC>::SetSelection( PTEXTPOS Start, PTEXTPOS End, BOOL bColumnar
 //@parm  BOOL bColumnar TRUE if the selection is a column, FALSE if not.
 //@parm  BOOL bSaveUndoRecord Save this transaction in the undo buffer?
 template <class BC>
-BOOL  SECEditCore<BC>::ReplaceSelection( LPCTSTR lpNewSel, BOOL bColumnar, BOOL bSaveUndoRecord)
+BOOL  SECEditCore<BC>::ReplaceSelection(LPCTSTR lpNewSel, BOOL bColumnar, BOOL bSaveUndoRecord)
 {
 	USES_CONVERSION_T;
 
 	SECEdit* pEdit = GetEdit();
-	ASSERT( pEdit != NULL );
+	ASSERT(pEdit != NULL);
 
 	// if there's a block marked, cut it
-	Cut( FALSE, bSaveUndoRecord );
+	Cut(FALSE, bSaveUndoRecord);
 
 	TEXTPOS TextPos;
 	BOOL	bRet = TRUE;
 	char	search[4] = { 0x0D, 0x0A, 0, 0 };
 
 	// is there more than one line?
-	LPCSTR lpTemp = strpbrk( T2CA(lpNewSel), search );
-	if ( !lpTemp )
-		bRet = ( InsertString( (LPTSTR) lpNewSel, FALSE, bSaveUndoRecord ) == 0 );
+	LPCSTR lpTemp = strpbrk(T2CA(lpNewSel), search);
+	if (!lpTemp)
+		bRet = (InsertString((LPTSTR)lpNewSel, FALSE, bSaveUndoRecord) == 0);
 	else
 	{
-		TextPos.pLine   = m_pCurLine;
-		TextPos.iOffset = pEdit->GetRealOffset( m_pCurLine, m_iColNo );
-		if ( bColumnar )
-			bRet = ( pEdit->ColumnPaste( &TextPos, (LPSTR)T2CA(lpNewSel), _tcslen(lpNewSel), bSaveUndoRecord ) == 0 );
+		TextPos.pLine = m_pCurLine;
+		TextPos.iOffset = pEdit->GetRealOffset(m_pCurLine, m_iColNo);
+		if (bColumnar)
+			bRet = (pEdit->ColumnPaste(&TextPos, (LPSTR)T2CA(lpNewSel), _tcslen(lpNewSel), bSaveUndoRecord) == 0);
 		else
-			bRet = ( pEdit->Paste( &TextPos, (LPSTR)T2CA(lpNewSel), _tcslen( lpNewSel ), bSaveUndoRecord ) == 0 );
+			bRet = (pEdit->Paste(&TextPos, (LPSTR)T2CA(lpNewSel), _tcslen(lpNewSel), bSaveUndoRecord) == 0);
 	}
 
 	UpdateEditor();
@@ -3319,7 +3321,7 @@ BOOL  SECEditCore<BC>::ReplaceSelection( LPCTSTR lpNewSel, BOOL bColumnar, BOOL 
 //@parm  LPCTSTR FileName The filename of the file to insert.
 
 template <class BC>
-void SECEditCore<BC>::InsertFile( LPCTSTR FileName )
+void SECEditCore<BC>::InsertFile(LPCTSTR FileName)
 {
 	USES_CONVERSION_T;
 
@@ -3327,27 +3329,27 @@ void SECEditCore<BC>::InsertFile( LPCTSTR FileName )
 	CFile f;
 	try
 	{
-		f.Open( FileName, CFile::modeRead );
+		f.Open(FileName, CFile::modeRead);
 	}
-	catch ( CFileException* e )
+	catch (CFileException* e)
 	{
-	  #ifdef _DEBUG
+#ifdef _DEBUG
 		afxDump << "File could not be opened " << e->m_cause << "\n";
-	  #endif
+#endif
 		e->Delete();
 		return;
-	}
+}
 
 	int nFileSize = f.GetLength();
-	char* pBuff = new char[ nFileSize + 1 ];
-	ASSERT( pBuff );
-	f.Read( pBuff, nFileSize );
+	char* pBuff = new char[nFileSize + 1];
+	ASSERT(pBuff);
+	f.Read(pBuff, nFileSize);
 
-	pBuff[ nFileSize ] = 0;
+	pBuff[nFileSize] = 0;
 
-	ReplaceSelection( A2T(pBuff) );
+	ReplaceSelection(A2T(pBuff));
 
-	delete [] pBuff;
+	delete[] pBuff;
 }
 
 //@doc SECEditCore
@@ -3355,10 +3357,10 @@ void SECEditCore<BC>::InsertFile( LPCTSTR FileName )
 //@rdesc void  
 
 template <class BC>
-void  SECEditCore<BC>::UpdateEditor ()
+void  SECEditCore<BC>::UpdateEditor()
 {
 	// update the editor
-	InvalidateRect( NULL, FALSE );
+	InvalidateRect(NULL, FALSE);
 	UpdateWindow();
 	MakeCursorVisible();
 	UpdateViews(this, NULL, NULL);
@@ -3372,9 +3374,9 @@ void  SECEditCore<BC>::UpdateEditor ()
 //@rdesc void 
 //@parm  int Line The line to scroll to and display.
 template <class BC>
-void SECEditCore<BC>::GotoLine( int Line )
+void SECEditCore<BC>::GotoLine(int Line)
 {
-	GotoLineCol( Line, 0 );
+	GotoLineCol(Line, 0);
 }
 
 
@@ -3385,36 +3387,36 @@ void SECEditCore<BC>::GotoLine( int Line )
 //@parm  int Col  Column number.
 
 template <class BC>
-void SECEditCore<BC>::GotoLineCol( int Line, int Col )
+void SECEditCore<BC>::GotoLineCol(int Line, int Col)
 {
 	// Navigate to new line number
 	BOOL Scrolled = FALSE;
 
 	m_iLineNo = Line;
 
-	if ( !IsLineVisible( Line ) )
+	if (!IsLineVisible(Line))
 	{
 		// New line not visible; must scroll the view
-		if ( Line < m_iFirstLineNo )
+		if (Line < m_iFirstLineNo)
 		{
 			// scrolling up
-			ScrollGoToLine ( m_iLineNo, FALSE );
+			ScrollGoToLine(m_iLineNo, FALSE);
 		}
 		else
 		{
 			// scrolling down (position new line as the last visible)
-			ScrollGoToLine ( m_iLineNo - LinesPerPage() + 1, FALSE );
+			ScrollGoToLine(m_iLineNo - LinesPerPage() + 1, FALSE);
 		}
 
 		Scrolled = TRUE;
 	}
 
-	m_pCurLine = GetEdit()->GoToLineNo( m_iLineNo );
+	m_pCurLine = GetEdit()->GoToLineNo(m_iLineNo);
 
 	m_iColNo = Col;
 	MakeCursorVisible();
 
-	if ( Scrolled )
+	if (Scrolled)
 	{
 		Invalidate();
 		UpdateWindow();
@@ -3425,17 +3427,17 @@ void SECEditCore<BC>::GotoLineCol( int Line, int Col )
 //@mfunc Internal function.
 //@rdesc void 
 template <class BC>
-void SECEditCore<BC>::OnEditUppercase() 
+void SECEditCore<BC>::OnEditUppercase()
 {
 	BOOL Columnar;
-	LPSTR pBuff = GetSelection( &Columnar );
+	LPSTR pBuff = GetSelection(&Columnar);
 
-	if ( pBuff )
+	if (pBuff)
 	{
-		CString Buff( pBuff );
+		CString Buff(pBuff);
 		Buff.MakeUpper();
 
-		ReplaceSelection( Buff, Columnar );
+		ReplaceSelection(Buff, Columnar);
 	}
 
 	delete pBuff;
@@ -3446,17 +3448,17 @@ void SECEditCore<BC>::OnEditUppercase()
 //@mfunc Internal function.
 //@rdesc void 
 template <class BC>
-void SECEditCore<BC>::OnEditLowercase() 
+void SECEditCore<BC>::OnEditLowercase()
 {
 	BOOL Columnar;
-	LPSTR pBuff = GetSelection( &Columnar );
+	LPSTR pBuff = GetSelection(&Columnar);
 
-	if ( pBuff )
+	if (pBuff)
 	{
-		CString Buff( pBuff );
+		CString Buff(pBuff);
 		Buff.MakeLower();
 
-		ReplaceSelection( Buff, Columnar );
+		ReplaceSelection(Buff, Columnar);
 	}
 
 	delete pBuff;
@@ -3471,10 +3473,10 @@ void SECEditCore<BC>::UpdateViews(CWnd* pSender, LPARAM lHint, CObject* pHint)
 	pSender;  // unused
 	SECEditHint* hint;
 	if ((lHint == IDS_OE_DELETELINE) && pHint->IsKindOf(RUNTIME_CLASS(SECEditHint)))
-		{
+	{
 		hint = (SECEditHint*)pHint;
 		CheckLines(hint->m_pLine);
-		}
+	}
 
 	if (lHint == OE_SYNCH_SPLITTERS && m_nSplitRow == 0 && m_nSplitCol == 0)
 	{
@@ -3482,51 +3484,51 @@ void SECEditCore<BC>::UpdateViews(CWnd* pSender, LPARAM lHint, CObject* pHint)
 	}
 
 	if (m_bUpdate)
-		InvalidateRect(NULL,FALSE);
+		InvalidateRect(NULL, FALSE);
 }
 
 template <class BC>
 void SECEditCore<BC>::SetPaintLineNumbers(bool bPaint)
 {
-  if (bPaint)
-  {
-    if (m_iLineNumSpace > 0)
-      return;
+	if (bPaint)
+	{
+		if (m_iLineNumSpace > 0)
+			return;
 
-    m_iLineNumSpace = 1;
+		m_iLineNumSpace = 1;
 
-    CalcLineNumSpace();
+		CalcLineNumSpace();
 
-    if (m_iMarkSpace)
-    {
-      m_iMarkSpace += m_iLineNumSpace;
-    }
-  }
-  else
-  {
-    if (m_iLineNumSpace == 0)
-      return;
+		if (m_iMarkSpace)
+		{
+			m_iMarkSpace += m_iLineNumSpace;
+		}
+	}
+	else
+	{
+		if (m_iLineNumSpace == 0)
+			return;
 
-    m_iMarkSpace = max(0, m_iMarkSpace - m_iLineNumSpace);
-    m_iLineNumSpace = 0;
-  }
+		m_iMarkSpace = max(0, m_iMarkSpace - m_iLineNumSpace);
+		m_iLineNumSpace = 0;
+	}
 }
 
 template <class BC>
 void SECEditCore<BC>::CalcLineNumSpace()
 {
-  if (m_iMarkSpace && m_iLineNumSpace > 0)
-  {
-    CString str;
-    PLINEDESC pLastLine =  GetEdit()->ListGetLast(GetEdit()->m_pLine);
+	if (m_iMarkSpace && m_iLineNumSpace > 0)
+	{
+		CString str;
+		PLINEDESC pLastLine = GetEdit()->ListGetLast(GetEdit()->m_pLine);
 
-    PLINEDESC pTemp = GetEdit()->GetFoldedLineList(pLastLine);
-    if (pTemp)
-      pLastLine = pTemp;
+		PLINEDESC pTemp = GetEdit()->GetFoldedLineList(pLastLine);
+		if (pTemp)
+			pLastLine = pTemp;
 
-    str.Format("%d", pLastLine->iDisplayLineNo);
-    m_iLineNumSpace = max(str.GetLength() + 1, 3) * m_iCharWidth;
-  }
+		str.Format("%d", pLastLine->iDisplayLineNo);
+		m_iLineNumSpace = max(str.GetLength() + 1, 3) * m_iCharWidth;
+	}
 }
 
 

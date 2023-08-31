@@ -20,6 +20,7 @@
 #define AFX_DISPLAYPG_H__6D5EE142_FAF6_11D1_9E4E_8AC1BB000000__INCLUDED_
 
 #include "SMXPropertyPg.h"
+#include "FcuOptions.h"
 
 class CFilCmpPg : public CSMXPropertyPg
 {

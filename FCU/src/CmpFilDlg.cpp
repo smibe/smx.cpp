@@ -63,10 +63,10 @@ CCmpFilDlg::CCmpFilDlg(CWnd* pParent /*=NULL*/)
   m_nNofPathNames = 0;
 	//Initialize the drag and drop
   m_pFileDropTarget = new CFileDropTarget();
-  m_pFileDropTarget->m_pDragEnter = (DragEnterFP) DragEnter;
-  m_pFileDropTarget->m_pDragLeave = (DragLeaveFP) DragLeave;
-  m_pFileDropTarget->m_pDragOver  = (DragOverFP)  DragOver;
-  m_pFileDropTarget->m_pDrop      = (DropFP)      Drop;
+  m_pFileDropTarget->m_pDragEnter = (DragEnterFP)&CCmpFilDlg::DragEnter;
+  m_pFileDropTarget->m_pDragLeave = (DragLeaveFP) &CCmpFilDlg::DragLeave;
+  m_pFileDropTarget->m_pDragOver  = (DragOverFP)  &CCmpFilDlg::DragOver;
+  m_pFileDropTarget->m_pDrop      = (DropFP)      &CCmpFilDlg::Drop;
 
 }
 

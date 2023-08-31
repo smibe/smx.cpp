@@ -767,6 +767,7 @@ void SECEdit::ConvertLineEnds(PLINEDESC lpText, int iLineEndType)
   szNewLineEnd[2] = 0;
   
   //eat all line end characters
+  int j = 0;
   for (int i = 0, j = 0; i < lpText->iTxtSize; i++)
   {
     if (pBuffer[i] != 0xa && pBuffer[i] != 0xd)

@@ -64,7 +64,7 @@ protected:
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 
-	CDisplayPg m_displayPg;
+	//CDisplayPg m_displayPg;
 	CColorPg   m_colorPg;
 	CComparePg m_comparePg;
 };
